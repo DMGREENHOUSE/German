@@ -1,0 +1,42 @@
+% ------------------------------------------------------------
+%  Colour scheme
+%
+%  Genders keep the same colour everywhere in the book, so you
+%  learn the colour along with the word:
+%
+%      der  masculine  →  blue
+%      die  feminine   →  red
+%      das  neuter     →  green
+%      die  plural     →  amber
+%
+%  Colour is carried by the HEADER cells (dark, white text) plus
+%  a very light tint down each column. Both survive a greyscale
+%  print as distinct shades, so the book still works in B&W.
+% ------------------------------------------------------------
+
+\definecolor{Ink}    {HTML}{1F2937}  % near-black navy — body rules, headings
+\definecolor{Accent} {HTML}{7C3AED}  % violet — section rules, captions
+\definecolor{Line}   {HTML}{CBD5E1}  % light grey — inner table rules
+
+\definecolor{Masc}   {HTML}{1D4ED8}  % der
+\definecolor{Fem}    {HTML}{BE123C}  % die
+\definecolor{Neut}   {HTML}{15803D}  % das
+\definecolor{Plur}   {HTML}{B45309}  % die (pl.)
+
+% light column tints
+\colorlet{MascL}{Masc!8}
+\colorlet{FemL} {Fem!8}
+\colorlet{NeutL}{Neut!8}
+\colorlet{PlurL}{Plur!8}
+
+% cases — used in the pronoun grid
+\definecolor{NomC}{HTML}{0F766E}
+\definecolor{AccC}{HTML}{B91C1C}
+\definecolor{DatC}{HTML}{1D4ED8}
+\definecolor{GenC}{HTML}{7E22CE}
+
+% neutral greys
+\colorlet{HeadBG}{Ink}
+\colorlet{ZebraBG}{Ink!4}
+\colorlet{NoteBG}{Accent!6}
+\colorlet{Faint}{Ink!55}

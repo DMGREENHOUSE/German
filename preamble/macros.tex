@@ -1,0 +1,199 @@
+% ------------------------------------------------------------
+%  Structure, page furniture and the table environments.
+%
+%  Page rule: exactly one topic per page.
+%    \gpart{<numeral>}{<title>}  opens a new part (banner, fresh page)
+%    \gsec{<title>}              opens a new topic. It forces a page
+%                                break UNLESS it is the first topic
+%                                after a \gpart banner, so a part
+%                                never wastes a page on its own.
+% ------------------------------------------------------------
+
+% ---------- sectioning ---------------------------------------
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{secnumdepth}{1}
+
+\titleformat{\section}[hang]
+  {\sffamily\bfseries\large\color{Ink}}
+  {\textcolor{Accent}{\thesection}}{0.55em}{}
+  [\vspace{1pt}{\color{Accent}\titlerule[1.3pt]}]
+\titlespacing*{\section}{0pt}{0pt}{9pt}
+
+\newif\ifgfresh
+\gfreshfalse
+
+\newcommand{\CurrentPart}{}
+
+\newcommand{\gpart}[2]{%
+  \clearpage
+  \renewcommand{\CurrentPart}{Part #1 \textperiodcentered\ #2}%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{#1.\space #2}%
+  \noindent\colorbox{Ink}{%
+    \begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}
+      \vspace{1.5pt}
+      {\sffamily\bfseries\large\color{white}%
+       \textcolor{Accent!45}{#1}\hspace{0.7em}#2}
+      \vspace{1.5pt}
+    \end{minipage}}%
+  \par\vspace{9pt}%
+  \gfreshtrue
+}
+
+\newcommand{\gsec}[1]{%
+  \ifgfresh\gfreshfalse\else\clearpage\fi
+  \section{#1}%
+  \markboth{\CurrentPart}{#1}%
+}
+
+% ---------- running heads ------------------------------------
+\fancypagestyle{grammar}{%
+  \fancyhf{}%
+  \renewcommand{\headrule}{\color{Line}\hrule height 0.4pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+  \fancyhead[LE]{\footnotesize\sffamily\color{Faint}\nouppercase{\leftmark}}%
+  \fancyhead[RO]{\footnotesize\sffamily\color{Faint}\nouppercase{\rightmark}}%
+  \fancyfoot[LE,RO]{\footnotesize\sffamily\color{Ink}\thepage}%
+}
+\setlength{\headheight}{12pt}
+
+% ---------- inline helpers -----------------------------------
+\newcommand{\en}[1]{\textcolor{Accent}{\bfseries #1}}      % highlighted ending
+\newcommand{\eng}[1]{{\color{Faint}\itshape #1}}            % English gloss / hint
+\newcommand{\xx}{{\color{Faint}\textendash}}                % no such form
+\newcommand{\gterm}[1]{{\sffamily\bfseries\small #1}}
+
+% in-page caption above a table
+\newcommand{\tcap}[1]{%
+  \par\vspace{7pt}%
+  \noindent{\sffamily\bfseries\small\color{Accent}#1}%
+  \par\vspace{3pt}}
+
+% smaller sub-caption
+\newcommand{\scap}[1]{%
+  \par\vspace{5pt}%
+  \noindent{\sffamily\bfseries\footnotesize\color{Ink}#1}%
+  \par\vspace{2pt}}
+
+% a rule usable in running text (\titlerule only works inside \titleformat)
+\newcommand{\grule}{\par\vspace{-3pt}{\color{Accent}\rule{\linewidth}{1.3pt}}\par}
+
+% ---------- table environments -------------------------------
+% 1. gendertbl — label column + masculine / feminine / neuter / plural
+\NewTblrEnviron{gendertbl}
+\SetTblrInner[gendertbl]{
+  width      = \linewidth,
+  colspec    = {X[1.55,l,m] X[1,c,m] X[1,c,m] X[1,c,m] X[1,c,m]},
+  rowsep     = 2.1pt,
+  colsep     = 3pt,
+  rows       = {font=\small},
+  column{2}  = {bg=MascL},
+  column{3}  = {bg=FemL},
+  column{4}  = {bg=NeutL},
+  column{5}  = {bg=PlurL},
+  column{1}  = {bg=white, font=\footnotesize\sffamily\bfseries, fg=Ink},
+  row{1}     = {fg=white, font=\footnotesize\sffamily\bfseries, rowsep=3.5pt},
+  cell{1}{1} = {bg=Ink},
+  cell{1}{2} = {bg=Masc},
+  cell{1}{3} = {bg=Fem},
+  cell{1}{4} = {bg=Neut},
+  cell{1}{5} = {bg=Plur},
+  hline{1}   = {0.9pt, solid, Ink},
+  hline{2}   = {0.7pt, solid, Ink},
+  hline{3-Y} = {0.25pt, solid, Line},
+  hline{Z}   = {0.9pt, solid, Ink},
+}
+
+% 2. casetbl — label columns + the four cases, case-coloured heads
+\NewTblrEnviron{casetbl}
+\SetTblrInner[casetbl]{
+  width      = \linewidth,
+  colspec    = {X[0.85,l,m] X[0.7,c,m] X[1.15,l,m] X[1,c,m] X[1,c,m] X[1,c,m] X[1,c,m]},
+  rowsep     = 2.1pt,
+  colsep     = 2.5pt,
+  rows       = {font=\footnotesize},
+  column{4}  = {bg=NomC!7},
+  column{5}  = {bg=AccC!7},
+  column{6}  = {bg=DatC!7},
+  column{7}  = {bg=GenC!7},
+  column{1}  = {font=\scriptsize\sffamily\bfseries},
+  column{2}  = {font=\scriptsize\sffamily\bfseries},
+  column{3}  = {font=\scriptsize\sffamily},
+  row{1}     = {fg=white, font=\scriptsize\sffamily\bfseries, rowsep=3.5pt},
+  cell{1}{1} = {bg=Ink}, cell{1}{2} = {bg=Ink}, cell{1}{3} = {bg=Ink},
+  cell{1}{4} = {bg=NomC}, cell{1}{5} = {bg=AccC},
+  cell{1}{6} = {bg=DatC}, cell{1}{7} = {bg=GenC},
+  hline{1}   = {0.9pt, solid, Ink},
+  hline{2}   = {0.7pt, solid, Ink},
+  hline{3-Y} = {0.25pt, solid, Line},
+  hline{Z}   = {0.9pt, solid, Ink},
+}
+
+% 3. gtbl — the general workhorse: dark header row, zebra body
+\NewTblrEnviron{gtbl}
+\SetTblrInner[gtbl]{
+  width      = \linewidth,
+  rowsep     = 2.1pt,
+  colsep     = 4pt,
+  rows       = {font=\small},
+  row{odd}   = {bg=white},
+  row{even}  = {bg=ZebraBG},
+  row{1}     = {bg=Ink, fg=white, font=\footnotesize\sffamily\bfseries, rowsep=3.5pt},
+  hline{1}   = {0.9pt, solid, Ink},
+  hline{2}   = {0.7pt, solid, Ink},
+  hline{3-Y} = {0.25pt, solid, Line},
+  hline{Z}   = {0.9pt, solid, Ink},
+}
+
+% 4. flattbl — no header row, a tidy reference block
+\NewTblrEnviron{flattbl}
+\SetTblrInner[flattbl]{
+  width      = \linewidth,
+  rowsep     = 2.1pt,
+  colsep     = 4pt,
+  rows       = {font=\small},
+  column{1}  = {font=\small\sffamily\bfseries, fg=Ink},
+  hlines     = {0.25pt, solid, Line},
+  hline{1}   = {0.9pt, solid, Ink},
+  hline{Z}   = {0.9pt, solid, Ink},
+}
+
+% 4b. extbl — example sentences: German left, English right, nothing bolded
+%     (use this instead of flattbl whenever column 1 is a full sentence)
+\NewTblrEnviron{extbl}
+\SetTblrInner[extbl]{
+  width      = \linewidth,
+  rowsep     = 2.4pt,
+  colsep     = 4pt,
+  rows       = {font=\small},
+  column{1}  = {fg=Ink},
+  hlines     = {0.25pt, solid, Line},
+  hline{1}   = {0.9pt, solid, Ink},
+  hline{Z}   = {0.9pt, solid, Ink},
+}
+
+% 5. note box
+\NewTblrEnviron{gnotetbl}
+\SetTblrInner[gnotetbl]{
+  width     = \linewidth,
+  colspec   = {X[l]},
+  rowsep    = 5pt,
+  colsep    = 6pt,
+  cells     = {font=\footnotesize},
+  row{1}    = {bg=NoteBG},
+  vline{1}  = {2pt, solid, Accent},
+}
+% NOTE: a gnote holds ONE paragraph — \\ would start a new table row.
+\newenvironment{gnote}{\par\vspace{5pt}\noindent\begin{gnotetbl}{}}%
+                      {\end{gnotetbl}\par\vspace{2pt}}
+
+% ---------- contents styling ---------------------------------
+\renewcommand{\cftchapfont}{\sffamily\bfseries\small\color{Ink}}
+\renewcommand{\cftchappagefont}{\sffamily\bfseries\small\color{Ink}}
+\renewcommand{\cftsecfont}{\small}
+\renewcommand{\cftsecpagefont}{\small}
+\setlength{\cftbeforechapskip}{6pt}
+\setlength{\cftbeforesecskip}{1pt}
+\setlength{\cftsecindent}{1.2em}
+\setlength{\cftsecnumwidth}{1.8em}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}

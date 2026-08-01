@@ -1,0 +1,51 @@
+% ------------------------------------------------------------
+%  Packages — everything here ships with a standard TeX Live /
+%  MiKTeX / Overleaf installation. pdfLaTeX only.
+% ------------------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+% British English is the document language; German words are set inline.
+% (No german babel option, so the book compiles on a minimal TeX install.)
+\usepackage[british]{babel}
+\usepackage{microtype}
+
+% --- page geometry: A5, generous inner margin for binding ----
+\usepackage[
+  a5paper,
+  top=13mm, bottom=15mm,
+  inner=15mm, outer=12mm,
+  headsep=4mm, footskip=8mm,
+]{geometry}
+
+% --- colour and tables --------------------------------------
+\usepackage{xcolor}
+\usepackage{tabularray}
+\UseTblrLibrary{varwidth}
+\usepackage{multirow}
+\usepackage{array}
+
+% --- headings, headers, contents ----------------------------
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[titles]{tocloft}
+\usepackage{enumitem}
+
+% --- misc ----------------------------------------------------
+\usepackage{needspace}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\hypersetup{
+  pdftitle={German Grammar — A Visual Reference},
+  pdfsubject={German grammar tables},
+  bookmarksnumbered=true,
+}
+
+% no paragraph indent; small vertical gap instead
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\renewcommand{\arraystretch}{1.1}
+
+% keep German words unbroken inside the tables
+\hyphenpenalty=2000
+\tolerance=1500

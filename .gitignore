@@ -1,0 +1,24 @@
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.idx
+*.ilg
+*.ind
+*.xdv
+
+# keep the built book out of the repo; run `make` to regenerate it
+main.pdf
+
+# editors / OS
+.vscode/
+.DS_Store
+*~
