@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f2937">
+<meta name="description" content="German grammar reference and multiple-choice quizzes, by Daniel Greenhouse.">
+<title>Deutsche Grammatik</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Deutsche Grammatik home">
+    <span class="swatches" aria-hidden="true">
+      <i class="sw-m"></i><i class="sw-f"></i><i class="sw-n"></i><i class="sw-p"></i>
+    </span>
+    <span class="brandtext">Deutsche&nbsp;Grammatik</span>
+  </a>
+  <a class="pdflink" href="book.pdf" target="_blank" rel="noopener">Open the book&nbsp;(PDF)</a>
+</header>
+
+<main id="main">
+
+  <!-- ============ landing / chapter picker ============ -->
+  <section id="setup" class="view">
+    <h1>Practise</h1>
+    <p class="lede">
+      Multiple-choice questions drawn from the book. Choose the chapters you
+      want; everything is selected by default. When an answer is wrong the
+      relevant page of the book opens so you can read it and try again.
+    </p>
+
+    <div class="controls">
+      <div class="control">
+        <span class="control-label">Questions</span>
+        <div class="segmented" role="radiogroup" aria-label="Number of questions">
+          <button type="button" role="radio" data-count="10">10</button>
+          <button type="button" role="radio" data-count="20" aria-checked="true" class="on">20</button>
+          <button type="button" role="radio" data-count="40">40</button>
+          <button type="button" role="radio" data-count="0">All</button>
+        </div>
+      </div>
+      <div class="control">
+        <span class="control-label">Chapters</span>
+        <div class="linkrow">
+          <button type="button" class="linkbtn" id="selectAll">Select all</button>
+          <button type="button" class="linkbtn" id="selectNone">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <ul id="chapterList" class="chapters"></ul>
+
+    <div class="startbar">
+      <p id="poolInfo" class="poolinfo"></p>
+      <button type="button" id="startBtn" class="primary">Start quiz</button>
+    </div>
+  </section>
+
+  <!-- ============ quiz ============ -->
+  <section id="quiz" class="view" hidden>
+    <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+    <div class="quizmeta">
+      <span id="counter"></span>
+      <span id="score"></span>
+      <button type="button" class="linkbtn" id="quitBtn">End quiz</button>
+    </div>
+
+    <p id="topic" class="topic"></p>
+    <h2 id="question" class="question"></h2>
+
+    <div id="options" class="options" role="group" aria-label="Answer options"></div>
+
+    <div id="feedback" class="feedback" hidden>
+      <p id="feedbackText"></p>
+    </div>
+
+    <div id="reader" class="reader" hidden>
+      <div class="readerhead">
+        <span id="readerTitle"></span>
+        <a id="readerPdf" class="linkbtn" href="book.pdf" target="_blank" rel="noopener">Open in the PDF</a>
+      </div>
+      <img id="readerImg" alt="" loading="lazy">
+      <button type="button" id="retryBtn" class="primary wide">Back to the question</button>
+    </div>
+
+    <button type="button" id="nextBtn" class="primary wide" hidden>Next question</button>
+  </section>
+
+  <!-- ============ results ============ -->
+  <section id="results" class="view" hidden>
+    <h1>Done</h1>
+    <p id="resultLine" class="lede"></p>
+    <div id="reviewWrap" hidden>
+      <h2 class="h2">Worth another look</h2>
+      <ul id="reviewList" class="review"></ul>
+    </div>
+    <div class="startbar">
+      <button type="button" id="againBtn" class="primary">Practise again</button>
+      <button type="button" id="homeBtn" class="secondary">Change chapters</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>Deutsche Grammatik — Daniel Greenhouse</span>
+  <a href="book.pdf" target="_blank" rel="noopener">Download the PDF</a>
+</footer>
+
+<script src="js/pagemap.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

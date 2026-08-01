@@ -1,100 +1,135 @@
-# Deutsche Grammatik — A Visual Reference
+# Deutsche Grammatik
 
-An A5 LaTeX reference book of German grammar. Every topic gets exactly one page,
-so the book opens flat on a single table you can drill.
+An A5 German grammar reference, plus a quiz web app that sends you back to the
+relevant page of the book whenever you get something wrong.
 
-## Build
+- **The book** — `book/`, LaTeX, one topic per page, 60 topics over 70 pages.
+- **The app** — `docs/`, a static site served by GitHub Pages.
 
-Needs a TeX distribution with `latexmk` (TeX Live, MacTeX, MiKTeX) and pdfLaTeX.
+## Repository layout
+
+```
+book/                    the LaTeX source
+  main.tex               loads everything, in reading order
+  preamble/
+    packages.tex         package list and A5 page geometry
+    colours.tex          the gender/case colour scheme
+    macros.tex           \gpart, \gsec and the seven table environments
+  frontmatter/
+    titlepage.tex
+    howtouse.tex         colour key, symbols, and a glossary of the terms used
+  chapters/01-14         one file per part
+
+docs/                    the GitHub Pages site (everything is committed)
+  index.html
+  css/style.css
+  js/app.js              quiz logic
+  js/questions.js        the question bank — hand written
+  js/pagemap.js          section -> page number — GENERATED
+  book.pdf               copy of book/main.pdf — GENERATED
+  pages/page-NN.png      one image per book page — GENERATED
+
+tools/
+  make-pagemap.py        main.toc  -> docs/js/pagemap.js
+  make-page-images.sh    main.pdf  -> docs/pages/
+  check-one-page.py      asserts every topic still fits on one page
+  check-questions.py     asserts every question points at a real section
+  test-app.js            headless run-through of the whole quiz (needs jsdom)
+
+Makefile                 build the book, refresh docs/, run the checks
+```
+
+## Building
+
+Requires a TeX distribution with `latexmk`, plus `poppler-utils` and
+ImageMagick for the page images.
 
 ```bash
-make          # build main.pdf
-make watch    # rebuild on every save
-make clean    # remove aux files, keep the PDF
+make          # build the book, refresh docs/, run the checks
+make book     # book/main.pdf only
+make site     # regenerate docs/ from an existing PDF
+make check    # one-page rule + question bank
+make serve    # preview the site at http://localhost:8000
 ```
 
-Or directly:
+The book also compiles unchanged on Overleaf: set the compiler to **pdfLaTeX**
+and the main document to `book/main.tex`. Every package used ships with a
+standard TeX Live install — there is no `babel` German option, no custom fonts
+and no shell-escape.
 
-```bash
-latexmk -pdf main.tex
-```
+## Publishing the site
 
-It also compiles unchanged on Overleaf — set the compiler to **pdfLaTeX** and
-the main document to `main.tex`.
+Settings → Pages → Source: **Deploy from a branch**, branch `main`, folder
+`/docs`. Everything the site needs is committed, so there is no build step and
+no Action to configure.
 
-All packages used ship with a standard TeX Live install. There is deliberately
-no `babel` German option, no custom fonts and no shell-escape, so the book
-builds on a minimal setup.
+## Working on the book
 
-## Layout of the repo
-
-```
-main.tex                  loads everything, in reading order
-preamble/
-  packages.tex            package list and A5 page geometry
-  colours.tex             the gender/case colour scheme
-  macros.tex              \gpart, \gsec and the five table environments
-frontmatter/
-  titlepage.tex
-  howtouse.tex            colour key and the symbols used in the tables
-chapters/
-  01-pronouns.tex         personal, reflexive, relative
-  02-articles.tex         the four cases, articles and possessives
-  03-adjectives.tex       weak / mixed / strong endings
-  04-prepositions.tex     by case, plus the two-way group
-  05-verbs.tex            present tense, stem changes, modals, prefixes
-  06-tenses.tex           perfect, Präteritum, pluperfect, future
-  07-moods.tex            imperative, Konjunktiv II, passive
-  08-wordorder.tex        verb-second, TeKaMoLo, conjunctions
-  09-questions.tex        W-words and question structure
-  10-comparison.tex       comparative and superlative
-  11-nouns.tex            gender, plurals, weak nouns, compounds
-  12-reference.tex        dative verbs, verb + preposition, numbers, dates
-  13-strongverbs.tex      ~70 strong and irregular verbs over four pages
-```
-
-## Writing a new page
-
-The page discipline is enforced by two macros in `preamble/macros.tex`:
+Two macros enforce the one-topic-per-page rule:
 
 ```latex
 \gpart{V}{Verbs}      % dark banner, starts a fresh page
 \gsec{Modal verbs}    % one topic; forces a page break unless it
                       % directly follows a \gpart banner
+\gintro{One or two sentences of context under the heading.}
 ```
 
-Inside a page, use `\tcap{...}` for a table caption and one of the five table
+Inside a page use `\tcap{...}` for a table caption and one of these
 environments:
 
-| Environment  | Use for                                                    |
-|--------------|------------------------------------------------------------|
-| `gendertbl`  | label column + masculine / feminine / neuter / plural       |
-| `casetbl`    | the seven-column personal-pronoun grid                      |
-| `gtbl`       | general workhorse: dark header row, zebra body              |
-| `flattbl`    | reference block, no header, bold first column               |
-| `extbl`      | example sentences, German left / English right, no bolding  |
-| `gnote`      | violet note box (one paragraph — `\\` would start a row)    |
+| Environment  | Use for                                                     |
+|--------------|-------------------------------------------------------------|
+| `gendertbl`  | label column + masculine / feminine / neuter / plural        |
+| `posstbl`    | the four case pages: articles, then singular, then plural    |
+| `casetbl`    | the seven-column personal-pronoun grid                       |
+| `gtbl`       | general workhorse: dark header row, zebra body               |
+| `flattbl`    | reference block, no header, bold first column                |
+| `extbl`      | example sentences, German left / English right, no bolding   |
+| `gnote`      | violet note box — one paragraph only, `\\` would start a row |
 
-Inline helpers: `\en{-en}` highlights an ending, `\eng{gloss}` sets a grey
-italic gloss, `\xx` marks a form that does not exist.
+Inline: `\en{-en}` highlights an ending, `\eng{gloss}` sets a grey italic gloss,
+`\xx` marks a form that does not exist.
+
+After any edit, `make check` confirms nothing has spilled onto a second page.
+
+## Working on the quiz
+
+Questions live in `docs/js/questions.js`:
+
+```js
+{s:"Dative", q:"[[Wir fahren mit ___ Zug.]]", a:["dem","den","der","des"], c:0,
+ e:"[[mit]] takes the dative; masculine dative is [[dem]]."}
+```
+
+`s` must match a section title in the book exactly — that is how a wrong answer
+finds the page to show. `[[double brackets]]` render italic, `**stars**` bold.
+Options are shuffled at run time, so `c` is the index in the array as written.
+
+`make check` will tell you about a title that does not match, a section with no
+questions, duplicate options, or a bad answer index. For a full run-through:
+
+```bash
+npm install jsdom
+node tools/test-app.js
+```
 
 ## Colour code
 
-| Colour | Gender  | Article |
-|--------|---------|---------|
-| blue   | maskulin | der    |
-| red    | feminin  | die    |
-| green  | neutrum  | das    |
-| amber  | Plural   | die    |
+| Colour | Gender   | Article |
+|--------|----------|---------|
+| blue   | maskulin | der     |
+| red    | feminin  | die     |
+| green  | neutrum  | das     |
+| amber  | Plural   | die     |
 
 Colour sits in the header cells with a light tint down each column, so the book
 still reads correctly printed in black and white.
 
 ## Printing
 
-The geometry is set for A5 with a wider inner margin for binding. To print two
-pages per A4 sheet:
+The geometry is set for A5 with a wider inner margin for binding. Two pages to
+an A4 sheet:
 
 ```bash
-pdfjam --nup 2x1 --landscape --outfile booklet.pdf main.pdf
+pdfjam --nup 2x1 --landscape --outfile booklet.pdf book/main.pdf
 ```

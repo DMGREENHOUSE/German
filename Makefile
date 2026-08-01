@@ -1,21 +1,52 @@
-# German Grammar — A5 booklet
-# Requires: a TeX distribution with latexmk (TeX Live, MiKTeX, MacTeX)
+# Deutsche Grammatik — book + web app
+#
+#   make            build the book, then refresh everything in docs/
+#   make book       build book/main.pdf only
+#   make site       refresh docs/ from an already-built PDF
+#   make check      verify the one-page rule and the question bank
+#   make serve      preview docs/ at http://localhost:8000
+#   make clean      remove LaTeX aux files
+#
+# Requires: a TeX distribution with latexmk, plus poppler-utils (pdftoppm,
+# pdfinfo) and ImageMagick for the page images.
 
-MAIN = main
+BOOK    := book
+DOCS    := docs
+TOOLS   := tools
+PDF     := $(BOOK)/main.pdf
 
-.PHONY: all watch clean distclean
+.PHONY: all book site check serve clean distclean watch
 
-all:
-	latexmk -pdf -interaction=nonstopmode $(MAIN).tex
+all: book site check
 
-# rebuild automatically whenever a source file changes
+book:
+	cd $(BOOK) && latexmk -pdf -interaction=nonstopmode main.tex
+
+site: $(DOCS)/book.pdf $(DOCS)/js/pagemap.js $(DOCS)/pages/page-01.png
+
+$(DOCS)/book.pdf: $(PDF)
+	cp $(PDF) $@
+
+$(DOCS)/js/pagemap.js: $(BOOK)/main.toc $(PDF)
+	python3 $(TOOLS)/make-pagemap.py $(BOOK)/main.toc $@
+
+$(DOCS)/pages/page-01.png: $(PDF)
+	bash $(TOOLS)/make-page-images.sh $(PDF) $(DOCS)/pages
+
+check:
+	python3 $(TOOLS)/check-one-page.py $(BOOK)/main.toc
+	python3 $(TOOLS)/check-questions.py
+
+# rebuild the book automatically on every save
 watch:
-	latexmk -pdf -pvc -interaction=nonstopmode $(MAIN).tex
+	cd $(BOOK) && latexmk -pdf -pvc -interaction=nonstopmode main.tex
 
-# remove build artefacts, keep the PDF
+serve:
+	@echo "http://localhost:8000"
+	cd $(DOCS) && python3 -m http.server 8000
+
 clean:
-	latexmk -c
+	cd $(BOOK) && latexmk -c
 
-# remove everything including the PDF
 distclean:
-	latexmk -C
+	cd $(BOOK) && latexmk -C

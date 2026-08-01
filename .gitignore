@@ -7,6 +7,7 @@
 *.log
 *.out
 *.synctex.gz
+*.synctex*.gz
 *.toc
 *.lof
 *.lot
@@ -15,10 +16,16 @@
 *.ind
 *.xdv
 
-# keep the built book out of the repo; run `make` to regenerate it
-main.pdf
+# the working PDF lives in book/; the published copy in docs/ IS committed
+book/main.pdf
+
+# node, only needed to run tools/test-app.js
+node_modules/
+package-lock.json
+package.json
 
 # editors / OS
 .vscode/
+.idea/
 .DS_Store
 *~
