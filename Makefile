@@ -15,7 +15,7 @@ DOCS    := docs
 TOOLS   := tools
 PDF     := $(BOOK)/main.pdf
 
-.PHONY: all book site check serve clean distclean watch
+.PHONY: all book site check serve clean distclean watch questions sort
 
 all: book site check
 
@@ -33,8 +33,17 @@ $(DOCS)/js/pagemap.js: $(BOOK)/main.toc $(PDF)
 $(DOCS)/pages/page-01.png: $(PDF)
 	bash $(TOOLS)/make-page-images.sh $(PDF) $(DOCS)/pages
 
+# regenerate the vocabulary question bank from the book
+questions:
+	python3 $(TOOLS)/make-vocab-questions.py 9
+
+# re-sort the vocabulary lists alphabetically
+sort:
+	python3 $(TOOLS)/sort-vocabulary.py
+
 check:
 	python3 $(TOOLS)/check-tables.py
+	python3 $(TOOLS)/sort-vocabulary.py --check
 	python3 $(TOOLS)/check-one-page.py $(BOOK)/main.toc
 	python3 $(TOOLS)/check-questions.py
 

@@ -38,9 +38,11 @@ i=0
 for f in "$tmp"/p-*.png; do
   i=$(( i + 1 ))
   printf -v name "page-%02d.png" "$i"
-  # 8-bit palette keeps these under ~60 kB each without visible loss on text
+  # 8-bit palette keeps these under ~60 kB each without visible loss on text.
+  # -strip removes the creation timestamp ImageMagick would otherwise embed,
+  # which would make every page differ on every rebuild and bloat the repo.
   if command -v convert >/dev/null; then
-    convert "$f" -colors 256 -depth 8 PNG8:"$OUT/$name"
+    convert "$f" -strip -colors 256 -depth 8 PNG8:"$OUT/$name"
   else
     cp "$f" "$OUT/$name"
   fi

@@ -41,7 +41,7 @@ window.scrollTo = () => {};
 window.Element.prototype.scrollIntoView = function () {};
 
 // jsdom does not fetch <script src>, so inject the three files by hand
-for (const f of ['js/pagemap.js', 'js/questions.js', 'js/app.js']) {
+for (const f of ['js/pagemap.js', 'js/questions.js', 'js/questions-vocab.js', 'js/app.js']) {
   const el = doc.createElement('script');
   el.textContent = fs.readFileSync(path.join(docs, f), 'utf8');
   doc.body.appendChild(el);

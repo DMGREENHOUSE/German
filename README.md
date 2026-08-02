@@ -25,12 +25,15 @@ docs/                    the GitHub Pages site (everything is committed)
   css/style.css
   js/app.js              quiz logic
   js/questions.js        the question bank — hand written
+  js/questions-vocab.js  vocabulary recall questions — GENERATED
   js/pagemap.js          section -> page number — GENERATED
   book.pdf               copy of book/main.pdf — GENERATED
   pages/page-NN.png      one image per book page — GENERATED
 
 tools/
   make-pagemap.py        main.toc  -> docs/js/pagemap.js
+  make-vocab-questions.py  word lists -> docs/js/questions-vocab.js
+  sort-vocabulary.py     alphabetises the word lists (--check to verify)
   make-page-images.sh    main.pdf  -> docs/pages/
   check-tables.py        asserts every dtbl column spec is well formed
   check-one-page.py      asserts every topic still fits on one page
@@ -47,6 +50,8 @@ ImageMagick for the page images.
 
 ```bash
 make          # build the book, refresh docs/, run the checks
+make sort     # re-alphabetise the vocabulary lists
+make questions # regenerate the vocabulary question bank
 make book     # book/main.pdf only
 make site     # regenerate docs/ from an existing PDF
 make check    # one-page rule + question bank
@@ -143,6 +148,38 @@ questions, duplicate options, or a bad answer index. For a full run-through:
 npm install jsdom
 node tools/test-app.js
 ```
+
+## How the vocabulary is ordered
+
+Every word list is alphabetical by German word, ignoring the article. Sorting
+follows German dictionary practice: ä, ö and ü collate as a, o and u, and ß as
+ss. Entries are laid out **column-major**, so the alphabet runs down the
+left-hand pair of columns and continues down the right-hand pair.
+
+Three tables are deliberately not in that order:
+
+- **Common adjectives** and **Countries and languages** are sorted by row,
+  because each row is a meaningful pair — an opposite, or a country with its
+  language.
+- **Days and months** stay in calendar order, which is what you actually want
+  to look at.
+
+`tools/sort-vocabulary.py` does the sorting and `--check` verifies it, so a
+hand-added word that lands in the wrong place is caught by `make check`.
+
+## Generated questions
+
+`tools/make-vocab-questions.py` reads the word lists and writes 180 recall
+questions in three shapes — German to English, English to German, and *which
+article does this noun take*. Distractors come from the same section, so the
+answer is never obvious from the category alone. Two safeguards matter:
+
+- a word whose English gloss overlaps another word in the same section is
+  skipped, since that would give two defensible answers
+- questions already written by hand are not duplicated
+
+Because the questions are derived from the book, they cannot drift out of step
+with it. Edit the word list, run `make questions`, and the bank follows.
 
 ## Colour code
 

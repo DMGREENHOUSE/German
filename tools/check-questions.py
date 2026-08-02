@@ -17,6 +17,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parent.parent
 pagemap_js = root / "docs" / "js" / "pagemap.js"
 questions_js = root / "docs" / "js" / "questions.js"
+vocab_js = root / "docs" / "js" / "questions-vocab.js"
 
 for f in (pagemap_js, questions_js):
     if not f.exists():
@@ -33,12 +34,21 @@ def js_object(path, marker):
 pagemap = json.loads(js_object(pagemap_js, "window.PAGEMAP ="))
 titles = {s["title"] for p in pagemap["parts"] for s in p["sections"]}
 
-raw = js_object(questions_js, "window.QUESTIONS =")
-# strip // comments and /* */ blocks, then quote the bare keys
-raw = re.sub(r"/\*.*?\*/", "", raw, flags=re.S)
-raw = re.sub(r"(?m)^\s*//.*$", "", raw)
-raw = re.sub(r"([{,])\s*([a-z])\s*:", r'\1"\2":', raw)
-questions = json.loads(raw)
+def load(path, marker, trim=0):
+    raw = js_object(path, marker)
+    if trim:                       # the generated file is wrapped in .concat([ ... ])
+        raw = raw[raw.index("concat(") + len("concat("):]
+        raw = raw[raw.index("[") : raw.rindex("]") + 1]
+    raw = re.sub(r"/\*.*?\*/", "", raw, flags=re.S)
+    raw = re.sub(r"(?m)^\s*//.*$", "", raw)
+    raw = re.sub(r"([{,])\s*([a-z])\s*:", r'\1"\2":', raw)
+    return json.loads(raw)
+
+questions = load(questions_js, "window.QUESTIONS =")
+generated = []
+if vocab_js.exists():
+    generated = load(vocab_js, "window.QUESTIONS =", trim=1)
+    questions += generated
 
 VALID_TYPES = {"recall", "rule", "gap"}
 
@@ -72,7 +82,8 @@ for t in sorted(titles):
     if t not in covered:
         warnings.append(f"no questions for section '{t}'")
 
-print(f"{len(questions)} questions across {len(covered)} of {len(titles)} sections")
+print(f"{len(questions)} questions across {len(covered)} of {len(titles)} sections "
+      f"({len(questions) - len(generated)} written, {len(generated)} generated)")
 print("  by type: " + ", ".join(f"{k} {v}" for k, v in sorted(by_type.items())))
 thin = [t for t, n in covered.items() if n < 3]
 if thin:
