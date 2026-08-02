@@ -234,20 +234,79 @@
 }
 
 % 7. note box
-\NewTblrEnviron{gnotetbl}
-\SetTblrInner[gnotetbl]{
-  width     = \linewidth,
-  measure   = vbox,
-  colspec   = {X[l]},
-  rowsep    = 5pt,
-  colsep    = 6pt,
-  cells     = {font=\footnotesize},
-  row{1}    = {bg=NoteBG},
-  vline{1}  = {2pt, solid, Accent},
+%    Built from a colorbox rather than a table: there are ~90 of these in the
+%    book and a tabularray environment for each one dominated the compile time.
+\newsavebox{\gnotebox}
+\newlength{\gnoterule}
+\setlength{\gnoterule}{2pt}
+\newenvironment{gnote}{%
+  \par\vspace{5pt}%
+  \setlength{\fboxsep}{5pt}%
+  \begin{lrbox}{\gnotebox}%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep-\gnoterule\relax}%
+    \footnotesize\setlength{\parskip}{3pt}%
+}{%
+  \end{minipage}%
+  \end{lrbox}%
+  \noindent
+  \textcolor{Accent}{%
+    \rule[-\dimexpr\dp\gnotebox+\fboxsep\relax]
+         {\gnoterule}
+         {\dimexpr\ht\gnotebox+\dp\gnotebox+2\fboxsep\relax}}%
+  \colorbox{NoteBG}{\usebox{\gnotebox}}%
+  \par\vspace{3pt}%
 }
-% NOTE: a gnote holds ONE paragraph — \\ would start a new table row.
-\newenvironment{gnote}{\par\vspace{5pt}\noindent\begin{gnotetbl}{}}%
-                      {\end{gnotetbl}\par\vspace{2pt}}
+
+% 8. dtbl — the lightweight table used by the vocabulary and reference pages.
+%    Visually it matches gtbl, but it is built on tabularx rather than
+%    tabularray. A tabularray environment costs roughly 0.17s to typeset and
+%    the book contains hundreds of tables, so the long word lists use this
+%    instead and cost essentially nothing.
+%
+%    Column types: W{w} left-aligned, C{w} centred, weights must sum to the
+%    number of columns. Header cells are wrapped in \hd.
+\newcolumntype{W}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}
+
+\newcommand{\hd}[1]{{\sffamily\bfseries\footnotesize\color{white}#1}}
+
+\newenvironment{dtbl}[2][\small]{%
+  \par\vspace{3pt}%
+  #1%
+  \setlength{\extrarowheight}{2pt}%
+  \setlength{\arrayrulewidth}{0.25pt}%
+  \arrayrulecolor{Ink}%
+  \rowcolors{2}{white}{ZebraBG}%
+  \setlength{\tabcolsep}{4pt}%
+  \tabularx{\linewidth}{#2}%
+  \specialrule{0.9pt}{0pt}{0pt}%
+}{%
+  \arrayrulecolor{Ink}\specialrule{0.9pt}{0pt}{0pt}%
+  \endtabularx
+  \arrayrulecolor{black}%
+  \par\vspace{2pt}%
+}
+
+% closes the header row of a dtbl and switches to hairline rules
+\newcommand{\hdrule}{\specialrule{0.7pt}{0pt}{0pt}\arrayrulecolor{Line}}
+
+% one hairline between body rows of a dtbl
+\newcommand{\rowrule}{\specialrule{0.25pt}{0pt}{0pt}}
+
+
+% ---------- vocabulary helpers -------------------------------
+%  Nouns carry their article and are coloured by gender, using the same four
+%  colours as the grammar tables. The article is still written out, so the
+%  lists work in black and white too.
+\newcommand{\dm}[1]{\textcolor{Masc}{der #1}}   % maskulin
+\newcommand{\df}[1]{\textcolor{Fem}{die #1}}    % feminin
+\newcommand{\dn}[1]{\textcolor{Neut}{das #1}}   % neutrum
+\newcommand{\dpl}[1]{\textcolor{Plur}{die #1}}  % plural only
+
+%  Verbs: regular ones are set plain, irregular ones bold and in the accent
+%  colour, so the two groups can be told apart at a glance.
+\newcommand{\vr}[1]{#1}
+\newcommand{\vi}[1]{\textcolor{Accent}{\bfseries #1}}
 
 % ---------- contents styling ---------------------------------
 \renewcommand{\cftchapfont}{\sffamily\bfseries\small\color{Ink}}

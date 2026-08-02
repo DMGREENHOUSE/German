@@ -264,6 +264,131 @@ window.QUESTIONS = [
 
 {s:"Strong and irregular verbs: springen – ziehen", q:"Partizip II of [[werden]]", a:["ist geworden","hat geworden","ist worden","hat gewordet"], c:0, e:"[[worden]] without [[ge-]] is the passive form only."},
 {s:"Strong and irregular verbs: springen – ziehen", q:"Präteritum of [[wissen]]", a:["wusste","wisste","weißte","gewusst"], c:0, e:"Mixed verb: [[wissen, weiß, wusste, gewusst]]."},
-{s:"Strong and irregular verbs: springen – ziehen", q:"[[Ich habe den Koffer getragen]] — why [[haben]]?", a:["[[tragen]] has a direct object","[[tragen]] is weak","[[Koffer]] is masculine","it is a mistake"], c:0, e:"A verb with an accusative object takes [[haben]], even when it feels like motion."}
+{s:"Strong and irregular verbs: springen – ziehen", q:"[[Ich habe den Koffer getragen]] — why [[haben]]?", a:["[[tragen]] has a direct object","[[tragen]] is weak","[[Koffer]] is masculine","it is a mistake"], c:0, e:"A verb with an accusative object takes [[haben]], even when it feels like motion."},
+
+/* ---------- I. Sounds & Spelling ---------- */
+{s:"The alphabet and stress", q:"How is the letter [[W]] named in German?", a:["weh","doppel-u","weh-weh","vau"], c:0, e:"[[W]] is named [[weh]] and sounds like an English v."},
+{s:"The alphabet and stress", q:"Where does the stress fall in [[aufstehen]]?", a:["on the prefix: **auf**stehen","on the stem: auf**ste**hen","on the last syllable","it varies"], c:0, e:"A separable prefix is stressed, which is exactly why it can detach."},
+{s:"The alphabet and stress", q:"Where does the stress fall in [[verstehen]]?", a:["on the stem: ver**ste**hen","on the prefix: **ver**stehen","on the last syllable","evenly"], c:0, e:"Inseparable prefixes are unstressed and never detach."},
+{s:"The alphabet and stress", q:"Which is true of [[ß]]?", a:["it never begins a word","it is pronounced like z","it only appears in names","it is always doubled"], c:0, e:"[[ß]] is a sharp s and is written [[ss]] in Switzerland."},
+
+{s:"Vowels", q:"How does [[ie]] sound, as in [[Liebe]]?", a:["like **ee** in see","like **eye**","like **oy** in boy","like **ay** in say"], c:0, e:"Each of [[ei]] and [[ie]] says the name of its second letter."},
+{s:"Vowels", q:"How does [[ei]] sound, as in [[mein]]?", a:["like **eye**","like **ee** in see","like **ay** in say","like **ow** in how"], c:0, e:"[[ei]] sounds like the English letter I."},
+{s:"Vowels", q:"How does [[eu]] sound, as in [[neu]]?", a:["like **oy** in boy","like **you**","like **ee**","like **eye**"], c:0, e:"[[eu]] and [[äu]] both sound like **oy**."},
+{s:"Vowels", q:"In [[kommen]] the [[o]] is short. Why?", a:["a double consonant follows","it is unstressed","it is at the start","it is followed by n"], c:0, e:"A vowel is short before a double consonant and long before h or when doubled."},
+
+{s:"Consonants", q:"How is the [[ch]] in [[Buch]] pronounced?", a:["throaty, as in Scottish **loch**","soft, as in **huge**","like **k**","like **sh**"], c:0, e:"After a, o, u and au the [[ch]] is the rasping sound."},
+{s:"Consonants", q:"How is the [[ch]] in [[ich]] pronounced?", a:["soft, as in **huge**","throaty, as in **loch**","like **k**","like **ch** in church"], c:0, e:"After any other vowel, including the umlauts, [[ch]] is soft."},
+{s:"Consonants", q:"How does [[v]] sound in [[Vater]]?", a:["like English **f**","like English **v**","like **w**","it is silent"], c:0, e:"Native words have [[v]] as **f**; loanwords such as [[Vase]] keep the **v** sound."},
+{s:"Consonants", q:"Why does [[Hund]] sound like **hunt**?", a:["final b, d and g harden","the u is short","the n is silent","it is a regional variant"], c:0, e:"The soft sound returns when an ending follows: [[Hunde]]."},
+
+/* ---------- IV. Adjectives — adverbs ---------- */
+{s:"Adverbs", q:"[[Sie singt schön.]] What does this mean?", a:["she sings beautifully","she is beautiful","she sings a beautiful song","she likes singing"], c:0, e:"A bare adjective after a verb is adverbial. German does not add anything for **-ly**."},
+{s:"Adverbs", q:"Which points **towards** the speaker?", a:["her","hin","dort","weg"], c:0, e:"[[Komm her!]] come here; [[Geh hin!]] go there."},
+{s:"Adverbs", q:"What does [[übermorgen]] mean?", a:["the day after tomorrow","the day before yesterday","this evening","in a moment"], c:0, e:"Formed from [[über]] plus [[morgen]]."},
+
+{s:"Adverbs of degree and attitude", q:"[[Leider ___ ich nicht kommen.]]", a:["kann","ich kann","können","zu kommen"], c:0, e:"An attitude adverb in first position still leaves the verb second."},
+{s:"Adverbs of degree and attitude", q:"What does [[eigentlich]] mean?", a:["actually","eventually","exactly","especially"], c:0, e:"**Eventually** is [[schließlich]]."},
+{s:"Adverbs of degree and attitude", q:"Which means **hardly**?", a:["kaum","fast","ganz","sehr"], c:0, e:"[[fast]] means almost, [[kaum]] means hardly."},
+
+/* ---------- XIV. Reference — full conjugations ---------- */
+{s:"A weak verb in full: machen", q:"What is the [[ihr]] form of [[machen]] in the Präteritum?", a:["machtet","machtest","machten","machte"], c:0, e:"Weak Präteritum endings: -te, -test, -te, -ten, -tet, -ten."},
+{s:"A weak verb in full: machen", q:"[[Ich ___ gemacht]] — Plusquamperfekt", a:["hatte","habe","werde","wäre"], c:0, e:"The pluperfect is the perfect with the auxiliary in the Präteritum."},
+{s:"A weak verb in full: machen", q:"Which form is used **instead of** the Konjunktiv II of [[machen]]?", a:["würde machen","hätte gemacht","mache","machen würde haben"], c:0, e:"A weak verb's Konjunktiv II ([[machte]]) is identical to its Präteritum, so [[würde]] + infinitive is used instead."},
+
+{s:"A strong verb in full: sprechen", q:"What is the [[du]] form of [[sprechen]] in the present?", a:["sprichst","sprechst","sprachst","sprichest"], c:0, e:"e becomes i in the du and er forms."},
+{s:"A strong verb in full: sprechen", q:"What is the [[du]] imperative of [[sprechen]]?", a:["Sprich!","Sprech!","Spreche!","Sprichst!"], c:0, e:"e to i verbs keep the vowel change in the imperative."},
+{s:"A strong verb in full: sprechen", q:"What is the Partizip II of [[sprechen]]?", a:["gesprochen","gesprecht","gesprachen","sprochen"], c:0, e:"Strong participles end in -en and often change the vowel."},
+
+/* ---------- XVI. Everyday German ---------- */
+{s:"Greetings and politeness", q:"Which greeting is the safe default with a stranger?", a:["Guten Tag","Hallo","Servus","Tschüss"], c:0, e:"[[Hallo]] is informal and [[Tschüss]] is a farewell."},
+{s:"Greetings and politeness", q:"What does [[Gute Besserung]] mean?", a:["get well soon","good luck","enjoy your meal","congratulations"], c:0, e:"Said to someone who is ill."},
+{s:"Greetings and politeness", q:"What does [[Wie bitte?]] mean?", a:["pardon?","how much?","please?","how are you?"], c:0, e:"[[bitte]] covers please, you're welcome, here you are and pardon."},
+{s:"Greetings and politeness", q:"Which is said before eating?", a:["Guten Appetit","Prost","Gern geschehen","Viel Glück"], c:0, e:"[[Prost]] is for drinking."},
+
+{s:"Getting by", q:"Which is the polite way to order?", a:["Ich hätte gern einen Kaffee","Ich will einen Kaffee","Ich habe einen Kaffee","Gib mir einen Kaffee"], c:0, e:"[[Ich will]] sounds blunt to the point of rudeness."},
+{s:"Getting by", q:"[[Mir ist schlecht]] means…", a:["I feel sick","I am bad at this","it is bad for me","I am in a bad mood"], c:0, e:"Feelings take the dative: [[mir]], not [[ich]]."},
+{s:"Getting by", q:"How do you ask someone to slow down?", a:["Langsamer, bitte","Schneller, bitte","Leiser, bitte","Später, bitte"], c:0, e:"[[langsam]] slow, comparative [[langsamer]]."},
+
+/* ---------- XVII. Vocabulary ---------- */
+{s:"People and family", q:"Which article does [[Mädchen]] take?", a:["das","die","der","den"], c:0, e:"Every noun ending in -chen is neuter, whatever it refers to."},
+{s:"People and family", q:"What does [[die Geschwister]] mean?", a:["siblings","grandparents","in-laws","twins"], c:0, e:"Normally used in the plural."},
+{s:"People and family", q:"How do you say **aunt**?", a:["die Tante","der Onkel","die Nichte","die Cousine"], c:0, e:"[[der Onkel]] is uncle, [[die Nichte]] niece."},
+
+{s:"The body", q:"Which article does [[Auge]] take?", a:["das","die","der","den"], c:0, e:"[[das Auge]], plural [[die Augen]]."},
+{s:"The body", q:"What does [[der Rücken]] mean?", a:["back","stomach","shoulder","knee"], c:0, e:"[[der Bauch]] is the stomach."},
+{s:"The body", q:"How do you say **hand**?", a:["die Hand","der Arm","der Finger","die Schulter"], c:0, e:"[[die Hand]], plural [[die Hände]]."},
+
+{s:"Food and drink", q:"Which article does [[Brot]] take?", a:["das","die","der","den"], c:0, e:"[[das Brot]]; a roll is [[das Brötchen]]."},
+{s:"Food and drink", q:"What is [[der Käse]]?", a:["cheese","cake","meat","cabbage"], c:0, e:"Cake is [[der Kuchen]]."},
+{s:"Food and drink", q:"How do you say **apple**?", a:["der Apfel","die Birne","die Kartoffel","der Saft"], c:0, e:"[[der Apfel]], plural [[die Äpfel]]."},
+
+{s:"Animals", q:"Which article does [[Pferd]] take?", a:["das","der","die","den"], c:0, e:"[[das Pferd]], plural [[die Pferde]]."},
+{s:"Animals", q:"What is [[der Vogel]]?", a:["bird","fox","fish","frog"], c:0, e:"[[der Fuchs]] is fox, [[der Frosch]] frog."},
+{s:"Animals", q:"How do you say **cat**?", a:["die Katze","der Hund","die Maus","das Schaf"], c:0, e:"[[die Katze]] is feminine, [[der Hund]] masculine."},
+
+{s:"The house", q:"Which article does [[Küche]] take?", a:["die","das","der","den"], c:0, e:"Nouns ending in -e are usually feminine."},
+{s:"The house", q:"What is [[das Fenster]]?", a:["window","door","floor","wall"], c:0, e:"[[die Tür]] is door."},
+{s:"The house", q:"How do you say **cupboard**?", a:["der Schrank","das Regal","der Tisch","das Bett"], c:0, e:"[[das Regal]] is a shelf."},
+
+{s:"Clothing", q:"Which article does [[Hose]] take?", a:["die","das","der","den"], c:0, e:"[[die Hose]] is singular in German although trousers is plural in English."},
+{s:"Clothing", q:"What is [[der Rock]]?", a:["skirt","coat","jacket","rock"], c:0, e:"A false friend: the mineral is [[der Stein]]."},
+{s:"Clothing", q:"How do you say **shoe**?", a:["der Schuh","der Stiefel","die Socke","der Gürtel"], c:0, e:"[[der Stiefel]] is a boot."},
+
+{s:"Jobs and work", q:"Which article does [[Firma]] take?", a:["die","das","der","den"], c:0, e:"[[die Firma]], plural [[die Firmen]]."},
+{s:"Jobs and work", q:"What is [[der Anwalt]]?", a:["lawyer","doctor","judge","engineer"], c:0, e:"[[der Richter]] is a judge."},
+{s:"Jobs and work", q:"How is the feminine of [[Lehrer]] formed?", a:["Lehrerin","Lehrerine","Lehrera","Lehrere"], c:0, e:"Most job names add -in, plural -innen."},
+
+{s:"Places in town", q:"Which article does [[Bahnhof]] take?", a:["der","die","das","den"], c:0, e:"[[der Bahnhof]], from [[die Bahn]] plus [[der Hof]] — the last element decides."},
+{s:"Places in town", q:"What is [[die Apotheke]]?", a:["pharmacy","department store","library","post office"], c:0, e:"[[die Bibliothek]] is a library."},
+{s:"Places in town", q:"How do you say **church**?", a:["die Kirche","das Schloss","der Dom","das Rathaus"], c:0, e:"[[der Dom]] is specifically a cathedral."},
+
+{s:"Travel and transport", q:"Which article does [[Flugzeug]] take?", a:["das","der","die","den"], c:0, e:"[[das Flugzeug]], plural [[die Flugzeuge]]."},
+{s:"Travel and transport", q:"What is [[die Fahrkarte]]?", a:["ticket","timetable","platform","journey"], c:0, e:"[[der Fahrplan]] is the timetable."},
+{s:"Travel and transport", q:"Which verb covers travelling by car or train?", a:["fahren","gehen","fliegen","laufen"], c:0, e:"[[gehen]] is only on foot."},
+
+{s:"Nature and weather", q:"Which article does [[Sonne]] take?", a:["die","der","das","den"], c:0, e:"[[die Sonne]] but [[der Mond]] — the opposite of the French genders."},
+{s:"Nature and weather", q:"What is [[der Baum]]?", a:["tree","branch","bush","forest"], c:0, e:"[[der Wald]] is a forest."},
+{s:"Nature and weather", q:"How do you say **it is raining**?", a:["es regnet","es ist Regen","der Regen ist","es regnen"], c:0, e:"Weather uses impersonal [[es]]."},
+
+{s:"Time and the calendar", q:"Which article do the days of the week take?", a:["der","die","das","they vary"], c:0, e:"Days, months and seasons are all masculine."},
+{s:"Time and the calendar", q:"What is [[das Wochenende]]?", a:["weekend","weekday","fortnight","week"], c:0, e:"[[die Woche]] plus [[das Ende]]."},
+{s:"Time and the calendar", q:"How do you say **in May**?", a:["im Mai","am Mai","in Mai","um Mai"], c:0, e:"[[in dem]] contracts to [[im]] for months and seasons."},
+
+{s:"School and study", q:"Which article does [[Prüfung]] take?", a:["die","das","der","den"], c:0, e:"Every noun ending in -ung is feminine."},
+{s:"School and study", q:"What are [[die Ferien]]?", a:["school holidays","lessons","exams","terms"], c:0, e:"Plural only. Time off work is [[der Urlaub]]."},
+{s:"School and study", q:"How do you say **exercise book**?", a:["das Heft","das Buch","die Tafel","der Stift"], c:0, e:"[[das Buch]] is a book."},
+
+{s:"Technology and media", q:"Which article does [[Handy]] take?", a:["das","die","der","den"], c:0, e:"[[das Handy]] means a mobile phone, not something convenient."},
+{s:"Technology and media", q:"What are [[die Nachrichten]]?", a:["the news","the messages app","the settings","the headlines of a paper"], c:0, e:"Singular [[die Nachricht]] is a single message."},
+{s:"Technology and media", q:"How do you say **screen**?", a:["der Bildschirm","die Tastatur","der Drucker","das Kabel"], c:0, e:"[[die Tastatur]] is the keyboard."},
+
+{s:"Money and shopping", q:"Which article does [[Geld]] take?", a:["das","die","der","den"], c:0, e:"[[das Geld]], and it is uncountable."},
+{s:"Money and shopping", q:"What is [[die Rechnung]]?", a:["bill","receipt","discount","change"], c:0, e:"[[die Quittung]] is the receipt."},
+{s:"Money and shopping", q:"Which noun exists only in the plural?", a:["die Kosten","das Konto","der Preis","die Münze"], c:0, e:"[[die Kosten]] and [[die Schulden]] have no singular."},
+
+{s:"Health and illness", q:"Which article does [[Krankenhaus]] take?", a:["das","die","der","den"], c:0, e:"The last element [[das Haus]] decides the gender."},
+{s:"Health and illness", q:"What is [[das Rezept]]?", a:["prescription","receipt","treatment","tablet"], c:0, e:"It also means a cooking recipe."},
+{s:"Health and illness", q:"How do you say **I have a headache**?", a:["Ich habe Kopfschmerzen","Ich habe Kopfschmerz","Mein Kopf hat Schmerz","Ich bin Kopfschmerz"], c:0, e:"Aches are plural. Alternatively [[Mir tut der Kopf weh]]."},
+
+{s:"Countries and languages", q:"Which country takes an article?", a:["die Schweiz","Deutschland","Frankreich","Italien"], c:0, e:"Also [[die Türkei]], [[die Niederlande]], [[die USA]]."},
+{s:"Countries and languages", q:"How do you say **to Switzerland**?", a:["in die Schweiz","nach Schweiz","nach der Schweiz","zu Schweiz"], c:0, e:"Countries with an article take [[in]] plus the accusative for movement."},
+{s:"Countries and languages", q:"What is the language of [[Österreich]]?", a:["Deutsch","Österreichisch","Ungarisch","Schweizerisch"], c:0, e:"Austria and much of Switzerland are German-speaking."},
+
+{s:"Colours, shapes and materials", q:"Which colour never takes an adjective ending?", a:["rosa","rot","grün","blau"], c:0, e:"[[rosa]], [[lila]], [[orange]] and [[beige]] are invariable: [[ein rosa Kleid]]."},
+{s:"Colours, shapes and materials", q:"What colour is [[gelb]]?", a:["yellow","green","grey","gold"], c:0, e:"[[grün]] is green, [[grau]] grey."},
+{s:"Colours, shapes and materials", q:"Which article does [[Holz]] take?", a:["das","die","der","den"], c:0, e:"[[das Holz]] — wood."},
+
+{s:"Common adjectives", q:"What is the opposite of [[teuer]]?", a:["billig","reich","schwer","voll"], c:0, e:"[[teuer]] expensive, [[billig]] cheap."},
+{s:"Common adjectives", q:"[[schwer]] can mean…", a:["both heavy and difficult","only heavy","only difficult","only serious"], c:0, e:"Its opposite [[leicht]] likewise means both light and easy."},
+{s:"Common adjectives", q:"What is the opposite of [[laut]]?", a:["leise","langsam","dunkel","leer"], c:0, e:"[[laut]] loud, [[leise]] quiet."},
+
+{s:"Everyday verbs", q:"Which of these is irregular?", a:["nehmen","machen","spielen","kaufen"], c:0, e:"[[nehmen, nimmt, nahm, genommen]]. The others are weak."},
+{s:"Everyday verbs", q:"Which verb do you use for knowing a fact?", a:["wissen","kennen","können","verstehen"], c:0, e:"[[kennen]] is for people and places you are acquainted with."},
+{s:"Everyday verbs", q:"What is the difference between [[wohnen]] and [[leben]]?", a:["wohnen is to reside, leben is to be alive","they are identical","wohnen is temporary only","leben is only for animals"], c:0, e:"[[Ich wohne in Berlin]] but [[Er lebt noch]]."},
+
+{s:"Verbs of movement, speech and thought", q:"Which is the regular partner of [[liegen]]?", a:["legen","lügen","leihen","lassen"], c:0, e:"[[legen]] to lay something down, [[liegen]] to be lying."},
+{s:"Verbs of movement, speech and thought", q:"Which of these is irregular?", a:["schließen","öffnen","üben","prüfen"], c:0, e:"[[schließen, schloss, geschlossen]]."},
+{s:"Verbs of movement, speech and thought", q:"What does [[empfehlen]] mean?", a:["to recommend","to receive","to feel","to complain"], c:0, e:"[[empfehlen, empfiehlt, empfahl, empfohlen]] — irregular."}
 
 ];

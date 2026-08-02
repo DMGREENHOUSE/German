@@ -3,7 +3,7 @@
 An A5 German grammar reference, plus a quiz web app that sends you back to the
 relevant page of the book whenever you get something wrong.
 
-- **The book** — `book/`, LaTeX, one topic per page, 60 topics over 70 pages.
+- **The book** — `book/`, LaTeX, one topic per page, 89 topics over 99 pages.
 - **The app** — `docs/`, a static site served by GitHub Pages.
 
 ## Repository layout
@@ -18,7 +18,7 @@ book/                    the LaTeX source
   frontmatter/
     titlepage.tex
     howtouse.tex         colour key, symbols, and a glossary of the terms used
-  chapters/01-14         one file per part
+  chapters/00-17         one file per part
 
 docs/                    the GitHub Pages site (everything is committed)
   index.html
@@ -32,6 +32,7 @@ docs/                    the GitHub Pages site (everything is committed)
 tools/
   make-pagemap.py        main.toc  -> docs/js/pagemap.js
   make-page-images.sh    main.pdf  -> docs/pages/
+  check-tables.py        asserts every dtbl column spec is well formed
   check-one-page.py      asserts every topic still fits on one page
   check-questions.py     asserts every question points at a real section
   test-app.js            headless run-through of the whole quiz (needs jsdom)
@@ -85,10 +86,26 @@ environments:
 | `gtbl`       | general workhorse: dark header row, zebra body               |
 | `flattbl`    | reference block, no header, bold first column                |
 | `extbl`      | example sentences, German left / English right, no bolding   |
-| `gnote`      | violet note box — one paragraph only, `\\` would start a row |
+| `dtbl`       | long word lists — cheap to typeset, use it for anything big   |
+| `gnote`      | violet note box                                               |
 
 Inline: `\en{-en}` highlights an ending, `\eng{gloss}` sets a grey italic gloss,
 `\xx` marks a form that does not exist.
+
+Vocabulary macros put the article on the noun and colour it by gender:
+`\dm{Hund}` gives *der Hund* in blue, `\df{}` *die* in red, `\dn{}` *das* in
+green, `\dpl{}` a plural-only noun in amber. Verbs use `\vr{}` for regular and
+`\vi{}` for irregular, which prints bold in the accent colour. None of this
+colour reaches the quiz, which renders plain text.
+
+### A note on compile time
+
+`gendertbl`, `posstbl` and `casetbl` are built on tabularray, which is elegant
+but costs roughly 0.17s per table. With hundreds of tables that dominated the
+build, so the long lists use `dtbl` (tabularx) instead and the note boxes are
+plain colour boxes. Keep new bulk content on `dtbl`. `dtbl` column weights must
+sum to the number of columns — `make check` enforces this, because tabularx
+silently squashes the table rather than complaining.
 
 After any edit, `make check` confirms nothing has spilled onto a second page.
 

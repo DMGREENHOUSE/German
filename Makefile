@@ -34,6 +34,7 @@ $(DOCS)/pages/page-01.png: $(PDF)
 	bash $(TOOLS)/make-page-images.sh $(PDF) $(DOCS)/pages
 
 check:
+	python3 $(TOOLS)/check-tables.py
 	python3 $(TOOLS)/check-one-page.py $(BOOK)/main.toc
 	python3 $(TOOLS)/check-questions.py
 

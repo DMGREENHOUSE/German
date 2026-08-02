@@ -3,403 +3,569 @@ window.PAGEMAP = {
   "parts": [
     {
       "id": "I",
-      "title": "Pronouns",
+      "title": "Sounds & Spelling",
       "page": 1,
       "sections": [
         {
           "n": 1,
-          "title": "Personal pronouns",
+          "title": "The alphabet and stress",
           "page": 1
         },
         {
           "n": 2,
-          "title": "Reflexive pronouns",
+          "title": "Vowels",
           "page": 2
         },
         {
           "n": 3,
-          "title": "Relative pronouns",
+          "title": "Consonants",
           "page": 3
-        },
-        {
-          "n": 4,
-          "title": "Indefinite pronouns",
-          "page": 4
         }
       ]
     },
     {
       "id": "II",
-      "title": "Articles & Case",
-      "page": 5,
+      "title": "Pronouns",
+      "page": 4,
       "sections": [
         {
+          "n": 4,
+          "title": "Personal pronouns",
+          "page": 4
+        },
+        {
           "n": 5,
-          "title": "The four cases at a glance",
+          "title": "Reflexive pronouns",
           "page": 5
         },
         {
           "n": 6,
-          "title": "Nominative",
+          "title": "Relative pronouns",
           "page": 6
         },
         {
           "n": 7,
-          "title": "Accusative",
+          "title": "Indefinite pronouns",
           "page": 7
-        },
-        {
-          "n": 8,
-          "title": "Dative",
-          "page": 8
-        },
-        {
-          "n": 9,
-          "title": "Genitive",
-          "page": 9
-        },
-        {
-          "n": 10,
-          "title": "der-words and ein-words",
-          "page": 10
         }
       ]
     },
     {
       "id": "III",
-      "title": "Adjectives",
-      "page": 11,
+      "title": "Articles & Case",
+      "page": 8,
       "sections": [
         {
+          "n": 8,
+          "title": "The four cases at a glance",
+          "page": 8
+        },
+        {
+          "n": 9,
+          "title": "Nominative",
+          "page": 9
+        },
+        {
+          "n": 10,
+          "title": "Accusative",
+          "page": 10
+        },
+        {
           "n": 11,
-          "title": "Which ending pattern?",
+          "title": "Dative",
           "page": 11
         },
         {
           "n": 12,
-          "title": "Weak endings — after a der-word",
+          "title": "Genitive",
           "page": 12
         },
         {
           "n": 13,
-          "title": "Mixed endings — after an ein-word",
+          "title": "der-words and ein-words",
           "page": 13
-        },
-        {
-          "n": 14,
-          "title": "Strong endings — no determiner",
-          "page": 14
-        },
-        {
-          "n": 15,
-          "title": "Adjectival nouns and participles",
-          "page": 15
         }
       ]
     },
     {
       "id": "IV",
-      "title": "Prepositions",
-      "page": 16,
+      "title": "Adjectives",
+      "page": 14,
       "sections": [
         {
+          "n": 14,
+          "title": "Which ending pattern?",
+          "page": 14
+        },
+        {
+          "n": 15,
+          "title": "Weak endings — after a der-word",
+          "page": 15
+        },
+        {
           "n": 16,
-          "title": "Prepositions by case",
+          "title": "Mixed endings — after an ein-word",
           "page": 16
         },
         {
           "n": 17,
-          "title": "Accusative prepositions",
+          "title": "Strong endings — no determiner",
           "page": 17
         },
         {
           "n": 18,
-          "title": "Dative prepositions",
+          "title": "Adjectival nouns and participles",
           "page": 18
         },
         {
           "n": 19,
-          "title": "Two-way prepositions",
+          "title": "Adverbs",
           "page": 19
         },
         {
           "n": 20,
-          "title": "Genitive prepositions",
+          "title": "Adverbs of degree and attitude",
           "page": 20
         }
       ]
     },
     {
       "id": "V",
-      "title": "Verbs",
+      "title": "Prepositions",
       "page": 21,
       "sections": [
         {
           "n": 21,
-          "title": "Present tense — regular endings",
+          "title": "Prepositions by case",
           "page": 21
         },
         {
           "n": 22,
-          "title": "Stem-changing verbs",
+          "title": "Accusative prepositions",
           "page": 22
         },
         {
           "n": 23,
-          "title": "haben, sein, werden",
+          "title": "Dative prepositions",
           "page": 23
         },
         {
           "n": 24,
-          "title": "Modal verbs",
+          "title": "Two-way prepositions",
           "page": 24
         },
         {
           "n": 25,
-          "title": "Separable and inseparable verbs",
+          "title": "Genitive prepositions",
           "page": 25
         }
       ]
     },
     {
       "id": "VI",
-      "title": "Tenses",
+      "title": "Verbs",
       "page": 26,
       "sections": [
         {
           "n": 26,
-          "title": "The tenses at a glance",
+          "title": "Present tense — regular endings",
           "page": 26
         },
         {
           "n": 27,
-          "title": "Perfekt",
+          "title": "Stem-changing verbs",
           "page": 27
         },
         {
           "n": 28,
-          "title": "Präteritum",
+          "title": "haben, sein, werden",
           "page": 28
         },
         {
           "n": 29,
-          "title": "Plusquamperfekt and Futur",
+          "title": "Modal verbs",
           "page": 29
+        },
+        {
+          "n": 30,
+          "title": "Separable and inseparable verbs",
+          "page": 30
         }
       ]
     },
     {
       "id": "VII",
-      "title": "Mood & Voice",
-      "page": 30,
+      "title": "Tenses",
+      "page": 31,
       "sections": [
         {
-          "n": 30,
-          "title": "Imperative",
-          "page": 30
-        },
-        {
           "n": 31,
-          "title": "Konjunktiv II",
+          "title": "The tenses at a glance",
           "page": 31
         },
         {
           "n": 32,
-          "title": "Passive",
+          "title": "Perfekt",
           "page": 32
         },
         {
           "n": 33,
-          "title": "Konjunktiv I — reported speech",
+          "title": "Präteritum",
           "page": 33
+        },
+        {
+          "n": 34,
+          "title": "Plusquamperfekt and Futur",
+          "page": 34
         }
       ]
     },
     {
       "id": "VIII",
-      "title": "Word Order",
-      "page": 34,
+      "title": "Mood & Voice",
+      "page": 35,
       "sections": [
         {
-          "n": 34,
-          "title": "The verb-second rule",
-          "page": 34
-        },
-        {
           "n": 35,
-          "title": "Order in the middle field",
+          "title": "Imperative",
           "page": 35
         },
         {
           "n": 36,
-          "title": "Conjunctions",
+          "title": "Konjunktiv II",
           "page": 36
         },
         {
           "n": 37,
-          "title": "Infinitive clauses with zu",
+          "title": "Passive",
           "page": 37
         },
         {
           "n": 38,
-          "title": "Commas",
+          "title": "Konjunktiv I — reported speech",
           "page": 38
         }
       ]
     },
     {
       "id": "IX",
-      "title": "Questions",
+      "title": "Word Order",
       "page": 39,
       "sections": [
         {
           "n": 39,
-          "title": "W-question words",
+          "title": "The verb-second rule",
           "page": 39
         },
         {
           "n": 40,
-          "title": "Question structure",
+          "title": "Order in the middle field",
           "page": 40
         },
         {
           "n": 41,
-          "title": "wo(r)- and da(r)- compounds",
+          "title": "Conjunctions",
           "page": 41
+        },
+        {
+          "n": 42,
+          "title": "Infinitive clauses with zu",
+          "page": 42
+        },
+        {
+          "n": 43,
+          "title": "Commas",
+          "page": 43
         }
       ]
     },
     {
       "id": "X",
-      "title": "Comparison",
-      "page": 42,
+      "title": "Questions",
+      "page": 44,
       "sections": [
         {
-          "n": 42,
-          "title": "Comparative and superlative",
-          "page": 42
-        },
-        {
-          "n": 43,
-          "title": "Irregular comparisons",
-          "page": 43
-        },
-        {
           "n": 44,
-          "title": "Comparison patterns",
+          "title": "W-question words",
           "page": 44
+        },
+        {
+          "n": 45,
+          "title": "Question structure",
+          "page": 45
+        },
+        {
+          "n": 46,
+          "title": "wo(r)- and da(r)- compounds",
+          "page": 46
         }
       ]
     },
     {
       "id": "XI",
-      "title": "Nouns",
-      "page": 45,
+      "title": "Comparison",
+      "page": 47,
       "sections": [
         {
-          "n": 45,
-          "title": "Guessing the gender",
-          "page": 45
-        },
-        {
-          "n": 46,
-          "title": "Forming the plural",
-          "page": 46
-        },
-        {
           "n": 47,
-          "title": "Weak nouns (n-declension)",
+          "title": "Comparative and superlative",
           "page": 47
         },
         {
           "n": 48,
-          "title": "Compound nouns",
+          "title": "Irregular comparisons",
           "page": 48
         },
         {
           "n": 49,
-          "title": "Countries and nationalities",
+          "title": "Comparison patterns",
           "page": 49
         }
       ]
     },
     {
       "id": "XII",
-      "title": "Usage",
+      "title": "Nouns",
       "page": 50,
       "sections": [
         {
           "n": 50,
-          "title": "Impersonal es",
+          "title": "Guessing the gender",
           "page": 50
         },
         {
           "n": 51,
-          "title": "Modal particles",
+          "title": "Forming the plural",
           "page": 51
         },
         {
           "n": 52,
-          "title": "False friends",
+          "title": "Weak nouns (n-declension)",
           "page": 52
+        },
+        {
+          "n": 53,
+          "title": "Compound nouns",
+          "page": 53
+        },
+        {
+          "n": 54,
+          "title": "Countries and nationalities",
+          "page": 54
         }
       ]
     },
     {
       "id": "XIII",
-      "title": "Reference",
-      "page": 53,
+      "title": "Usage",
+      "page": 55,
       "sections": [
         {
-          "n": 53,
-          "title": "Verbs that take the dative",
-          "page": 53
-        },
-        {
-          "n": 54,
-          "title": "Verbs with fixed prepositions",
-          "page": 54
-        },
-        {
           "n": 55,
-          "title": "Numbers",
+          "title": "Impersonal es",
           "page": 55
         },
         {
           "n": 56,
-          "title": "Time and date",
+          "title": "Modal particles",
           "page": 56
+        },
+        {
+          "n": 57,
+          "title": "False friends",
+          "page": 57
         }
       ]
     },
     {
       "id": "XIV",
-      "title": "Strong Verbs",
-      "page": 57,
+      "title": "Reference",
+      "page": 58,
       "sections": [
         {
-          "n": 57,
-          "title": "Strong and irregular verbs: beginnen – fliegen",
-          "page": 57
-        },
-        {
           "n": 58,
-          "title": "Strong and irregular verbs: geben – lügen",
+          "title": "Verbs that take the dative",
           "page": 58
         },
         {
           "n": 59,
-          "title": "Strong and irregular verbs: messen – sprechen",
+          "title": "Verbs with fixed prepositions",
           "page": 59
         },
         {
           "n": 60,
-          "title": "Strong and irregular verbs: springen – ziehen",
+          "title": "Numbers",
           "page": 60
+        },
+        {
+          "n": 61,
+          "title": "Time and date",
+          "page": 61
+        },
+        {
+          "n": 62,
+          "title": "A weak verb in full: machen",
+          "page": 62
+        },
+        {
+          "n": 63,
+          "title": "A strong verb in full: sprechen",
+          "page": 63
+        }
+      ]
+    },
+    {
+      "id": "XV",
+      "title": "Strong Verbs",
+      "page": 64,
+      "sections": [
+        {
+          "n": 64,
+          "title": "Strong and irregular verbs: beginnen – fliegen",
+          "page": 64
+        },
+        {
+          "n": 65,
+          "title": "Strong and irregular verbs: geben – lügen",
+          "page": 65
+        },
+        {
+          "n": 66,
+          "title": "Strong and irregular verbs: messen – sprechen",
+          "page": 66
+        },
+        {
+          "n": 67,
+          "title": "Strong and irregular verbs: springen – ziehen",
+          "page": 67
+        }
+      ]
+    },
+    {
+      "id": "XVI",
+      "title": "Everyday German",
+      "page": 68,
+      "sections": [
+        {
+          "n": 68,
+          "title": "Greetings and politeness",
+          "page": 68
+        },
+        {
+          "n": 69,
+          "title": "Getting by",
+          "page": 69
+        }
+      ]
+    },
+    {
+      "id": "XVII",
+      "title": "Vocabulary",
+      "page": 70,
+      "sections": [
+        {
+          "n": 70,
+          "title": "People and family",
+          "page": 70
+        },
+        {
+          "n": 71,
+          "title": "The body",
+          "page": 71
+        },
+        {
+          "n": 72,
+          "title": "Food and drink",
+          "page": 72
+        },
+        {
+          "n": 73,
+          "title": "Animals",
+          "page": 73
+        },
+        {
+          "n": 74,
+          "title": "The house",
+          "page": 74
+        },
+        {
+          "n": 75,
+          "title": "Clothing",
+          "page": 75
+        },
+        {
+          "n": 76,
+          "title": "Jobs and work",
+          "page": 76
+        },
+        {
+          "n": 77,
+          "title": "Places in town",
+          "page": 77
+        },
+        {
+          "n": 78,
+          "title": "Travel and transport",
+          "page": 78
+        },
+        {
+          "n": 79,
+          "title": "Nature and weather",
+          "page": 79
+        },
+        {
+          "n": 80,
+          "title": "Time and the calendar",
+          "page": 80
+        },
+        {
+          "n": 81,
+          "title": "School and study",
+          "page": 81
+        },
+        {
+          "n": 82,
+          "title": "Technology and media",
+          "page": 82
+        },
+        {
+          "n": 83,
+          "title": "Money and shopping",
+          "page": 83
+        },
+        {
+          "n": 84,
+          "title": "Health and illness",
+          "page": 84
+        },
+        {
+          "n": 85,
+          "title": "Countries and languages",
+          "page": 85
+        },
+        {
+          "n": 86,
+          "title": "Colours, shapes and materials",
+          "page": 86
+        },
+        {
+          "n": 87,
+          "title": "Common adjectives",
+          "page": 87
+        },
+        {
+          "n": 88,
+          "title": "Everyday verbs",
+          "page": 88
+        },
+        {
+          "n": 89,
+          "title": "Verbs of movement, speech and thought",
+          "page": 89
         }
       ]
     }
   ],
-  "sectionCount": 60,
+  "sectionCount": 89,
   "frontMatterOffset": 10
 };
