@@ -137,6 +137,40 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
 }
 .linkbtn:hover { text-decoration: underline; }
 
+/* ---------- the two selection axes ---------- */
+.axis { margin-bottom: 1.2rem; }
+.axishead {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: .45rem;
+}
+.axishead .control-label { margin-bottom: 0; }
+.axishead .linkrow { margin-left: auto; }
+
+.types { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+@media (min-width: 30rem) { .types { grid-template-columns: repeat(3, 1fr); } }
+
+.types label {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: .6rem .7rem;
+  cursor: pointer;
+  height: 100%;
+}
+.types label:has(input:checked) {
+  border-color: var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.types input { width: 1.05rem; height: 1.05rem; accent-color: var(--accent); flex: none; margin-top: .1rem; }
+.ty-name { font-weight: 650; font-size: .9rem; display: block; }
+.ty-desc { font-size: .76rem; color: var(--faint); display: block; line-height: 1.35; }
+.ty-count { font-size: .76rem; color: var(--faint); font-variant-numeric: tabular-nums; }
+
 /* ---------- chapter list ---------- */
 .chapters { list-style: none; margin: 0 0 1.4rem; padding: 0; display: grid; gap: .4rem; }
 @media (min-width: 34rem) { .chapters { grid-template-columns: 1fr 1fr; } }
@@ -205,8 +239,31 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
 }
 .quizmeta .linkbtn { margin-left: auto; }
 
-.topic {
+.topicline {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
   margin: 0 0 .3rem;
+}
+.badge {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+  padding: .12rem .45rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--faint);
+  background: var(--paper);
+  white-space: nowrap;
+}
+.badge[data-type="recall"] { color: var(--masc); border-color: var(--masc); background: #eef2fd; }
+.badge[data-type="rule"]   { color: var(--neut); border-color: var(--neut); background: #ecf6ef; }
+.badge[data-type="gap"]    { color: var(--plur); border-color: var(--plur); background: #fdf3e7; }
+
+.topic {
+  margin: 0;
   font-size: .74rem;
   text-transform: uppercase;
   letter-spacing: .07em;
@@ -280,6 +337,19 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
 }
 
 /* ---------- results ---------- */
+.breakdown { list-style: none; margin: 0 0 1.2rem; padding: 0; display: grid; gap: .35rem; }
+.breakdown li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .9rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: .5rem .7rem;
+}
+.breakdown .bd-score { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--faint); }
+
 .review { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
 .review li {
   background: var(--paper);

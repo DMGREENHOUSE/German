@@ -114,13 +114,27 @@ After any edit, `make check` confirms nothing has spilled onto a second page.
 Questions live in `docs/js/questions.js`:
 
 ```js
-{s:"Dative", q:"[[Wir fahren mit ___ Zug.]]", a:["dem","den","der","des"], c:0,
- e:"[[mit]] takes the dative; masculine dative is [[dem]]."}
+{s:"Dative", q:"[[Wir fahren mit ___ Zug.]]", a:["dem","den","der","des"],
+ t:"gap", c:0, e:"[[mit]] takes the dative; masculine dative is [[dem]]."}
 ```
 
 `s` must match a section title in the book exactly — that is how a wrong answer
 finds the page to show. `[[double brackets]]` render italic, `**stars**` bold.
 Options are shuffled at run time, so `c` is the index in the array as written.
+
+`t` is the question type, the second axis the quiz filters on alongside
+chapters:
+
+| `t`      | Shown as | Asks you to                                    |
+|----------|----------|------------------------------------------------|
+| `recall` | Recall   | retrieve a form, a word or a gender            |
+| `rule`   | Rules    | explain or apply a principle — *why* haben?    |
+| `gap`    | Gap-fill | complete a sentence                            |
+
+Every chapter carries all three types, so any combination of the two axes
+yields a usable quiz. `make check` reports the split and rejects an unknown
+type; `tools/test-app.js` asserts that filtering by type really does restrict
+the questions asked.
 
 `make check` will tell you about a title that does not match, a section with no
 questions, duplicate options, or a bad answer index. For a full run-through:

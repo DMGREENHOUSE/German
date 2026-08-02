@@ -40,9 +40,12 @@ raw = re.sub(r"(?m)^\s*//.*$", "", raw)
 raw = re.sub(r"([{,])\s*([a-z])\s*:", r'\1"\2":', raw)
 questions = json.loads(raw)
 
+VALID_TYPES = {"recall", "rule", "gap"}
+
 errors, warnings = [], []
 seen = set()
 covered = {}
+by_type = {}
 
 for i, q in enumerate(questions):
     where = f"question {i + 1} ({q.get('q', '')[:40]}…)"
@@ -50,6 +53,10 @@ for i, q in enumerate(questions):
         errors.append(f"{where}: section '{q['s']}' is not in the book")
     else:
         covered[q["s"]] = covered.get(q["s"], 0) + 1
+    if q.get("t") not in VALID_TYPES:
+        errors.append(f"{where}: type {q.get('t')!r} is not one of {sorted(VALID_TYPES)}")
+    else:
+        by_type[q["t"]] = by_type.get(q["t"], 0) + 1
     if len(q["a"]) != 4:
         errors.append(f"{where}: has {len(q['a'])} options, expected 4")
     if not isinstance(q["c"], int) or not 0 <= q["c"] < len(q["a"]):
@@ -66,6 +73,7 @@ for t in sorted(titles):
         warnings.append(f"no questions for section '{t}'")
 
 print(f"{len(questions)} questions across {len(covered)} of {len(titles)} sections")
+print("  by type: " + ", ".join(f"{k} {v}" for k, v in sorted(by_type.items())))
 thin = [t for t, n in covered.items() if n < 3]
 if thin:
     print(f"{len(thin)} sections with fewer than 3 questions")

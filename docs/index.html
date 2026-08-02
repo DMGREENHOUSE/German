@@ -41,16 +41,25 @@
           <button type="button" role="radio" data-count="0">All</button>
         </div>
       </div>
-      <div class="control">
+    </div>
+
+    <div class="axis">
+      <div class="axishead">
+        <span class="control-label">Question type</span>
+      </div>
+      <ul id="typeList" class="types"></ul>
+    </div>
+
+    <div class="axis">
+      <div class="axishead">
         <span class="control-label">Chapters</span>
         <div class="linkrow">
           <button type="button" class="linkbtn" id="selectAll">Select all</button>
           <button type="button" class="linkbtn" id="selectNone">Clear</button>
         </div>
       </div>
+      <ul id="chapterList" class="chapters"></ul>
     </div>
-
-    <ul id="chapterList" class="chapters"></ul>
 
     <div class="startbar">
       <p id="poolInfo" class="poolinfo"></p>
@@ -67,7 +76,7 @@
       <button type="button" class="linkbtn" id="quitBtn">End quiz</button>
     </div>
 
-    <p id="topic" class="topic"></p>
+    <p class="topicline"><span id="topic" class="topic"></span><span id="typeBadge" class="badge"></span></p>
     <h2 id="question" class="question"></h2>
 
     <div id="options" class="options" role="group" aria-label="Answer options"></div>
@@ -92,6 +101,7 @@
   <section id="results" class="view" hidden>
     <h1>Done</h1>
     <p id="resultLine" class="lede"></p>
+    <ul id="typeBreakdown" class="breakdown"></ul>
     <div id="reviewWrap" hidden>
       <h2 class="h2">Worth another look</h2>
       <ul id="reviewList" class="review"></ul>

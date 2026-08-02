@@ -13,6 +13,18 @@
   var PAGEMAP = window.PAGEMAP || { parts: [] };
   var QUESTIONS = window.QUESTIONS || [];
 
+  // The second axis: what a question asks you to do, independent of the topic.
+  var TYPES = [
+    { id: 'recall', name: 'Recall',
+      desc: 'Retrieve a form, a word or a gender' },
+    { id: 'rule', name: 'Rules',
+      desc: 'Explain or apply a principle' },
+    { id: 'gap', name: 'Gap-fill',
+      desc: 'Complete a sentence' }
+  ];
+  var TYPE_NAME = {};
+  TYPES.forEach(function (t) { TYPE_NAME[t.id] = t.name; });
+
   // ---------- index the book ------------------------------------------
   var sectionIndex = {};   // section title -> {page, partId, partTitle}
   PAGEMAP.parts.forEach(function (part) {
@@ -34,6 +46,7 @@
     q._page = hit.page;
     q._part = hit.partId;
     q._section = hit.title;
+    q._type = TYPE_NAME[q.t] ? q.t : 'recall';
     return true;
   });
   if (orphans.length) {
@@ -41,8 +54,14 @@
       orphans.filter(function (v, i, a) { return a.indexOf(v) === i; }));
   }
 
-  var countByPart = {};
-  pool.forEach(function (q) { countByPart[q._part] = (countByPart[q._part] || 0) + 1; });
+  function countsByPart() {
+    var counts = {};
+    pool.forEach(function (q) {
+      if (state.types[q._type] === false) return;
+      counts[q._part] = (counts[q._part] || 0) + 1;
+    });
+    return counts;
+  }
 
   // ---------- tiny helpers --------------------------------------------
   var $ = function (id) { return document.getElementById(id); };
@@ -80,31 +99,35 @@
   // ---------- state ----------------------------------------------------
   var state = {
     selected: {},        // partId -> bool
+    types: {},           // typeId -> bool
     count: 20,
     queue: [],
     index: 0,
     firstTry: 0,
     missed: [],          // section titles answered wrongly at least once
+    byType: {},          // typeId -> {asked, right}
     answeredThis: false
   };
 
   // ---------- setup view ----------------------------------------------
   function renderChapters() {
+    var counts = countsByPart();
     var list = $('chapterList');
     list.innerHTML = '';
     PAGEMAP.parts.forEach(function (part) {
-      var n = countByPart[part.id] || 0;
+      var n = counts[part.id] || 0;
       var li = document.createElement('li');
       var label = document.createElement('label');
 
       var box = document.createElement('input');
       box.type = 'checkbox';
       box.value = part.id;
-      box.checked = state.selected[part.id] !== false && n > 0;
-      box.disabled = n === 0;
+      box.checked = state.selected[part.id] !== false;
+      label.classList.toggle('empty', n === 0);
       box.addEventListener('change', function () {
         state.selected[part.id] = box.checked;
         saveSelection();
+        renderTypes();
         updatePool();
       });
 
@@ -114,11 +137,58 @@
 
       var meta = document.createElement('span');
       meta.className = 'ch-meta';
-      meta.textContent = n === 0 ? 'no questions' : n + ' questions';
+      meta.textContent = n === 0 ? 'none of this type' : n + ' questions';
 
       label.appendChild(box);
       label.appendChild(name);
       label.appendChild(meta);
+      li.appendChild(label);
+      list.appendChild(li);
+    });
+  }
+
+  function renderTypes() {
+    var counts = typeCounts();
+    var list = $('typeList');
+    list.innerHTML = '';
+    TYPES.forEach(function (t) {
+      var n = counts[t.id];
+      var li = document.createElement('li');
+      var label = document.createElement('label');
+
+      var box = document.createElement('input');
+      box.type = 'checkbox';
+      box.value = t.id;
+      box.checked = state.types[t.id] !== false;
+      box.addEventListener('change', function () {
+        state.types[t.id] = box.checked;
+        // never let the user select nothing at all
+        if (TYPES.every(function (o) { return state.types[o.id] === false; })) {
+          state.types[t.id] = true;
+          box.checked = true;
+        }
+        saveSelection();
+        renderTypes();
+        renderChapters();
+        updatePool();
+      });
+
+      var text = document.createElement('span');
+      var name = document.createElement('span');
+      name.className = 'ty-name';
+      name.textContent = t.name;
+      var desc = document.createElement('span');
+      desc.className = 'ty-desc';
+      desc.textContent = t.desc;
+      var count = document.createElement('span');
+      count.className = 'ty-count';
+      count.textContent = n + ' available';
+
+      text.appendChild(name);
+      text.appendChild(desc);
+      text.appendChild(count);
+      label.appendChild(box);
+      label.appendChild(text);
       li.appendChild(label);
       list.appendChild(li);
     });
@@ -129,6 +199,9 @@
       .filter(function (p) { return state.selected[p.id] === false; })
       .map(function (p) { return p.id; });
     store('dg.deselected', JSON.stringify(off));
+    var offTypes = TYPES.filter(function (t) { return state.types[t.id] === false; })
+                        .map(function (t) { return t.id; });
+    store('dg.deselectedTypes', JSON.stringify(offTypes));
   }
 
   function loadSelection() {
@@ -139,16 +212,39 @@
     } catch (e) { /* ignore malformed value */ }
   }
 
-  function selectedPool() {
+  function loadTypeSelection() {
+    var raw = store('dg.deselectedTypes');
+    if (!raw) return;
+    try {
+      var off = JSON.parse(raw);
+      if (off.length < TYPES.length) {
+        off.forEach(function (id) { state.types[id] = false; });
+      }
+    } catch (e) { /* ignore malformed value */ }
+  }
+
+  function chapterPool() {
     return pool.filter(function (q) { return state.selected[q._part] !== false; });
+  }
+
+  function selectedPool() {
+    return chapterPool().filter(function (q) { return state.types[q._type] !== false; });
+  }
+
+  // how many questions of each type the current chapter selection offers
+  function typeCounts() {
+    var counts = {};
+    TYPES.forEach(function (t) { counts[t.id] = 0; });
+    chapterPool().forEach(function (q) { counts[q._type]++; });
+    return counts;
   }
 
   function updatePool() {
     var n = selectedPool().length;
     var asked = state.count === 0 ? n : Math.min(state.count, n);
     $('poolInfo').textContent = n === 0
-      ? 'Select at least one chapter.'
-      : asked + ' of ' + n + ' available questions';
+      ? 'Nothing matches — widen the chapters or the question types.'
+      : asked + ' of ' + n + ' matching questions';
     $('startBtn').disabled = n === 0;
   }
 
@@ -166,6 +262,9 @@
     state.index = 0;
     state.firstTry = 0;
     state.missed = [];
+    state.byType = {};
+    TYPES.forEach(function (t) { state.byType[t.id] = { asked: 0, right: 0 }; });
+    state.queue.forEach(function (q) { state.byType[q._type].asked++; });
     show('quiz');
     renderQuestion();
   }
@@ -179,6 +278,8 @@
     $('counter').textContent = 'Question ' + (state.index + 1) + ' of ' + state.queue.length;
     $('score').textContent = state.firstTry + ' right first time';
     $('topic').textContent = q._section;
+    $('typeBadge').textContent = TYPE_NAME[q._type];
+    $('typeBadge').setAttribute('data-type', q._type);
     $('question').innerHTML = markup(q.q);
 
     $('feedback').hidden = true;
@@ -217,7 +318,10 @@
 
     if (ok) {
       btn.classList.add('correct');
-      if (!q._missedThisRound) state.firstTry++;
+      if (!q._missedThisRound) {
+        state.firstTry++;
+        state.byType[q._type].right++;
+      }
       fb.className = 'feedback good';
       fbText.innerHTML = q.e ? markup(q.e) : 'Correct.';
       fb.hidden = false;
@@ -268,6 +372,27 @@
     $('resultLine').textContent =
       state.firstTry + ' of ' + total + ' answered correctly first time.';
 
+    var bd = $('typeBreakdown');
+    bd.innerHTML = '';
+    TYPES.forEach(function (t) {
+      var tally = state.byType[t.id];
+      if (!tally || !tally.asked) return;
+      var li = document.createElement('li');
+      var badge = document.createElement('span');
+      badge.className = 'badge';
+      badge.setAttribute('data-type', t.id);
+      badge.textContent = t.name;
+      var desc = document.createElement('span');
+      desc.textContent = t.desc;
+      var score = document.createElement('span');
+      score.className = 'bd-score';
+      score.textContent = tally.right + ' / ' + tally.asked;
+      li.appendChild(badge);
+      li.appendChild(desc);
+      li.appendChild(score);
+      bd.appendChild(li);
+    });
+
     var wrap = $('reviewWrap');
     var list = $('reviewList');
     list.innerHTML = '';
@@ -306,7 +431,9 @@
     }
 
     loadSelection();
+    loadTypeSelection();
     renderChapters();
+    renderTypes();
 
     var saved = store('dg.count');
     if (saved !== null) state.count = parseInt(saved, 10) || 20;
@@ -332,11 +459,11 @@
 
     $('selectAll').addEventListener('click', function () {
       PAGEMAP.parts.forEach(function (p) { state.selected[p.id] = true; });
-      saveSelection(); renderChapters(); updatePool();
+      saveSelection(); renderChapters(); renderTypes(); updatePool();
     });
     $('selectNone').addEventListener('click', function () {
       PAGEMAP.parts.forEach(function (p) { state.selected[p.id] = false; });
-      saveSelection(); renderChapters(); updatePool();
+      saveSelection(); renderChapters(); renderTypes(); updatePool();
     });
 
     $('startBtn').addEventListener('click', startQuiz);

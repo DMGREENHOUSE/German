@@ -58,7 +58,7 @@ check('one checkbox per part', boxes.length === window.PAGEMAP.parts.length,
   boxes.length + ' vs ' + window.PAGEMAP.parts.length);
 check('all chapters selected by default',
   Array.from(boxes).every((b) => b.checked));
-check('pool info populated', /available questions/.test($('poolInfo').textContent),
+check('pool info populated', /matching questions/.test($('poolInfo').textContent),
   $('poolInfo').textContent);
 check('start enabled', !$('startBtn').disabled);
 
@@ -73,16 +73,6 @@ window.QUESTIONS.forEach((q) => {
 });
 check('no missing sections or images', missing.size === 0, [...missing].join(', '));
 
-console.log('\nquiz flow');
-// pick 10 questions
-doc.querySelector('.segmented button[data-count="10"]').click();
-$('startBtn').click();
-check('quiz visible', visible('quiz'));
-check('setup hidden', !visible('setup'));
-check('four options rendered', doc.querySelectorAll('#options .opt').length === 4);
-check('topic shown', $('topic').textContent.length > 0);
-
-// answer question 1 wrongly
 function optionButtons() { return Array.from(doc.querySelectorAll('#options .opt')); }
 function correctIndexOnScreen() {
   // the app shuffles; find the option whose text matches the question's answer
@@ -97,6 +87,89 @@ function currentQuestion() {
   const qtext = strip($('question').textContent);
   return window.QUESTIONS.find((q) => q.s === title && strip(q.q) === qtext);
 }
+
+console.log('\nquestion-type axis');
+const typeBoxes = doc.querySelectorAll('#typeList input');
+check('three type checkboxes', typeBoxes.length === 3);
+check('all types on by default', Array.from(typeBoxes).every((b) => b.checked));
+
+// counts shown against each type must match the bank
+const bankByType = {};
+window.QUESTIONS.forEach((q) => { bankByType[q.t] = (bankByType[q.t] || 0) + 1; });
+const shown = {};
+doc.querySelectorAll('#typeList li').forEach((li) => {
+  const id = li.querySelector('input').value;
+  shown[id] = parseInt(li.querySelector('.ty-count').textContent, 10);
+});
+check('type counts match the bank',
+  ['recall', 'rule', 'gap'].every((t) => shown[t] === bankByType[t]),
+  JSON.stringify(shown) + ' vs ' + JSON.stringify(bankByType));
+
+// select gap-fill only and confirm the pool narrows.
+// renderTypes() rebuilds the list, so the checkbox must be re-queried each time.
+function typeBox(id) {
+  return Array.from(doc.querySelectorAll('#typeList input'))
+              .find((b) => b.value === id);
+}
+typeBox('recall').click();
+typeBox('rule').click();
+const gapOnly = parseInt($('poolInfo').textContent.match(/of (\d+)/)[1], 10);
+check('gap-only pool equals the gap count', gapOnly === bankByType.gap,
+  gapOnly + ' vs ' + bankByType.gap);
+// with only gap-fill selected, each chapter's count must drop to its gap total
+// and no chapter should be left empty — every part carries all three types
+const gapPerPart = {};
+window.QUESTIONS.filter((q) => q.t === 'gap').forEach((q) => {
+  const part = window.PAGEMAP.parts.find((p) =>
+    p.sections.some((sec) => sec.title === q.s));
+  gapPerPart[part.id] = (gapPerPart[part.id] || 0) + 1;
+});
+const metaCounts = Array.from(doc.querySelectorAll('#chapterList .ch-meta'))
+  .map((m) => parseInt(m.textContent, 10) || 0);
+check('chapter counts follow the type filter',
+  metaCounts.every((n, i) => n === (gapPerPart[window.PAGEMAP.parts[i].id] || 0)),
+  metaCounts.join(','));
+check('every chapter offers gap-fill questions', metaCounts.every((n) => n > 0));
+
+// the last remaining type cannot be switched off
+typeBox('gap').click();
+check('cannot deselect every type', typeBox('gap').checked);
+
+// a gap-only quiz must contain only gap questions
+doc.querySelector('.segmented button[data-count="10"]').click();
+$('startBtn').click();
+check('badge shows the type', $('typeBadge').textContent === 'Gap-fill',
+  $('typeBadge').textContent);
+let allGap = true;
+for (let i = 0; i < 10; i++) {
+  if (currentQuestion().t !== 'gap') allGap = false;
+  optionButtons()[correctIndexOnScreen()].click();
+  if (i < 9) $('nextBtn').click();
+}
+check('every question was a gap-fill', allGap);
+$('nextBtn').click();
+check('breakdown lists only the gap row', $('typeBreakdown').children.length === 1,
+  $('typeBreakdown').textContent);
+check('breakdown score is 10/10', /10 \/ 10/.test($('typeBreakdown').textContent),
+  $('typeBreakdown').textContent);
+
+// back to all types for the main flow test
+$('homeBtn').click();
+typeBox('recall').click();
+typeBox('rule').click();
+check('back to all three types',
+  Array.from(doc.querySelectorAll('#typeList input')).every((b) => b.checked));
+
+console.log('\nquiz flow');
+// pick 10 questions
+doc.querySelector('.segmented button[data-count="10"]').click();
+$('startBtn').click();
+check('quiz visible', visible('quiz'));
+check('setup hidden', !visible('setup'));
+check('four options rendered', doc.querySelectorAll('#options .opt').length === 4);
+check('topic shown', $('topic').textContent.length > 0);
+
+// answer question 1 wrongly
 
 const q1 = currentQuestion();
 check('current question identified', !!q1);
