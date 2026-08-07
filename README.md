@@ -24,6 +24,7 @@ docs/                    the GitHub Pages site (everything is committed)
   index.html
   css/style.css
   js/app.js              quiz logic
+  js/typed.js            typed-answer matching and typability
   js/questions.js        the question bank — hand written
   js/questions-vocab.js  vocabulary recall questions — GENERATED
   js/pagemap.js          section -> page number — GENERATED
@@ -39,6 +40,7 @@ tools/
   check-one-page.py      asserts every topic still fits on one page
   check-questions.py     asserts every question points at a real section
   test-app.js            headless run-through of the whole quiz (needs jsdom)
+  test-typed.js          unit tests for the typed-answer matching
 
 Makefile                 build the book, refresh docs/, run the checks
 ```
@@ -142,6 +144,37 @@ type; `tools/test-app.js` asserts that filtering by type really does restrict
 the questions asked.
 
 There are around 2,000 questions, no section with fewer than ten.
+
+## Typed answers
+
+Multiple choice tests recognition: four options, a 25% floor, and you can work
+backwards by elimination. Unticking **Multiple choice** on the setup screen
+asks you to type the answer instead, which tests production — the thing you
+need when speaking.
+
+Not every question can be typed. *Which of these nouns is neuter?* is
+meaningless without its four nouns, and a rule question whose answer is a
+clause has no short form to type. `TYPED.isTypable()` decides, and anything it
+rejects keeps its options, so a single quiz mixes both forms. The count under
+the checkbox says how many of the current selection will be typed — about 1,700
+of 2,000, nearly all of the vocabulary and gap-fills, and few of the rules.
+
+Matching is deliberately lopsided:
+
+- **forgiving** about case, trailing punctuation, doubled spaces, and `ae` /
+  `oe` / `ue` / `ss` for the umlauts, since that is how you type German on a
+  keyboard that lacks them
+- **forgiving** about English glosses: *neck, throat* accepts either word, and
+  *to tell* accepts `tell`
+- **strict** about the article on a German noun. `Hund` is marked wrong for
+  *der Hund*, because producing the gender is the whole reason to type it
+
+A wrong typed answer behaves exactly like a wrong click: the answer is not
+revealed, the book page opens, and the question comes back. Typed questions
+you miss go into the review rounds with everything else.
+
+Run `node tools/test-typed.js` for the matching rules on their own; they are
+pure functions and need no DOM.
 
 ## Review rounds
 
