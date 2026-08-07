@@ -142,7 +142,29 @@
     var counts = countsByPart();
     var list = $('chapterList');
     list.innerHTML = '';
+    var lastBook = null;
     PAGEMAP.parts.forEach(function (part) {
+      // The two books share one list, so each needs naming where it starts —
+      // otherwise the reader's four chapters look like four more grammar ones.
+      var book = part.book || 'grammar';
+      if (book !== lastBook) {
+        lastBook = book;
+        var head = document.createElement('li');
+        head.className = 'bookhead';
+        var bname = document.createElement('span');
+        bname.className = 'bk-name';
+        bname.textContent = bookOf(book).title;
+        var blink = document.createElement('a');
+        blink.className = 'linkbtn';
+        blink.href = bookOf(book).pdf;
+        blink.target = '_blank';
+        blink.rel = 'noopener';
+        blink.textContent = 'Open the PDF';
+        head.appendChild(bname);
+        head.appendChild(blink);
+        list.appendChild(head);
+      }
+
       var n = counts[part.id] || 0;
       var li = document.createElement('li');
       var label = document.createElement('label');

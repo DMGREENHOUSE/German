@@ -260,6 +260,25 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
    Anything that hides itself by toggling .hidden depends on this rule. */
 [hidden] { display: none !important; }
 
+/* a book's name where its chapters start, since both books share one list */
+.bookhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .8rem;
+  margin: 1rem 0 .35rem;
+  padding: 0 .2rem .3rem;
+  border-bottom: 1px solid var(--line);
+}
+.bookhead:first-child { margin-top: 0; }
+.bk-name {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--faint);
+}
+
 /* ---------- typed answers ---------- */
 .typed {
   display: flex;
