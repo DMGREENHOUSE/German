@@ -145,6 +145,40 @@ the questions asked.
 
 There are around 2,000 questions, no section with fewer than ten.
 
+## The story book
+
+`book/story/` is a second A5 book — ten short pieces of German to actually
+read, since the grammar book is tables and tables do not teach you to follow a
+sentence to its end. Three comic, three from history, two philosophy, two
+science; levels mixed and labelled per piece; a glossary at the foot of each
+page for the words a reader at that level would not have.
+
+`book/story/pieces.json` is the source of truth for the book, the glossaries
+**and** the questions together. `tools/make-story.py` writes
+`book/story/pieces.tex` and `docs/js/questions-story.js` from it, so there is
+no second place to update and the questions cannot drift from the text. Edit
+the JSON, run `make questions`, rebuild.
+
+Each piece carries seven or eight questions: four on whether you followed what
+happened, three or four asking why a particular sentence in that piece is built
+the way it is, quoting the sentence so you can find it.
+
+### Two books, one app
+
+The page map now covers both books. Every part carries a `book`, and
+`PAGEMAP.books` records each book's PDF, image directory and front-matter
+offset, so the reader opens the right page of the right book when an answer is
+wrong. A section title is the only key a question has, so titles must be unique
+**across both books** — `make-pagemap.py` fails the build if they collide.
+
+The two books link to the quiz with different query parameters, `?page=N` and
+`?story=N`, rather than one parameter plus a book name. That is purely to keep
+an `&` out of the URL, which LaTeX makes needlessly awkward to emit.
+
+Every part must still carry all three question types, because the app lets you
+filter on type and a part with none of the selected type disappears. That is
+why several pieces have an eighth question: `tools/test-app.js` enforces it.
+
 ## Testing a page from the book
 
 Every topic page carries **Diese Seite testen →** in its inner footer, linking

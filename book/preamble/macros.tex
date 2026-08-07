@@ -46,6 +46,30 @@
   \markboth{\CurrentPart}{#1}%
 }
 
+% ---------- story book ---------------------------------------
+% A level badge under a piece's title, and the glossary block that sits at the
+% foot of the page. The glossary is a dtbl for the same reason the word lists
+% are: tabularray is elegant but costs about 0.17s a table.
+\newcommand{\levelbadge}[1]{%
+  {\sffamily\footnotesize\bfseries\color{Accent}#1}\par\vspace{4pt}%
+}
+%
+% \tabularx / \endtabularx rather than \begin{tabularx} / \end{tabularx}:
+% tabularx scans ahead for its own \end, so splitting it across an
+% environment's two halves fails with "File ended while scanning use of
+% \TX@get@body". dtbl below is built the same way for the same reason.
+\newenvironment{glosstbl}{%
+  \par\vspace{3pt}%
+  {\color{Line}\hrule height 0.4pt}\vspace{4pt}%
+  \footnotesize\color{Faint}%
+  \setlength{\extrarowheight}{1.5pt}%
+  \setlength{\tabcolsep}{4pt}%
+  \tabularx{\linewidth}{@{}W{0.92}W{1.08}W{0.92}W{1.08}@{}}%
+}{%
+  \endtabularx
+  \par
+}
+
 % ---------- test this page -----------------------------------
 % One topic per page means the printed page number identifies the topic on
 % its own, so the link needs nothing but \thepage. The quiz reads ?page=N,
@@ -53,9 +77,15 @@
 %
 % \thepage has to be expanded before \href sees it, hence the \edef — \href
 % does not expand its first argument.
+%
+% Each book uses its own query parameter — ?page=N for the grammar book,
+% ?story=N for the story book — rather than one parameter plus a book name.
+% That avoids putting an & in the URL, which would need catcode surgery to
+% survive LaTeX, for no gain.
 \newcommand{\TestSiteURL}{https://dmgreenhouse.github.io/German/}
+\newcommand{\TestParam}{page}
 \newcommand{\testthispage}{%
-  \edef\dgtesturl{\TestSiteURL?page=\thepage}%
+  \edef\dgtesturl{\TestSiteURL?\TestParam=\thepage}%
   \href{\dgtesturl}{\footnotesize\sffamily\color{Accent}Diese Seite testen
         $\rightarrow$}%
 }

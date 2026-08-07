@@ -18,6 +18,7 @@ root = Path(__file__).resolve().parent.parent
 pagemap_js = root / "docs" / "js" / "pagemap.js"
 questions_js = root / "docs" / "js" / "questions.js"
 vocab_js = root / "docs" / "js" / "questions-vocab.js"
+story_js = root / "docs" / "js" / "questions-story.js"
 
 for f in (pagemap_js, questions_js):
     if not f.exists():
@@ -46,9 +47,10 @@ def load(path, marker, trim=0):
 
 questions = load(questions_js, "window.QUESTIONS =")
 generated = []
-if vocab_js.exists():
-    generated = load(vocab_js, "window.QUESTIONS =", trim=1)
-    questions += generated
+for gen_file in (vocab_js, story_js):
+    if gen_file.exists():
+        generated += load(gen_file, "window.QUESTIONS =", trim=1)
+questions += generated
 
 VALID_TYPES = {"recall", "rule", "gap"}
 

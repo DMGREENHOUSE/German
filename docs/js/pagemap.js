@@ -4,6 +4,7 @@ window.PAGEMAP = {
     {
       "id": "I",
       "title": "Sounds & Spelling",
+      "book": "grammar",
       "page": 1,
       "sections": [
         {
@@ -26,6 +27,7 @@ window.PAGEMAP = {
     {
       "id": "II",
       "title": "Pronouns",
+      "book": "grammar",
       "page": 4,
       "sections": [
         {
@@ -53,6 +55,7 @@ window.PAGEMAP = {
     {
       "id": "III",
       "title": "Articles & Case",
+      "book": "grammar",
       "page": 8,
       "sections": [
         {
@@ -90,6 +93,7 @@ window.PAGEMAP = {
     {
       "id": "IV",
       "title": "Adjectives",
+      "book": "grammar",
       "page": 14,
       "sections": [
         {
@@ -132,6 +136,7 @@ window.PAGEMAP = {
     {
       "id": "V",
       "title": "Prepositions",
+      "book": "grammar",
       "page": 21,
       "sections": [
         {
@@ -164,6 +169,7 @@ window.PAGEMAP = {
     {
       "id": "VI",
       "title": "Verbs",
+      "book": "grammar",
       "page": 26,
       "sections": [
         {
@@ -196,6 +202,7 @@ window.PAGEMAP = {
     {
       "id": "VII",
       "title": "Tenses",
+      "book": "grammar",
       "page": 31,
       "sections": [
         {
@@ -223,6 +230,7 @@ window.PAGEMAP = {
     {
       "id": "VIII",
       "title": "Mood & Voice",
+      "book": "grammar",
       "page": 35,
       "sections": [
         {
@@ -250,6 +258,7 @@ window.PAGEMAP = {
     {
       "id": "IX",
       "title": "Word Order",
+      "book": "grammar",
       "page": 39,
       "sections": [
         {
@@ -282,6 +291,7 @@ window.PAGEMAP = {
     {
       "id": "X",
       "title": "Questions",
+      "book": "grammar",
       "page": 44,
       "sections": [
         {
@@ -304,6 +314,7 @@ window.PAGEMAP = {
     {
       "id": "XI",
       "title": "Comparison",
+      "book": "grammar",
       "page": 47,
       "sections": [
         {
@@ -326,6 +337,7 @@ window.PAGEMAP = {
     {
       "id": "XII",
       "title": "Nouns",
+      "book": "grammar",
       "page": 50,
       "sections": [
         {
@@ -358,6 +370,7 @@ window.PAGEMAP = {
     {
       "id": "XIII",
       "title": "Usage",
+      "book": "grammar",
       "page": 55,
       "sections": [
         {
@@ -380,6 +393,7 @@ window.PAGEMAP = {
     {
       "id": "XIV",
       "title": "Reference",
+      "book": "grammar",
       "page": 58,
       "sections": [
         {
@@ -417,6 +431,7 @@ window.PAGEMAP = {
     {
       "id": "XV",
       "title": "Strong Verbs",
+      "book": "grammar",
       "page": 64,
       "sections": [
         {
@@ -444,6 +459,7 @@ window.PAGEMAP = {
     {
       "id": "XVI",
       "title": "Everyday German",
+      "book": "grammar",
       "page": 68,
       "sections": [
         {
@@ -461,6 +477,7 @@ window.PAGEMAP = {
     {
       "id": "XVII",
       "title": "Vocabulary",
+      "book": "grammar",
       "page": 70,
       "sections": [
         {
@@ -564,8 +581,106 @@ window.PAGEMAP = {
           "page": 89
         }
       ]
+    },
+    {
+      "id": "XVIII",
+      "title": "Komisches",
+      "book": "story",
+      "page": 1,
+      "sections": [
+        {
+          "n": 1,
+          "title": "Der Aufkleber",
+          "page": 1
+        },
+        {
+          "n": 2,
+          "title": "Der Nachbar auf der Treppe",
+          "page": 2
+        },
+        {
+          "n": 3,
+          "title": "Tagesordnungspunkt vier",
+          "page": 3
+        }
+      ]
+    },
+    {
+      "id": "XIX",
+      "title": "Geschichte",
+      "book": "story",
+      "page": 4,
+      "sections": [
+        {
+          "n": 4,
+          "title": "Der Zettel",
+          "page": 4
+        },
+        {
+          "n": 5,
+          "title": "Die Uniform",
+          "page": 5
+        },
+        {
+          "n": 6,
+          "title": "Die Warnung",
+          "page": 6
+        }
+      ]
+    },
+    {
+      "id": "XX",
+      "title": "Philosophie",
+      "book": "story",
+      "page": 7,
+      "sections": [
+        {
+          "n": 7,
+          "title": "Was übrig bleibt",
+          "page": 7
+        },
+        {
+          "n": 8,
+          "title": "Ein kleiner Kredit",
+          "page": 8
+        }
+      ]
+    },
+    {
+      "id": "XXI",
+      "title": "Wissenschaft",
+      "book": "story",
+      "page": 9,
+      "sections": [
+        {
+          "n": 9,
+          "title": "Die Uhr aus Licht",
+          "page": 9
+        },
+        {
+          "n": 10,
+          "title": "Der zweite Pass",
+          "page": 10
+        }
+      ]
     }
   ],
-  "sectionCount": 89,
+  "sectionCount": 99,
+  "books": {
+    "grammar": {
+      "title": "Deutsche Grammatik",
+      "pdf": "book.pdf",
+      "images": "pages/",
+      "param": "page",
+      "frontMatterOffset": 10
+    },
+    "story": {
+      "title": "Deutsche Geschichten",
+      "pdf": "story.pdf",
+      "images": "story-pages/",
+      "param": "story",
+      "frontMatterOffset": 6
+    }
+  },
   "frontMatterOffset": 10
 };
