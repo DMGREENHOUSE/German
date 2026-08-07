@@ -255,6 +255,21 @@
       ? 'Nothing matches — widen the chapters or the question types.'
       : asked + ' of ' + n + ' matching questions';
     $('startBtn').disabled = n === 0;
+    updateTypedCount(n);
+  }
+
+  // Say up front how much of the current selection can actually be typed, so
+  // that unticking the box is not a leap in the dark.
+  function updateTypedCount(n) {
+    var label = $('typedCount');
+    if (!label || !TYPED) return;
+    if (state.typed === false) {
+      label.textContent = 'every question has four options';
+      return;
+    }
+    var typable = selectedPool().filter(TYPED.isTypable).length;
+    label.textContent = n === 0 ? '' :
+      typable + ' of ' + n + ' can be typed; the rest keep their options';
   }
 
   // ---------- views -----------------------------------------------------
@@ -542,6 +557,14 @@
     loadSelection();
     loadTypeSelection();
     state.typed = store('dg.typed') === '1';
+    var mcBox = $('mcBox');
+    mcBox.checked = !state.typed;
+    mcBox.addEventListener('change', function () {
+      state.typed = !mcBox.checked;
+      store('dg.typed', state.typed ? '1' : '0');
+      updatePool();
+    });
+
     renderChapters();
     renderTypes();
 
