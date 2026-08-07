@@ -64,10 +64,9 @@ def build_tex(pieces):
             for i in range(0, len(rows), 2):
                 left = rows[i]
                 right = rows[i + 1] if i + 1 < len(rows) else ("", "")
-                lines.append(
-                    f"  \\textbf{{{tex(left[0])}}} & {tex(left[1])} & "
-                    f"{'\\textbf{' + tex(right[0]) + '}' if right[0] else ''} & "
-                    f"{tex(right[1])} \\\\")
+                rt = "\\textbf{" + tex(right[0]) + "}" if right[0] else ""
+                lines.append("  \\textbf{" + tex(left[0]) + "} & " + tex(left[1])
+                             + " & " + rt + " & " + tex(right[1]) + " \\\\")
             lines += ["\\end{glosstbl}", ""]
     return "\n".join(lines) + "\n"
 

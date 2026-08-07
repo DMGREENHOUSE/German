@@ -26,12 +26,22 @@
   var TYPE_NAME = {};
   TYPES.forEach(function (t) { TYPE_NAME[t.id] = t.name; });
 
-  // ---------- index the book ------------------------------------------
-  var sectionIndex = {};   // section title -> {page, partId, partTitle}
+  // ---------- index the books ------------------------------------------
+  // Two books now: the grammar reference and the story reader. Each has its
+  // own PDF, its own page images and its own front-matter offset, so a page
+  // number means nothing without knowing which book it belongs to.
+  var BOOKS = PAGEMAP.books || {
+    grammar: { title: 'Deutsche Grammatik', pdf: 'book.pdf', images: 'pages/',
+               param: 'page', frontMatterOffset: PAGEMAP.frontMatterOffset || 0 }
+  };
+
+  var sectionIndex = {};   // section title -> {page, book, partId, partTitle}
   PAGEMAP.parts.forEach(function (part) {
+    var book = part.book || 'grammar';
     part.sections.forEach(function (sec) {
       sectionIndex[sec.title] = {
         page: sec.page,
+        book: book,
         partId: part.id,
         partTitle: part.title,
         title: sec.title
@@ -39,12 +49,15 @@
     });
   });
 
+  function bookOf(id) { return BOOKS[id] || BOOKS.grammar; }
+
   // attach book position to each question; drop any that cannot be placed
   var orphans = [];
   var pool = QUESTIONS.filter(function (q) {
     var hit = sectionIndex[q.s];
     if (!hit) { orphans.push(q.s); return false; }
     q._page = hit.page;
+    q._book = hit.book;
     q._part = hit.partId;
     q._section = hit.title;
     q._type = TYPE_NAME[q.t] ? q.t : 'recall';
@@ -93,8 +106,13 @@
     return null;
   }
 
-  function pageImage(page) {
-    return 'pages/page-' + String(page).padStart(2, '0') + '.png';
+  function pageImage(page, book) {
+    return bookOf(book).images + 'page-' + String(page).padStart(2, '0') + '.png';
+  }
+
+  function pdfLink(page, book) {
+    var b = bookOf(book);
+    return b.pdf + '#page=' + (page + (b.frontMatterOffset || 0));
   }
 
   // ---------- state ----------------------------------------------------
@@ -242,7 +260,10 @@
   // that page minus whatever happens to be unticked from last time.
   function selectedPool() {
     if (state.pageFilter) {
-      return pool.filter(function (q) { return q._page === state.pageFilter; });
+      return pool.filter(function (q) {
+        return q._page === state.pageFilter.page &&
+               q._book === state.pageFilter.book;
+      });
     }
     return chapterPool().filter(function (q) { return state.types[q._type] !== false; });
   }
@@ -253,30 +274,34 @@
     return m ? decodeURIComponent(m[1]) : null;
   }
 
-  function sectionOnPage(page) {
+  function sectionOnPage(page, book) {
     for (var title in sectionIndex) {
-      if (sectionIndex[title].page === page) return sectionIndex[title];
+      var s = sectionIndex[title];
+      if (s.page === page && s.book === book) return s;
     }
     return null;
   }
 
-  function applyPageFilter(page) {
-    var hits = pool.filter(function (q) { return q._page === page; });
+  function applyPageFilter(page, book) {
+    var hits = pool.filter(function (q) {
+      return q._page === page && q._book === book;
+    });
     var note = $('pageNote');
     var text = $('pageNoteText');
-    var info = sectionOnPage(page);
+    var info = sectionOnPage(page, book);
+    var where = bookOf(book).title + ', page ' + page;
 
     if (!hits.length) {
       text.textContent = info
-        ? 'Page ' + page + ' — ' + info.title + ' — has no questions yet.'
-        : 'Page ' + page + ' of the book has no questions yet.';
+        ? where + ' — ' + info.title + ' — has no questions yet.'
+        : where + ' has no questions yet.';
       $('clearPageBtn').hidden = true;
       note.hidden = false;
       return false;
     }
 
-    state.pageFilter = page;
-    text.textContent = 'Page ' + page + (info ? ' — ' + info.title : '') +
+    state.pageFilter = { page: page, book: book };
+    text.textContent = where + (info ? ' — ' + info.title : '') +
       ': ' + hits.length + ' question' + (hits.length === 1 ? '' : 's') + '.';
     $('clearPageBtn').hidden = false;
     note.hidden = false;
@@ -303,7 +328,7 @@
     $('poolInfo').textContent = n === 0
       ? 'Nothing matches — widen the chapters or the question types.'
       : state.pageFilter
-        ? 'all ' + n + ' questions on page ' + state.pageFilter
+        ? 'all ' + n + ' questions on that page'
         : asked + ' of ' + n + ' matching questions';
     $('startBtn').disabled = n === 0;
     updateTypedCount(n);
@@ -498,10 +523,11 @@
     fbText.innerHTML = 'Not quite. Have a read, then come back and try again.';
     fb.hidden = false;
 
-    $('readerTitle').textContent = q._section + ' — page ' + q._page;
-    $('readerPdf').href = 'book.pdf#page=' + (q._page + (PAGEMAP.frontMatterOffset || 0));
+    $('readerTitle').textContent = q._section + ' — ' + bookOf(q._book).title +
+      ', page ' + q._page;
+    $('readerPdf').href = pdfLink(q._page, q._book);
     var img = $('readerImg');
-    img.src = pageImage(q._page);
+    img.src = pageImage(q._page, q._book);
     img.alt = 'Book page ' + q._page + ': ' + q._section;
     $('reader').hidden = false;
     $('reader').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -578,7 +604,7 @@
         var info = sectionIndex[title];
         var li = document.createElement('li');
         var a = document.createElement('a');
-        a.href = pageImage(info.page);
+        a.href = pageImage(info.page, info.book);
         a.target = '_blank';
         a.rel = 'noopener';
         a.textContent = title;
@@ -691,10 +717,16 @@
 
     // A link in the book asks for one page. Go straight into it rather than
     // making someone who has already chosen a topic choose it again.
-    var deep = parseInt(queryParam('page'), 10);
-    if (deep && applyPageFilter(deep)) {
-      updatePool();
-      startQuiz();
+    // Each book links with its own parameter: ?page=N from the grammar book,
+    // ?story=N from the reader. One parameter plus a book name would have
+    // needed an & in the URL, which LaTeX makes needlessly awkward.
+    for (var id in BOOKS) {
+      var deep = parseInt(queryParam(BOOKS[id].param), 10);
+      if (deep && applyPageFilter(deep, id)) {
+        updatePool();
+        startQuiz();
+        break;
+      }
     }
   }
 

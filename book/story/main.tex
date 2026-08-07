@@ -1,0 +1,68 @@
+% ============================================================
+%  Deutsche Geschichten — Daniel Greenhouse
+%  A5 reader: one piece per page, glossary at the foot.
+%  Build:  latexmk -pdf main.tex     (or: make story  from the repo root)
+%  Engine: pdfLaTeX
+%
+%  The body is generated — edit book/story/pieces.json and run
+%  python3 tools/make-story.py rather than editing pieces.tex.
+% ============================================================
+\documentclass[10pt,twoside,openany]{book}
+
+\input{../preamble/packages}
+\input{../preamble/colours}
+\input{../preamble/macros}
+
+% the footer link points at the story half of the quiz
+\renewcommand{\TestParam}{story}
+
+\hypersetup{
+  pdftitle={Deutsche Geschichten — German to read},
+  pdfsubject={Short German pieces with glossaries},
+}
+
+\begin{document}
+
+\frontmatter
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+  {\sffamily\bfseries\Huge Deutsche Geschichten}\\[6pt]
+  {\sffamily\large\color{Faint} Zehn kurze Texte zum Lesen}\\[18pt]
+  {\sffamily\color{Faint} Daniel Greenhouse}
+\end{center}
+\vspace*{\fill}
+
+\cleardoublepage
+\chapter*{How to use this book}
+\addcontentsline{toc}{chapter}{How to use this book}
+
+Ten short pieces of German, one to a page. They are here to be \emph{read} —
+the grammar book next door is tables, and tables do not teach you to follow a
+sentence to its end.
+
+Each piece carries a level: \levelbadge{A2} simple present and Perfekt, short
+main clauses. \levelbadge{B1} subordinate clauses and narrative Präteritum.
+\levelbadge{B2} relative clauses, Konjunktiv, passive, longer sentences.
+
+Under each piece is a glossary of the words a reader at that level is unlikely
+to have. Everything else is meant to be worked out, so try the piece once
+before looking down.
+
+At the foot of every page is a link to the quiz for that page: four questions
+on whether you followed what happened, and three on why a particular sentence
+in the piece is built the way it is. Get one wrong and the page comes back so
+you can find the answer in the text.
+
+\cleardoublepage
+\pagestyle{plain}
+\microtypesetup{protrusion=false}
+\tableofcontents
+\microtypesetup{protrusion=true}
+
+\mainmatter
+\pagestyle{grammar}
+
+\input{pieces}
+
+\end{document}

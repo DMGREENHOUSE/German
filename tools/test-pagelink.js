@@ -21,7 +21,7 @@ function load(url){
     {runScripts:'dangerously',url,virtualConsole:vc});
   const {window}=dom,doc=window.document;
   window.scrollTo=()=>{};window.Element.prototype.scrollIntoView=function(){};
-  for(const f of ['js/typed.js','js/pagemap.js','js/questions.js','js/questions-vocab.js','js/app.js']){
+  for(const f of ['js/typed.js','js/pagemap.js','js/questions.js','js/questions-vocab.js', 'js/questions-story.js','js/app.js']){
     const el=doc.createElement('script');el.textContent=fs.readFileSync(path.join(docs,f),'utf8');doc.body.appendChild(el);}
   doc.dispatchEvent(new window.Event('DOMContentLoaded'));
   return {window,doc,errs,$:id=>doc.getElementById(id)};
@@ -68,7 +68,38 @@ console.log('\nclearing the filter returns the full bank');
 b.$('homeBtn').click();
 ok('back on setup',!b.$('setup').hidden);
 ok('note dismissed',b.$('pageNote').hidden);
-ok('pool is the whole bank again',/of 2067 matching/.test(b.$('poolInfo').textContent),b.$('poolInfo').textContent);
+const whole=(b.$('poolInfo').textContent.match(/of (\d+) matching/)||[])[1];
+ok('pool is the whole bank again',Number(whole)===b.window.QUESTIONS.length,
+   b.$('poolInfo').textContent+' vs bank of '+b.window.QUESTIONS.length);
+
+console.log('\n?story=1 — the reader links with its own parameter');
+let s=load('https://x.test/?story=1');
+const sec1=s.window.PAGEMAP.parts.filter(p=>p.book==='story').flatMap(p=>p.sections).find(x=>x.page===1);
+ok('story quiz started',!s.$('quiz').hidden);
+ok('landed on the story page, not grammar page 1',s.$('topic').textContent===sec1.title,
+   s.$('topic').textContent+' vs '+sec1.title);
+ok('note names the story book',/Geschichten/.test(s.$('pageNoteText').textContent),
+   s.$('pageNoteText').textContent);
+// answer one wrongly and check the reader opens the STORY page image
+{
+  const q=s.window.QUESTIONS.find(x=>x.s===sec1.title&&
+    x.q.replace(/\[\[(.+?)\]\]/g,'$1').replace(/\*\*(.+?)\*\*/g,'$1')===s.$('question').textContent);
+  const opts=Array.from(s.doc.querySelectorAll('#options .opt'));
+  const want=q.a[q.c].replace(/\[\[(.+?)\]\]/g,'$1').replace(/\*\*(.+?)\*\*/g,'$1');
+  const wrong=opts.findIndex(x=>x.textContent.slice(1).trim()!==want);
+  if(opts.length&&wrong>=0){
+    opts[wrong].click();
+    ok('reader shows a story page image',
+       /^story-pages\/page-01\.png$/.test(s.$('readerImg').getAttribute('src')),
+       s.$('readerImg').getAttribute('src'));
+    ok('pdf link points at the story book',
+       s.$('readerPdf').getAttribute('href')==='story.pdf#page=7',
+       s.$('readerPdf').getAttribute('href'));
+    ok('reader names the book',/Geschichten/.test(s.$('readerTitle').textContent),
+       s.$('readerTitle').textContent);
+  }
+}
+ok('no console errors',s.errs.length===0,s.errs.join('|'));
 
 console.log('\n?page=999 — a page that does not exist');
 let c=load('https://x.test/?page=999');

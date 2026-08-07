@@ -515,6 +515,17 @@
     ],
     "t": "rule",
     "e": "[[an]] is a two-way preposition, but in the fixed combination [[teilnehmen an]] it takes the **dative**. Feminine [[die Sitzung]] becomes [[der Sitzung]], and after a definite article the adjective takes the weak ending [[-en]]: [[der wichtigen Sitzung]]."
+   },
+   {
+    "q": "[[Er hat an der wichtigen Sitzung nicht ___.]] Which form completes the sentence?",
+    "a": [
+     "teilgenommen",
+     "teilnehmen",
+     "teilgenommt",
+     "teilnahm"
+    ],
+    "t": "gap",
+    "e": "[[teilnehmen]] is separable, so its participle wraps the [[ge-]] inside: [[teil]] + [[ge]] + [[nommen]]. After [[hat]] only a participle can stand."
    }
   ],
   "part": "Geschichte"
@@ -647,6 +658,17 @@
     ],
     "t": "rule",
     "e": "The noun is [[die Uniform]], the direct object of [[kaufen]], so feminine accusative – which after [[eine]] gives the adjective [[-e]]. Feminine nominative and accusative look identical here. The [[sich]] is a separate point: it is a **dative** reflexive, he bought it for himself."
+   },
+   {
+    "q": "[[Er stellte sich einer Gruppe Soldaten in ___ Weg.]] Which article fits?",
+    "a": [
+     "den",
+     "dem",
+     "der",
+     "des"
+    ],
+    "t": "gap",
+    "e": "[[in]] is two-way, and blocking someone's path is movement into a position, so accusative [[den Weg]]. The soldiers are dative — [[einer Gruppe]] — because that is what [[sich in den Weg stellen]] governs."
    }
   ],
   "part": "Geschichte"
@@ -779,6 +801,17 @@
     ],
     "t": "rule",
     "e": "This is the **subjective** use of a modal verb: [[sollen]] plus a perfect infinitive means *he is said to have*. Compare [[Er will das gesehen haben]] (**he claims** to have seen it) and [[Er muss das gesehen haben]] (**he must** have seen it). It is how German quietly labels a second-hand story."
+   },
+   {
+    "q": "[[Die Nummern XVII, XVIII und XIX hat Rom nie wieder ___.]] Which form completes it?",
+    "a": [
+     "vergeben",
+     "vergibt",
+     "vergab",
+     "vergeben hatte"
+    ],
+    "t": "gap",
+    "e": "[[hat]] at the front needs its participle at the back. [[vergeben]] is one of the verbs whose participle looks identical to the infinitive, since the [[ver-]] prefix blocks the [[ge-]]."
    }
   ],
   "part": "Geschichte"
@@ -911,6 +944,17 @@
     ],
     "t": "rule",
     "e": "In a main clause the conjugated verb stands in second position — and what is counted is not words but sentence elements. The whole [[ob]]-clause is a single element in position one, so [[haben]] follows immediately and the subject comes only after it. Exactly the same happens in [[Gestern kam er]]."
+   },
+   {
+    "q": "[[Seine Augen hatten ihn oft getäuscht, also traute er ___ nicht mehr.]]",
+    "a": [
+     "ihnen",
+     "sie",
+     "ihr",
+     "ihm"
+    ],
+    "t": "gap",
+    "e": "[[trauen]] takes a dative object, and the eyes are plural, so [[ihnen]]. [[sie]] would be the accusative German never uses here."
    }
   ],
   "part": "Philosophie"
@@ -1043,6 +1087,17 @@
     ],
     "t": "rule",
     "e": "The verb in the relative clause is [[leben von]]; [[von]] governs the dative, hence the feminine dative [[der]]. Unlike English, the preposition stays glued to the relative pronoun and travels forward with it: **the rule you live off** is [[die Regel, von der Sie leben]] — stranding the preposition at the end is impossible here."
+   },
+   {
+    "q": "[[Sie müssen eine Ausnahme von der Regel machen, von ___ Sie leben.]]",
+    "a": [
+     "der",
+     "die",
+     "dem",
+     "denen"
+    ],
+    "t": "gap",
+    "e": "The relative pronoun takes its gender from [[die Regel]] and its case from [[von]], which governs the dative — feminine dative is [[der]]. German keeps the preposition in front of it rather than stranding it at the end."
    }
   ],
   "part": "Philosophie"
