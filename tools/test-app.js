@@ -147,7 +147,10 @@ for (let i = 0; i < 10; i++) {
   if (i < 9) $('nextBtn').click();
 }
 check('every question was a gap-fill', allGap);
+check('a clean run skips the review round', $('nextBtn').textContent === 'See results',
+  $('nextBtn').textContent);
 $('nextBtn').click();
+check('no review line after a clean run', !visible('roundLine'));
 check('breakdown lists only the gap row', $('typeBreakdown').children.length === 1,
   $('typeBreakdown').textContent);
 check('breakdown score is 10/10', /10 \/ 10/.test($('typeBreakdown').textContent),
@@ -213,12 +216,52 @@ for (let i = 1; i < 10; i++) {
 }
 check('progress reaches the end', $('counter').textContent === 'Question 10 of 10',
   $('counter').textContent);
+
+console.log('\nreview round');
+check('button offers the review, not the results',
+  /Review the one you got wrong/.test($('nextBtn').textContent),
+  $('nextBtn').textContent);
+$('nextBtn').click();
+check('still on the quiz screen', visible('quiz'));
+check('results not reached yet', !visible('results'));
+check('review banner shown', visible('roundBanner'));
+check('banner names the round', /Review/.test($('roundBanner').textContent),
+  $('roundBanner').textContent);
+check('review round holds only the missed question',
+  $('counter').textContent === 'Question 1 of 1', $('counter').textContent);
+check('the missed question is the one re-asked', $('topic').textContent === q1.s,
+  $('topic').textContent);
+check('meta line names the round', /Review round 1/.test($('score').textContent),
+  $('score').textContent);
+
+// get it wrong again — that must buy a second review round, not the results
+optionButtons().findIndex((_, i) => i !== correctIndexOnScreen());
+optionButtons()[optionButtons().findIndex((_, i) => i !== correctIndexOnScreen())].click();
+check('reader opens again in review', visible('reader'));
+$('retryBtn').click();
+optionButtons()[correctIndexOnScreen()].click();
+check('a second review round is offered',
+  /Review the one you got wrong/.test($('nextBtn').textContent),
+  $('nextBtn').textContent);
+$('nextBtn').click();
+check('second review round runs', /Review round 2/.test($('score').textContent),
+  $('score').textContent);
+
+// clear it this time
+optionButtons()[correctIndexOnScreen()].click();
+check('a clean round ends the quiz', $('nextBtn').textContent === 'See results',
+  $('nextBtn').textContent);
 $('nextBtn').click();
 
 console.log('\nresults screen');
 check('results visible', visible('results'));
-check('score line correct', /9 of 10 answered correctly first time/.test($('resultLine').textContent),
+check('banner hidden on the results screen', !visible('roundBanner'));
+check('score line counts the original ten, not the review re-asks',
+  /9 of 10 answered correctly first time/.test($('resultLine').textContent),
   $('resultLine').textContent);
+check('review rounds reported', visible('roundLine') &&
+  /2 review rounds/.test($('roundLine').textContent),
+  $('roundLine').textContent);
 check('missed topic listed', $('reviewList').children.length === 1);
 check('review links to the page image',
   $('reviewList').querySelector('a').getAttribute('href') ===

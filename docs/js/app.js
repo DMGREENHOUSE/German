@@ -97,14 +97,21 @@
   }
 
   // ---------- state ----------------------------------------------------
+  //
+  // A quiz runs in rounds. Round 0 is the questions you asked for; every round
+  // after it re-asks whatever you got wrong in the round before, and the quiz
+  // is not over until a round comes back clean. Only round 0 scores, so the
+  // result is still "how much did you know walking in".
   var state = {
     selected: {},        // partId -> bool
     types: {},           // typeId -> bool
     count: 20,
     queue: [],
     index: 0,
+    round: 0,            // 0 = the first pass, 1+ = review rounds
     firstTry: 0,
     missed: [],          // section titles answered wrongly at least once
+    roundMissed: [],     // questions answered wrongly in the current round
     byType: {},          // typeId -> {asked, right}
     answeredThis: false
   };
@@ -258,15 +265,34 @@
   function startQuiz() {
     var available = shuffle(selectedPool());
     var n = state.count === 0 ? available.length : Math.min(state.count, available.length);
+    pool.forEach(function (q) { delete q._missedThisRound; });
     state.queue = available.slice(0, n);
     state.index = 0;
+    state.round = 0;
+    state.reviewRounds = 0;
     state.firstTry = 0;
     state.missed = [];
+    state.roundMissed = [];
     state.byType = {};
     TYPES.forEach(function (t) { state.byType[t.id] = { asked: 0, right: 0 }; });
     state.queue.forEach(function (q) { state.byType[q._type].asked++; });
+    state.asked = state.queue.length;
     show('quiz');
     renderQuestion();
+  }
+
+  // Re-ask everything missed in the round just finished. Returns false when
+  // the round was clean, which is the only way a quiz ends.
+  function startReviewRound() {
+    if (!state.roundMissed.length) return false;
+    state.round++;
+    state.reviewRounds = state.round;
+    state.queue = shuffle(state.roundMissed);
+    state.roundMissed = [];
+    state.index = 0;
+    state.queue.forEach(function (q) { delete q._missedThisRound; });
+    renderQuestion();
+    return true;
   }
 
   function renderQuestion() {
@@ -276,7 +302,19 @@
     $('progressBar').style.width =
       (state.index / state.queue.length * 100).toFixed(1) + '%';
     $('counter').textContent = 'Question ' + (state.index + 1) + ' of ' + state.queue.length;
-    $('score').textContent = state.firstTry + ' right first time';
+    $('score').textContent = state.round === 0
+      ? state.firstTry + ' right first time'
+      : 'Review round ' + state.round;
+
+    var banner = $('roundBanner');
+    banner.hidden = state.round === 0;
+    if (state.round > 0) {
+      banner.textContent = state.queue.length === 1
+        ? 'Review — the one you got wrong. Answer it right to finish.'
+        : 'Review — the ' + state.queue.length +
+          ' you got wrong. Clear them all to finish.';
+    }
+
     $('topic').textContent = q._section;
     $('typeBadge').textContent = TYPE_NAME[q._type];
     $('typeBadge').setAttribute('data-type', q._type);
@@ -318,7 +356,7 @@
 
     if (ok) {
       btn.classList.add('correct');
-      if (!q._missedThisRound) {
+      if (!q._missedThisRound && state.round === 0) {
         state.firstTry++;
         state.byType[q._type].right++;
       }
@@ -326,8 +364,7 @@
       fbText.innerHTML = q.e ? markup(q.e) : 'Correct.';
       fb.hidden = false;
       $('nextBtn').hidden = false;
-      $('nextBtn').textContent =
-        state.index + 1 >= state.queue.length ? 'See results' : 'Next question';
+      $('nextBtn').textContent = nextLabel();
       $('nextBtn').focus({ preventScroll: true });
       return;
     }
@@ -337,6 +374,7 @@
     btn.classList.add('wrong');
     if (!q._missedThisRound) {
       q._missedThisRound = true;
+      state.roundMissed.push(q);
       if (state.missed.indexOf(q._section) === -1) state.missed.push(q._section);
     }
 
@@ -353,6 +391,17 @@
     $('reader').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // What the button after a correct answer should say. Naming the review round
+  // before it starts is the only warning the learner gets that the quiz is not
+  // over yet, so it has to be explicit.
+  function nextLabel() {
+    if (state.index + 1 < state.queue.length) return 'Next question';
+    if (!state.roundMissed.length) return 'See results';
+    return state.roundMissed.length === 1
+      ? 'Review the one you got wrong'
+      : 'Review the ' + state.roundMissed.length + ' you got wrong';
+  }
+
   function retry() {
     var q = state.queue[state.index];
     renderQuestion();
@@ -362,15 +411,27 @@
 
   function next() {
     state.index++;
-    if (state.index >= state.queue.length) return finish();
-    renderQuestion();
+    if (state.index < state.queue.length) return renderQuestion();
+    if (startReviewRound()) return;
+    finish();
   }
 
   function finish() {
-    var total = state.queue.length;
+    var total = state.asked || state.queue.length;
     $('progressBar').style.width = '100%';
+    $('roundBanner').hidden = true;
     $('resultLine').textContent =
       state.firstTry + ' of ' + total + ' answered correctly first time.';
+
+    var rounds = $('roundLine');
+    if (state.reviewRounds) {
+      rounds.textContent = state.reviewRounds === 1
+        ? 'One review round to clear the rest.'
+        : state.reviewRounds + ' review rounds to clear the rest.';
+      rounds.hidden = false;
+    } else {
+      rounds.hidden = true;
+    }
 
     var bd = $('typeBreakdown');
     bd.innerHTML = '';

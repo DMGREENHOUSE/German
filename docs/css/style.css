@@ -239,6 +239,25 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
 }
 .quizmeta .linkbtn { margin-left: auto; }
 
+/* the review-round banner: the quiz looks identical otherwise, so this is
+   what tells the learner these questions are the ones they already missed */
+.roundbanner {
+  margin: 0 0 1rem;
+  padding: .55rem .8rem;
+  border-left: 3px solid var(--accent);
+  background: var(--paper);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink);
+  font-size: .88rem;
+  font-weight: 600;
+}
+.roundline {
+  margin: -1rem 0 1.4rem;
+  color: var(--accent);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
 .topicline {
   display: flex;
   align-items: center;

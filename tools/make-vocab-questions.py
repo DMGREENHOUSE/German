@@ -6,14 +6,23 @@ Deriving the questions from the book rather than writing them by hand means
 they cannot drift out of step with it, and the answers are correct by
 construction.
 
-Three shapes are produced, in rotation:
-    German to English   "What does [[der Hund]] mean?"    -> dog
-    English to German   "How do you say **dog**?"         -> der Hund
+Four shapes are produced, interleaved so that capping a section still leaves a
+balanced mix:
+    German to English   "What does [[der Hund]] mean?"      -> dog
+    English to German   "How do you say **dog**?"           -> der Hund
     Gender              "Which article does [[Hund]] take?" -> der
+    Gender, odd one out "Which of these is neuter?"         -> Fenster
 
 Distractors are drawn from the same section, so the choice is never made easy
 by category alone. Any word whose English gloss overlaps another word in the
-same section is skipped, because that would create two defensible answers.
+same section is skipped from the two translation shapes, because that would
+create two defensible answers — but it is still fair game for the gender
+shapes, which do not depend on the gloss at all.
+
+The odd-one-out shape exists because "which article does X take?" can only
+offer three real options; padding it with [[den]] wastes a slot on a form that
+is never the answer. Four nouns of which exactly one has the asked-for gender
+gives four genuine choices, and forces the gender of all four to be recalled.
 
 Usage:  python3 tools/make-vocab-questions.py [per-section]
 """
@@ -26,7 +35,7 @@ root = Path(__file__).resolve().parent.parent
 SRC = root / "book" / "chapters" / "17-vocabulary.tex"
 OUT = root / "docs" / "js" / "questions-vocab.js"
 
-PER_SECTION = int(sys.argv[1]) if len(sys.argv) > 1 else 8
+PER_SECTION = int(sys.argv[1]) if len(sys.argv) > 1 else 60
 
 ARTICLE = {"m": "der", "f": "die", "n": "das", "pl": "die"}
 ENTRY = re.compile(r"\\d(m|f|n|pl)\{(.+?)\}")
@@ -107,55 +116,153 @@ def existing_questions():
     return set(re.findall(r'\{s:"((?:[^"\\]|\\.)*)", q:"((?:[^"\\]|\\.)*)"', text))
 
 
+GENDER_NAME = {"m": ("masculine", "der"), "f": ("feminine", "die"),
+               "n": ("neuter", "das")}
+
+
+def unambiguous(entries):
+    """Entries whose English gloss is not shared with another entry here.
+
+    Only the translation shapes need this: if two words in a section both mean
+    "cousin", then "how do you say cousin?" has two right answers.
+    """
+    keep = []
+    for i, (de, en, g) in enumerate(entries):
+        words = gloss_words(en)
+        clash = any(
+            j != i and (gloss_words(o) & words or o.lower() == en.lower())
+            for j, (_, o, _g) in enumerate(entries)
+        )
+        if not clash:
+            keep.append((de, en, g))
+    return keep
+
+
+def nouns_by_gender(entries):
+    """{m|f|n: [(bare noun, gloss)]}, one entry per distinct noun.
+
+    Plural-only nouns are left out entirely: their article is [[die]], which a
+    learner cannot tell apart from the feminine, so they are unfair either as
+    an answer or as a distractor in a gender question.
+    """
+    buckets = {"m": [], "f": [], "n": []}
+    seen = set()
+    for de, en, g in entries:
+        if g not in buckets or " " not in de:
+            continue
+        bare = de.split(" ", 1)[1]
+        if bare in seen:
+            continue
+        seen.add(bare)
+        buckets[g].append((bare, en))
+    return buckets
+
+
+def translation_shapes(usable, rng):
+    """(german->english, english->german) question lists for a section."""
+    de2en, en2de = [], []
+    for de, en, gender in usable:
+        others = [o for o in usable if o[0] != de]
+        if len(others) < 3:
+            continue
+
+        picks = rng.sample(others, 3)
+        a = [en] + [o[1] for o in picks]
+        if len(set(a)) == 4:
+            de2en.append({
+                "q": f"What does [[{de}]] mean?", "a": a,
+                "e": f"[[{de}]] — {en}.",
+            })
+
+        picks = rng.sample(others, 3)
+        a = [de] + [o[0] for o in picks]
+        if len(set(a)) == 4:
+            en2de.append({
+                "q": f"How do you say **{en}**?", "a": a,
+                "e": (f"[[{de}]] — the article is part of the word."
+                      if gender else f"[[{de}]]."),
+            })
+    return de2en, en2de
+
+
+def article_shape(buckets, rng):
+    """"Which article does X take?" — one per noun."""
+    out = []
+    for g, (name, art) in GENDER_NAME.items():
+        for bare, en in buckets[g]:
+            out.append({
+                "q": f"Which article does [[{bare}]] take?",
+                "a": [art] + [x for x in ("der", "die", "das", "den") if x != art][:3],
+                "e": f"[[{art} {bare}]] — {en}. It is {name}.",
+            })
+    rng.shuffle(out)
+    return out
+
+
+def odd_one_out_shape(buckets, rng):
+    """"Which of these is neuter?" — four nouns, exactly one of that gender."""
+    out = []
+    for g, (name, art) in GENDER_NAME.items():
+        others = [n for og in buckets if og != g for n in buckets[og]]
+        pool = buckets[g][:]
+        rng.shuffle(pool)
+        if len(others) < 3:
+            continue
+        for bare, en in pool:
+            picks = rng.sample(others, 3)
+            a = [bare] + [p[0] for p in picks]
+            if len(set(a)) != 4:
+                continue
+            gloss = {b: (og, e) for og in buckets for b, e in buckets[og]}
+            rest = ", ".join(
+                f"[[{GENDER_NAME[gloss[p[0]][0]][1]} {p[0]}]]" for p in picks)
+            out.append({
+                "q": f"Which of these nouns is **{name}** ([[{art}]])?",
+                "a": a,
+                "e": f"[[{art} {bare}]] — {en}. The others are {rest}.",
+            })
+    rng.shuffle(out)
+    return out
+
+
+def interleave(lists, limit):
+    """Round-robin the shape lists, so a cap still leaves a balanced mix."""
+    out = []
+    for i in range(max((len(x) for x in lists), default=0)):
+        for lst in lists:
+            if i < len(lst):
+                out.append(lst[i])
+                if len(out) >= limit:
+                    return out
+    return out
+
+
 def build(sections, per_section, seed=20260802):
     rng = random.Random(seed)
     taken = existing_questions()
     out = []
     for section, entries in sections.items():
-        # drop anything whose gloss overlaps another entry in the section
-        usable = []
-        for i, (de, en, g) in enumerate(entries):
-            words = gloss_words(en)
-            clash = any(
-                j != i and (gloss_words(o) & words or o.lower() == en.lower())
-                for j, (_, o, _g) in enumerate(entries)
-            )
-            if not clash:
-                usable.append((de, en, g))
+        usable = unambiguous(entries)
         if len(usable) < 6:
             continue
+        buckets = nouns_by_gender(entries)
 
-        order = usable[:]
-        rng.shuffle(order)
-        k = 0
-        for (de, en, gender) in order:
-            if k >= per_section:
+        de2en, en2de = translation_shapes(usable, rng)
+        shapes = [de2en, en2de, article_shape(buckets, rng),
+                  odd_one_out_shape(buckets, rng)]
+
+        # ask for more than the cap, then drop anything already asked by hand
+        # and trim — otherwise a section loses questions it could have had
+        kept = 0
+        for q in interleave(shapes, per_section * 3):
+            if kept >= per_section:
                 break
-            others = [e for e in usable if e[0] != de]
-            picks = rng.sample(others, 3)
-            shape = k % 3
-            if shape == 2 and gender in ("m", "f", "n"):
-                # gender drill: the plural-only nouns are skipped, since their
-                # article "die" is indistinguishable from the feminine
-                bare = de.split(" ", 1)[1]
-                art = de.split(" ", 1)[0]
-                q = f"Which article does [[{bare}]] take?"
-                a = [art] + [x for x in ("der", "die", "das", "den") if x != art][:3]
-                e = f"[[{de}]] — {en}."
-            elif shape == 1:
-                q = f"How do you say **{en}**?"
-                a = [de] + [o[0] for o in picks]
-                e = (f"[[{de}]] — the article is part of the word."
-                     if gender else f"[[{de}]].")
-            else:
-                q = f"What does [[{de}]] mean?"
-                a = [en] + [o[1] for o in picks]
-                e = f"[[{de}]] — {en}."
-            if (section, q) in taken or len(set(a)) != 4:
-                continue           # already asked by hand, or a distractor collided
-            taken.add((section, q))
-            out.append({"s": section, "q": q, "a": a, "t": "recall", "e": e})
-            k += 1
+            if (section, q["q"]) in taken:
+                continue
+            taken.add((section, q["q"]))
+            out.append({"s": section, "q": q["q"], "a": q["a"],
+                        "t": "recall", "e": q["e"]})
+            kept += 1
     return out
 
 

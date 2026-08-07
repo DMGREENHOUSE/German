@@ -141,6 +141,27 @@ yields a usable quiz. `make check` reports the split and rejects an unknown
 type; `tools/test-app.js` asserts that filtering by type really does restrict
 the questions asked.
 
+There are around 2,000 questions, no section with fewer than ten.
+
+## Review rounds
+
+A quiz does not end when the questions run out. Getting an answer wrong opens
+the book page and re-asks the same question straight away, and at the end of
+the round every question missed along the way is asked again — as many rounds
+as it takes for one to come back clean.
+
+Only the first round scores. `state.round` is 0 for that round and 1, 2, 3 …
+for the review rounds, and both `state.firstTry` and the per-type tallies are
+guarded on it, so the result on the way out is still *what did you know walking
+in*. `state.roundMissed` collects the questions to re-ask and is emptied at the
+start of each round; `state.missed` accumulates section titles across the whole
+quiz and drives the "Worth another look" list.
+
+The one thing to be careful of when editing this: `startReviewRound()` returning
+false is the **only** way a quiz reaches the results screen, other than the
+"End quiz" button. If you add an early return to `next()`, make sure it still
+runs through it.
+
 `make check` will tell you about a title that does not match, a section with no
 questions, duplicate options, or a bad answer index. For a full run-through:
 
@@ -169,14 +190,30 @@ hand-added word that lands in the wrong place is caught by `make check`.
 
 ## Generated questions
 
-`tools/make-vocab-questions.py` reads the word lists and writes 180 recall
-questions in three shapes — German to English, English to German, and *which
-article does this noun take*. Distractors come from the same section, so the
-answer is never obvious from the category alone. Two safeguards matter:
+`tools/make-vocab-questions.py` reads the word lists and writes 1,200 recall
+questions in four shapes — German to English, English to German, *which article
+does this noun take*, and *which of these four nouns is neuter*. Distractors
+come from the same section, so the answer is never obvious from the category
+alone. The shapes are interleaved before the per-section cap is applied, so
+capping a section still leaves a balanced mix rather than 60 translations and
+no gender drills.
+
+The fourth shape exists because "which article does X take?" only has three
+real options and has to pad the fourth with `den`, which is never the answer.
+Offering four nouns of which exactly one is neuter gives four genuine choices
+and makes you recall the gender of all four.
+
+Three safeguards matter:
 
 - a word whose English gloss overlaps another word in the same section is
-  skipped, since that would give two defensible answers
+  skipped from the two translation shapes, since that would give two defensible
+  answers — but it is still used for the gender shapes, which do not depend on
+  the gloss
+- plural-only nouns never appear in a gender question, because their `die` is
+  indistinguishable from the feminine
 - questions already written by hand are not duplicated
+
+The per-section cap is the script's one argument; `make questions` passes 60.
 
 Because the questions are derived from the book, they cannot drift out of step
 with it. Edit the word list, run `make questions`, and the bank follows.

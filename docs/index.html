@@ -28,7 +28,9 @@
     <p class="lede">
       Multiple-choice questions drawn from the book. Choose the chapters you
       want; everything is selected by default. When an answer is wrong the
-      relevant page of the book opens so you can read it and try again.
+      relevant page of the book opens so you can read it and try again — and
+      at the end you go back over everything you got wrong, until none are
+      left.
     </p>
 
     <div class="controls">
@@ -76,6 +78,8 @@
       <button type="button" class="linkbtn" id="quitBtn">End quiz</button>
     </div>
 
+    <p id="roundBanner" class="roundbanner" hidden></p>
+
     <p class="topicline"><span id="topic" class="topic"></span><span id="typeBadge" class="badge"></span></p>
     <h2 id="question" class="question"></h2>
 
@@ -101,6 +105,7 @@
   <section id="results" class="view" hidden>
     <h1>Done</h1>
     <p id="resultLine" class="lede"></p>
+    <p id="roundLine" class="roundline" hidden></p>
     <ul id="typeBreakdown" class="breakdown"></ul>
     <div id="reviewWrap" hidden>
       <h2 class="h2">Worth another look</h2>
