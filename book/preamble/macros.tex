@@ -46,6 +46,20 @@
   \markboth{\CurrentPart}{#1}%
 }
 
+% ---------- test this page -----------------------------------
+% One topic per page means the printed page number identifies the topic on
+% its own, so the link needs nothing but \thepage. The quiz reads ?page=N,
+% finds the section printed on that page and asks only its questions.
+%
+% \thepage has to be expanded before \href sees it, hence the \edef — \href
+% does not expand its first argument.
+\newcommand{\TestSiteURL}{https://dmgreenhouse.github.io/German/}
+\newcommand{\testthispage}{%
+  \edef\dgtesturl{\TestSiteURL?page=\thepage}%
+  \href{\dgtesturl}{\footnotesize\sffamily\color{Accent}Diese Seite testen
+        $\rightarrow$}%
+}
+
 % ---------- running heads ------------------------------------
 \fancypagestyle{grammar}{%
   \fancyhf{}%
@@ -54,6 +68,7 @@
   \fancyhead[LE]{\footnotesize\sffamily\color{Faint}\nouppercase{\leftmark}}%
   \fancyhead[RO]{\footnotesize\sffamily\color{Faint}\nouppercase{\rightmark}}%
   \fancyfoot[LE,RO]{\footnotesize\sffamily\color{Ink}\thepage}%
+  \fancyfoot[RE,LO]{\testthispage}%
 }
 \setlength{\headheight}{12pt}
 
