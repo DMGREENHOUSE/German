@@ -145,6 +145,30 @@ the questions asked.
 
 There are around 2,000 questions, no section with fewer than ten.
 
+## Testing a page from the book
+
+Every topic page carries **Diese Seite testen →** in its inner footer, linking
+to the live site with `?page=N`. The app reads the parameter, finds the section
+printed on that page and starts a quiz on its questions alone — all of them,
+not the usual 10/20/40 slice, since you asked for that page specifically.
+
+The page number is the key rather than the section title: it is short, needs no
+URL escaping, and survives a section being retitled. It works because of the
+one-topic-per-page rule, which `make check` enforces — break that rule and the
+link becomes ambiguous.
+
+The footer link is built from `\thepage`, so it needs no per-section markup.
+`\thepage` has to be expanded before `hyperref` sees it, which is what the
+`\edef` in `\testthispage` is for.
+
+The link text is rendered into `docs/pages/*.png` along with everything else on
+the page, where it is inert. That is harmless — by the time you are looking at
+a page image you are already inside the quiz.
+
+`node tools/test-pagelink.js` covers the parameter, including an unknown page
+number, which must land on the setup screen with an explanation rather than an
+empty quiz.
+
 ## Typed answers
 
 Multiple choice tests recognition: four options, a 25% floor, and you can work

@@ -239,6 +239,20 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
 }
 .quizmeta .linkbtn { margin-left: auto; }
 
+/* arriving from a "Diese Seite testen" link in the book */
+.pagenote {
+  display: flex;
+  align-items: baseline;
+  gap: .8rem;
+  flex-wrap: wrap;
+  margin: 0 0 1.2rem;
+  padding: .6rem .85rem;
+  border-left: 3px solid var(--accent);
+  background: var(--paper);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: .9rem;
+}
+
 /* ---------- typed answers ---------- */
 .typed {
   display: flex;

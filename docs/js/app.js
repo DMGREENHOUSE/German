@@ -108,6 +108,7 @@
     types: {},           // typeId -> bool
     count: 20,
     typed: false,        // true = type the answer wherever the question allows
+    pageFilter: null,    // set by ?page=N from a "Diese Seite testen" link
     queue: [],
     index: 0,
     round: 0,            // 0 = the first pass, 1+ = review rounds
@@ -236,8 +237,56 @@
     return pool.filter(function (q) { return state.selected[q._part] !== false; });
   }
 
+  // A page filter comes from a "Diese Seite testen" link in the book and
+  // deliberately overrides both other axes: you asked for that page, not for
+  // that page minus whatever happens to be unticked from last time.
   function selectedPool() {
+    if (state.pageFilter) {
+      return pool.filter(function (q) { return q._page === state.pageFilter; });
+    }
     return chapterPool().filter(function (q) { return state.types[q._type] !== false; });
+  }
+
+  // ---------- deep link from the book ----------------------------------
+  function queryParam(name) {
+    var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(window.location.search || '');
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  function sectionOnPage(page) {
+    for (var title in sectionIndex) {
+      if (sectionIndex[title].page === page) return sectionIndex[title];
+    }
+    return null;
+  }
+
+  function applyPageFilter(page) {
+    var hits = pool.filter(function (q) { return q._page === page; });
+    var note = $('pageNote');
+    var text = $('pageNoteText');
+    var info = sectionOnPage(page);
+
+    if (!hits.length) {
+      text.textContent = info
+        ? 'Page ' + page + ' — ' + info.title + ' — has no questions yet.'
+        : 'Page ' + page + ' of the book has no questions yet.';
+      $('clearPageBtn').hidden = true;
+      note.hidden = false;
+      return false;
+    }
+
+    state.pageFilter = page;
+    text.textContent = 'Page ' + page + (info ? ' — ' + info.title : '') +
+      ': ' + hits.length + ' question' + (hits.length === 1 ? '' : 's') + '.';
+    $('clearPageBtn').hidden = false;
+    note.hidden = false;
+    return true;
+  }
+
+  function clearPageFilter() {
+    state.pageFilter = null;
+    $('pageNote').hidden = true;
+    updatePool();
   }
 
   // how many questions of each type the current chapter selection offers
@@ -253,7 +302,9 @@
     var asked = state.count === 0 ? n : Math.min(state.count, n);
     $('poolInfo').textContent = n === 0
       ? 'Nothing matches — widen the chapters or the question types.'
-      : asked + ' of ' + n + ' matching questions';
+      : state.pageFilter
+        ? 'all ' + n + ' questions on page ' + state.pageFilter
+        : asked + ' of ' + n + ' matching questions';
     $('startBtn').disabled = n === 0;
     updateTypedCount(n);
   }
@@ -281,7 +332,8 @@
   // ---------- quiz ------------------------------------------------------
   function startQuiz() {
     var available = shuffle(selectedPool());
-    var n = state.count === 0 ? available.length : Math.min(state.count, available.length);
+    var whole = state.count === 0 || state.pageFilter;
+    var n = whole ? available.length : Math.min(state.count, available.length);
     pool.forEach(function (q) { delete q._missedThisRound; });
     state.queue = available.slice(0, n);
     state.index = 0;
@@ -604,7 +656,14 @@
     $('nextBtn').addEventListener('click', next);
     $('quitBtn').addEventListener('click', finish);
     $('againBtn').addEventListener('click', startQuiz);
-    $('homeBtn').addEventListener('click', function () { show('setup'); });
+    $('homeBtn').addEventListener('click', function () {
+      clearPageFilter();
+      show('setup');
+    });
+    $('clearPageBtn').addEventListener('click', function () {
+      clearPageFilter();
+      show('setup');
+    });
 
     $('checkBtn').addEventListener('click', function () {
       answerTyped(state.queue[state.index]);
@@ -628,6 +687,14 @@
     });
 
     updatePool();
+
+    // A link in the book asks for one page. Go straight into it rather than
+    // making someone who has already chosen a topic choose it again.
+    var deep = parseInt(queryParam('page'), 10);
+    if (deep && applyPageFilter(deep)) {
+      updatePool();
+      startQuiz();
+    }
   }
 
   if (document.readyState === 'loading') {
