@@ -253,6 +253,13 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
   font-size: .9rem;
 }
 
+/* The UA stylesheet's [hidden] { display: none } is a plain attribute rule, so
+   any author rule that sets display beats it — .options { display: grid } and
+   .typed { display: flex } both did, which left the answer buttons and the
+   text box on screen together. Setting .hidden in JS had no visual effect.
+   Anything that hides itself by toggling .hidden depends on this rule. */
+[hidden] { display: none !important; }
+
 /* ---------- typed answers ---------- */
 .typed {
   display: flex;

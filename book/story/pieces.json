@@ -1,0 +1,1310 @@
+[
+ {
+  "id": "der-aufkleber",
+  "title": "Der Aufkleber",
+  "level": "A2",
+  "paragraphs": [
+   "Seit drei Wochen klebt ein Aufkleber auf meinem Küchentisch. Er ist klein und blau. Auf dem Aufkleber steht der Name einer Bananenfirma. Ich habe die Banane gegessen, aber der Aufkleber ist geblieben.",
+   "Zuerst habe ich es mit warmem Wasser probiert. Das hat nicht funktioniert. Dann habe ich ein Messer genommen. Meine Frau sagt, dass man einen Tisch nicht mit einem Messer sauber macht. Am Samstag habe ich Öl benutzt, am Sonntag den Föhn. Der Aufkleber ist immer noch da. Er ist jetzt grau, weil ich ihn so oft angefasst habe.",
+   "Gestern hat mein Bruder mich besucht. Er hat den Aufkleber in zwei Sekunden entfernt, mit dem Fingernagel. Er hat nichts gesagt. Ich habe auch nichts gesagt. Der Tisch ist an dieser Stelle jetzt ein bisschen heller als überall sonst. Deshalb steht dort eine Schale. Ich kaufe keine Bananen mehr."
+  ],
+  "glossary": [
+   [
+    "der Aufkleber",
+    "sticker, label"
+   ],
+   [
+    "kleben",
+    "to stick, to be stuck"
+   ],
+   [
+    "probieren",
+    "to try"
+   ],
+   [
+    "benutzen",
+    "to use"
+   ],
+   [
+    "der Föhn",
+    "hairdryer"
+   ],
+   [
+    "anfassen",
+    "to touch"
+   ],
+   [
+    "entfernen",
+    "to remove"
+   ],
+   [
+    "der Fingernagel",
+    "fingernail"
+   ],
+   [
+    "die Schale",
+    "bowl"
+   ],
+   [
+    "die Stelle",
+    "spot, place"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "Where did the sticker come from?",
+    "a": [
+     "a banana the narrator ate",
+     "a present from his brother",
+     "it was already on the table when he bought it",
+     "his wife stuck it there"
+    ],
+    "t": "recall",
+    "e": "[[Ich habe die Banane gegessen, aber der Aufkleber ist geblieben.]] The fruit went; the label stayed."
+   },
+   {
+    "q": "What does his wife say?",
+    "a": [
+     "that you do not clean a table with a knife",
+     "that the sticker does not bother her",
+     "that he should buy a new table",
+     "that she will take the sticker off herself"
+    ],
+    "t": "recall",
+    "e": "[[Meine Frau sagt, dass man einen Tisch nicht mit einem Messer sauber macht.]] She comments on his method, never on the sticker itself."
+   },
+   {
+    "q": "Why is a bowl now standing on that exact spot?",
+    "a": [
+     "the table is lighter there than everywhere else",
+     "the sticker is still underneath it",
+     "his brother brought it as a present",
+     "his wife wants fruit on the table"
+    ],
+    "t": "recall",
+    "e": "[[Der Tisch ist an dieser Stelle jetzt ein bisschen heller als überall sonst. Deshalb steht dort eine Schale.]] Three weeks of water, knife, oil and hot air have left a pale patch, and the bowl covers it."
+   },
+   {
+    "q": "What does the last line, [[Ich kaufe keine Bananen mehr]], tell you about the narrator?",
+    "a": [
+     "he would rather give up bananas than risk this happening again",
+     "he has stopped liking the taste of bananas",
+     "bananas have become too expensive for him",
+     "his brother brings him bananas now"
+    ],
+    "t": "gap",
+    "e": "There was never anything wrong with the banana. He has decided that the only safe response to a small sticker is to remove the entire category of fruit that carries one. He reports this as a plan, not as a joke."
+   },
+   {
+    "q": "[[Er ist jetzt grau, weil ich ihn so oft angefasst habe.]] Why does [[habe]] stand at the very end?",
+    "a": [
+     "[[weil]] is a subordinating conjunction and sends the conjugated verb to the end of its clause",
+     "[[habe]] is an auxiliary, and auxiliaries always come last",
+     "the clause is in the past, so the word order reverses",
+     "[[ich]] is the subject, so the verb has to follow the object"
+    ],
+    "t": "rule",
+    "e": "After [[weil]] everything else comes first and the conjugated verb closes the clause, with the participle parked just in front of it: [[..., weil ich ihn so oft angefasst habe]]. Compare the main clause [[Ich habe ihn oft angefasst]], where [[habe]] sits in second position. The same happens after [[dass]], as in the sentence about the knife."
+   },
+   {
+    "q": "[[Zuerst habe ich es mit warmem Wasser probiert.]] Why [[warmem]]?",
+    "a": [
+     "[[mit]] takes the dative, and with no article in front the adjective itself carries the dative neuter ending [[-em]]",
+     "[[Wasser]] is plural here",
+     "[[warm]] ends in [[-em]] in every case",
+     "[[probieren]] takes a dative object"
+    ],
+    "t": "rule",
+    "e": "[[das Wasser]] is neuter and [[mit]] always takes the dative, so the phrase needs a dative marker. There is no [[dem]] to carry it, so the adjective does the job with the strong ending [[-em]]. Put an article back in and the adjective relaxes: [[mit dem warmen Wasser]]."
+   },
+   {
+    "q": "[[Ich habe die Banane gegessen, aber der Aufkleber ist geblieben.]] Why [[ist geblieben]] and not [[hat geblieben]]?",
+    "a": [
+     "[[bleiben]] builds its Perfekt with [[sein]]",
+     "[[der Aufkleber]] is a thing, and things take [[sein]]",
+     "a clause introduced by [[aber]] takes [[sein]]",
+     "[[geblieben]] is an adjective here, not a participle"
+    ],
+    "t": "rule",
+    "e": "Most verbs take [[haben]]. A small group takes [[sein]]: verbs of movement to a new place ([[gehen]], [[fahren]]), verbs of change of state ([[einschlafen]]), and the three awkward ones, [[bleiben]], [[sein]] and [[werden]]. [[essen]] is an ordinary verb with an object, so it takes [[haben]] — which is why one short sentence here uses both."
+   }
+  ],
+  "part": "Komisches"
+ },
+ {
+  "id": "der-nachbar-auf-der-treppe",
+  "title": "Der Nachbar auf der Treppe",
+  "level": "B1",
+  "paragraphs": [
+   "Am Dienstag hörte ich Herrn Vogler zwei Stockwerke unter mir. Ich erkannte ihn sofort an den Schritten. Damit begann wieder das Problem, das ich seit vier Jahren nicht lösen kann: Wann genau grüßt man einen Nachbarn auf der Treppe?",
+   "Grüßt man zu früh, muss man den Rest des Weges schweigend nebeneinander gehen, und das sind elf Stufen. Grüßt man zu spät, wirkt es, als hätte man den anderen absichtlich übersehen. Ich blieb also auf dem Absatz stehen und suchte in meiner Tasche nach dem Schlüssel, den ich in der Hand hielt. Danach las ich den Zettel am Schwarzen Brett. Es war eine Anzeige für ein Fahrrad. Ich las sie dreimal.",
+   "Herr Vogler kam an mir vorbei, sah kurz zu mir und sagte nichts. Ich sagte auch nichts. Wir haben es beide verstanden. Seitdem grüßen wir uns nicht mehr. Es funktioniert hervorragend."
+  ],
+  "glossary": [
+   [
+    "das Stockwerk",
+    "floor, storey"
+   ],
+   [
+    "der Schritt",
+    "step, footstep"
+   ],
+   [
+    "grüßen",
+    "to greet, to say hello"
+   ],
+   [
+    "die Stufe",
+    "stair, step"
+   ],
+   [
+    "absichtlich",
+    "deliberately, on purpose"
+   ],
+   [
+    "übersehen",
+    "to overlook, to fail to notice"
+   ],
+   [
+    "der Absatz",
+    "landing (in a stairwell)"
+   ],
+   [
+    "das Schwarze Brett",
+    "noticeboard"
+   ],
+   [
+    "die Anzeige",
+    "advertisement, notice"
+   ],
+   [
+    "hervorragend",
+    "excellent, excellently"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "How does the narrator know who is coming up the stairs?",
+    "a": [
+     "he recognises the footsteps",
+     "he sees him from the window",
+     "Herr Vogler calls up to him",
+     "he had arranged to meet him"
+    ],
+    "t": "recall",
+    "e": "[[Ich erkannte ihn sofort an den Schritten.]] Two floors away and the identification is already complete — which is what starts the crisis."
+   },
+   {
+    "q": "Why does the narrator search his bag for his key?",
+    "a": [
+     "to have a reason to stand still, since he is already holding it",
+     "because he has genuinely lost it",
+     "because he wants to open his letterbox first",
+     "to show Herr Vogler that he really lives in the building"
+    ],
+    "t": "recall",
+    "e": "[[... und suchte in meiner Tasche nach dem Schlüssel, den ich in der Hand hielt.]] The relative clause is where the sentence gives him away. He is buying time, not looking for anything."
+   },
+   {
+    "q": "What actually happens when Herr Vogler passes him?",
+    "a": [
+     "neither of them says a word",
+     "Herr Vogler greets him and gets no answer",
+     "they greet each other at exactly the same moment",
+     "Herr Vogler stops to talk about the bicycle advertisement"
+    ],
+    "t": "recall",
+    "e": "[[Herr Vogler kam an mir vorbei, sah kurz zu mir und sagte nichts. Ich sagte auch nichts.]] There is a look, and there is silence. The look matters, because it means Vogler saw him standing there reading."
+   },
+   {
+    "q": "What does the narrator mean by [[Es funktioniert hervorragend]]?",
+    "a": [
+     "the two of them have silently agreed never to greet each other, and he regards that as the solution",
+     "they now greet each other at one fixed point on the stairs",
+     "Herr Vogler has moved out of the building",
+     "he now takes the back stairs instead"
+    ],
+    "t": "gap",
+    "e": "The problem was when to say hello. His answer is to abolish hello. [[Wir haben es beide verstanden]] treats a shared embarrassment as a negotiated treaty, and [[hervorragend]] reports the outcome as a success."
+   },
+   {
+    "q": "[[Grüßt man zu früh, muss man den Rest des Weges schweigend nebeneinander gehen.]] Why does the first clause begin with the verb?",
+    "a": [
+     "it is a conditional clause with [[wenn]] left out, and the verb moves into the empty first slot",
+     "it is a question that has lost its question mark",
+     "it is an imperative",
+     "German verbs always come first at the start of a sentence"
+    ],
+    "t": "rule",
+    "e": "[[Grüßt man zu früh, ...]] means exactly the same as [[Wenn man zu früh grüßt, ...]]. Drop the [[wenn]] and the conjugated verb takes its place at the front. The main clause then starts with its own verb, [[muss]], or you can add [[so]] or [[dann]] in front of it. This wenn-less form sounds a little formal and is common in writing."
+   },
+   {
+    "q": "[[Grüßt man zu spät, wirkt es, als hätte man den anderen absichtlich übersehen.]] Why [[hätte]] and not [[hat]]?",
+    "a": [
+     "[[als]] here means **as if**, and an unreal comparison takes Konjunktiv II",
+     "[[als]] always demands a past tense",
+     "[[übersehen]] is inseparable and therefore requires [[hätte]]",
+     "[[es]] is an impersonal subject, so the next verb must be subjunctive"
+    ],
+    "t": "rule",
+    "e": "Nobody was in fact overlooked; that is only how it would look. Konjunktiv II marks the comparison as unreal. Note the word order too: after [[als]] the verb follows immediately, [[als hätte man ...]], not [[als man hätte ...]]. The longer variant [[als ob man den anderen übersehen hätte]] means the same and keeps normal verb-final order."
+   },
+   {
+    "q": "[[... suchte in meiner Tasche nach dem Schlüssel, den ich in der Hand hielt.]] Why [[den]], when the noun just before it was [[dem Schlüssel]]?",
+    "a": [
+     "a relative pronoun takes its gender from the noun it refers back to, but its case from its own clause, and here it is the object of [[hielt]]",
+     "[[den]] is simply the relative pronoun used for all masculine nouns",
+     "[[nach]] takes the accusative",
+     "[[halten]] takes the accusative, so [[Schlüssel]] itself changes case"
+    ],
+    "t": "rule",
+    "e": "Masculine comes from [[der Schlüssel]]. The case is settled inside the relative clause alone: [[ich hielt ihn in der Hand]] is accusative, so [[den]]. Change the clause and the pronoun changes with it — [[der Schlüssel, der in meiner Tasche lag]] is nominative, [[der Schlüssel, mit dem ich die Tür öffne]] is dative after [[mit]]."
+   }
+  ],
+  "part": "Komisches"
+ },
+ {
+  "id": "tagesordnungspunkt-vier",
+  "title": "Tagesordnungspunkt vier",
+  "level": "B2",
+  "paragraphs": [
+   "Protokoll der Eigentümerversammlung, Tagesordnungspunkt vier: die Fußmatte vor Wohnung 3. Der Punkt war bereits im März vertagt worden. Die Sitzung dauerte an dieser Stelle einundfünfzig Minuten.",
+   "Frau Bittner erklärte, die Matte sei zu groß und rage in den Bereich hinein, der allen gehöre. Herr Kessler, dem die Matte gehört, entgegnete, sie sei bei seinem Einzug bereits vorhanden gewesen und werde daher von der Hausordnung nicht erfasst. Daraufhin wurde ein Zollstock geholt. Die Matte wurde in Anwesenheit aller gemessen. Das Ergebnis steht fest: sechzig mal vierzig Zentimeter.",
+   "Man einigte sich schließlich darauf, dass die Matte bleiben darf, solange sie gerade liegt. Wer sie künftig verschiebt, ist verpflichtet, sie zurückzuschieben. Nachtrag: Herr Kessler ist im Mai ausgezogen. Die Matte liegt noch da. Tagesordnungspunkt vier bleibt offen."
+  ],
+  "glossary": [
+   [
+    "der Tagesordnungspunkt",
+    "item on the agenda"
+   ],
+   [
+    "die Fußmatte",
+    "doormat"
+   ],
+   [
+    "vertagen",
+    "to adjourn, to postpone"
+   ],
+   [
+    "hineinragen",
+    "to jut into, to stick out into"
+   ],
+   [
+    "entgegnen",
+    "to counter, to reply"
+   ],
+   [
+    "der Einzug",
+    "moving in"
+   ],
+   [
+    "die Hausordnung",
+    "house rules"
+   ],
+   [
+    "erfassen",
+    "to cover, to take in"
+   ],
+   [
+    "der Zollstock",
+    "folding ruler"
+   ],
+   [
+    "sich einigen auf",
+    "to reach agreement on"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "What is Frau Bittner's objection to the mat?",
+    "a": [
+     "it is too big and sticks out into the area that belongs to everyone",
+     "it is dirty and has not been cleaned since March",
+     "it is lying in front of the wrong flat",
+     "it was bought without the meeting having agreed to it"
+    ],
+    "t": "recall",
+    "e": "[[... die Matte sei zu groß und rage in den Bereich hinein, der allen gehöre.]] Her complaint is about territory, not about cleanliness or ownership."
+   },
+   {
+    "q": "How does Herr Kessler defend the mat?",
+    "a": [
+     "it was already there when he moved in, so the house rules do not cover it",
+     "he has measured it himself and it is within the limit",
+     "he argues that Frau Bittner's own mat is larger",
+     "he promises to replace it with a smaller one in May"
+    ],
+    "t": "recall",
+    "e": "[[..., sie sei bei seinem Einzug bereits vorhanden gewesen und werde daher von der Hausordnung nicht erfasst.]] He does not claim the mat is small. He claims it predates the rules — a legal argument about a doormat."
+   },
+   {
+    "q": "What is finally agreed?",
+    "a": [
+     "the mat may stay as long as it lies straight, and whoever moves it must push it back",
+     "the mat has to be removed by May",
+     "the mat has to be cut down to fifty by forty centimetres",
+     "the whole question is postponed to the next meeting"
+    ],
+    "t": "recall",
+    "e": "[[Man einigte sich schließlich darauf, dass die Matte bleiben darf, solange sie gerade liegt. Wer sie künftig verschiebt, ist verpflichtet, sie zurückzuschieben.]] Fifty-one minutes of debate produce a rule about straightness. The postponement in the first paragraph was the March meeting, not this one."
+   },
+   {
+    "q": "Item four is still open at the end. Why?",
+    "a": [
+     "Herr Kessler has moved out but the mat has not, so the rule they agreed applies to nobody",
+     "Frau Bittner refused to accept the agreement",
+     "the measurement was disputed after the meeting",
+     "a second mat has appeared in front of another flat"
+    ],
+    "t": "gap",
+    "e": "[[Nachtrag: Herr Kessler ist im Mai ausgezogen. Die Matte liegt noch da.]] The entire settlement rests on there being an owner to keep the mat straight. The owner has gone, the mat has stayed, and the minutes record this in one flat line. [[Tagesordnungspunkt vier bleibt offen]] means the whole thing starts again in the autumn."
+   },
+   {
+    "q": "[[Frau Bittner erklärte, die Matte sei zu groß und rage in den Bereich hinein, der allen gehöre.]] Why [[sei]], [[rage]] and [[gehöre]] rather than [[ist]], [[ragt]] and [[gehört]]?",
+    "a": [
+     "it is Konjunktiv I, which marks the whole passage as reported speech and leaves its truth open",
+     "the minutes are written in the past, and Konjunktiv I is the past tense of reported speech",
+     "[[erklären]] is always followed by Konjunktiv I",
+     "they are unreal conditions, like [[wäre]] and [[hätte]]"
+    ],
+    "t": "rule",
+    "e": "Konjunktiv I is the register of minutes, reports and journalism. It says **she stated this**, not **this is the case**, so the writer takes no position. Notice that it runs through the entire reported sentence, including into the relative clause [[der allen gehöre]]. An indicative [[gehört]] there would quietly turn her claim into the meeting's own finding."
+   },
+   {
+    "q": "[[Der Punkt war bereits im März vertagt worden.]] Why [[worden]] and not [[geworden]]?",
+    "a": [
+     "in the passive the participle of [[werden]] drops its [[ge-]]",
+     "[[vertagen]] is inseparable, so the participle after it loses [[ge-]]",
+     "[[worden]] is the Präteritum form of [[werden]]",
+     "[[geworden]] is needed only in the present tense"
+    ],
+    "t": "rule",
+    "e": "As a full verb [[werden]] keeps the prefix: [[Er ist Lehrer geworden]]. As the passive auxiliary it becomes [[worden]]: [[Der Punkt ist vertagt worden]]. Swap [[ist]] for [[war]] and you get the Plusquamperfekt passive — the postponing had already happened before this meeting opened, which is exactly the point being made."
+   },
+   {
+    "q": "[[Herr Kessler, dem die Matte gehört, entgegnete ...]] Why is the relative pronoun [[dem]]?",
+    "a": [
+     "[[gehören]] takes a dative object, so the owner stands in the dative",
+     "the mat is the object of the clause, so its owner must be dative",
+     "[[dem]] is a genitive form and shows possession",
+     "it agrees with [[der Matte]], which is dative here"
+    ],
+    "t": "rule",
+    "e": "In German the thing owned is the subject of [[gehören]] and the owner is dative: [[Die Matte gehört ihm]]. Turn that clause into a relative clause and [[ihm]] becomes [[dem]]. English **whom the mat belongs to** hides the pattern. Do not confuse it with the genitive [[dessen]], which would give [[Herr Kessler, dessen Matte im Weg liegt]] — a different sentence with a different subject."
+   }
+  ],
+  "part": "Komisches"
+ },
+ {
+  "id": "der-zettel",
+  "title": "Der Zettel",
+  "level": "A2",
+  "paragraphs": [
+   "Am 9. November 1989 gibt Günter Schabowski in Ost-Berlin eine Pressekonferenz. Er ist Mitglied der Regierung, aber er hat an der wichtigen Sitzung nicht teilgenommen. Kurz vorher drückt ihm ein Kollege einen Zettel in die Hand. Schabowski liest ihn nicht.",
+   "Am Ende liest er den Zettel laut vor: Die Bürger der DDR dürfen ab jetzt ins Ausland reisen. Ein Journalist fragt: „Wann tritt das in Kraft?“ Schabowski sucht in seinen Papieren, findet nichts und sagt dann: „Das tritt nach meiner Kenntnis ... sofort, unverzüglich.“",
+   "Das stimmt nicht. Die neue Regel soll erst am nächsten Morgen gelten. Aber Millionen Menschen sehen die Konferenz im Fernsehen, und sie hören nur ein Wort: sofort. Kurz vor Mitternacht stehen Tausende an der Grenze. Ein Offizier ruft seine Vorgesetzten an, aber niemand kann ihm sagen, was er tun soll. Also öffnet er die Schranke. Die Mauer fällt, weil ein Mann seinen Zettel nicht gelesen hat."
+  ],
+  "glossary": [
+   [
+    "der Zettel",
+    "note, slip of paper"
+   ],
+   [
+    "teilnehmen an",
+    "to take part in"
+   ],
+   [
+    "in Kraft treten",
+    "to come into force"
+   ],
+   [
+    "unverzüglich",
+    "immediately, without delay"
+   ],
+   [
+    "gelten",
+    "to be valid, to apply"
+   ],
+   [
+    "der Vorgesetzte",
+    "superior, boss"
+   ],
+   [
+    "die Schranke",
+    "barrier"
+   ],
+   [
+    "aus Versehen",
+    "by accident, by mistake"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "Why can Schabowski not answer the journalist's question?",
+    "a": [
+     "he had not read the note beforehand",
+     "the note got lost on the way",
+     "he is not yet allowed to give the answer",
+     "the journalist does not speak German"
+    ],
+    "t": "recall",
+    "e": "Paragraph one: a colleague pushes the note into his hand moments before, and [[Schabowski liest ihn nicht.]] He does not know himself what is on it."
+   },
+   {
+    "q": "When was the new travel rule actually supposed to take effect?",
+    "a": [
+     "not until the next morning",
+     "immediately",
+     "not until a week later",
+     "from midnight"
+    ],
+    "t": "recall",
+    "e": "Paragraph three says it outright: [[Die neue Regel soll erst am nächsten Morgen gelten.]] Schabowski's [[sofort]] was **the mistake**, and the piece turns on it."
+   },
+   {
+    "q": "Why does the officer at the border open the barrier?",
+    "a": [
+     "because nobody can tell him what he is supposed to do",
+     "because Schabowski telephones him",
+     "because the barrier is broken",
+     "because he hears an order on television"
+    ],
+    "t": "recall",
+    "e": "He phones his superiors first: [[niemand kann ihm sagen, was er tun soll.]] With no answer coming, he decides alone."
+   },
+   {
+    "q": "What does the last sentence say about the fall of the Wall?",
+    "a": [
+     "it happens by accident",
+     "the government had planned it precisely",
+     "the people break the Wall open",
+     "it does not happen until the next day"
+    ],
+    "t": "recall",
+    "e": "[[Die Mauer fällt, weil ein Mann seinen Zettel nicht gelesen hat.]] That is the point of the whole piece: **not a plan, an accident**."
+   },
+   {
+    "q": "[[Die Mauer fällt, weil ein Mann seinen Zettel nicht gelesen hat.]] Why does [[hat]] stand right at the end?",
+    "a": [
+     "[[weil]] introduces a subordinate clause, which sends the conjugated verb to the end",
+     "[[hat]] always comes last in German",
+     "because the sentence is in the Perfekt",
+     "because [[Mann]] is the subject"
+    ],
+    "t": "rule",
+    "e": "After [[weil]] the **conjugated** verb goes to the very end of its clause, and in the Perfekt the participle sits just in front of it: [[... nicht gelesen hat]]. As a main clause the same words would be [[Ein Mann hat seinen Zettel nicht gelesen.]] So it is [[weil]] doing this, not the Perfekt."
+   },
+   {
+    "q": "[[Kurz vor Mitternacht stehen Tausende an der Grenze.]] Why does [[stehen]] come before [[Tausende]]?",
+    "a": [
+     "The conjugated verb must be the second element, and position one is already taken",
+     "[[Tausende]] cannot be a subject",
+     "time phrases always pull the verb in front of them",
+     "the sentence is a question"
+    ],
+    "t": "rule",
+    "e": "In a German main clause the conjugated verb is **always the second element**, whatever stands first. Here [[Kurz vor Mitternacht]] fills position one, so the subject moves behind the verb. Drop the time phrase and you get [[Tausende stehen an der Grenze.]]"
+   },
+   {
+    "q": "[[Er hat an der wichtigen Sitzung nicht teilgenommen.]] Why is it [[der wichtigen Sitzung]]?",
+    "a": [
+     "[[teilnehmen an]] is fixed with the dative, and feminine dative is [[der]]",
+     "[[an]] always takes the accusative",
+     "[[Sitzung]] is masculine",
+     "the dative always follows [[haben]]"
+    ],
+    "t": "rule",
+    "e": "[[an]] is a two-way preposition, but in the fixed combination [[teilnehmen an]] it takes the **dative**. Feminine [[die Sitzung]] becomes [[der Sitzung]], and after a definite article the adjective takes the weak ending [[-en]]: [[der wichtigen Sitzung]]."
+   }
+  ],
+  "part": "Geschichte"
+ },
+ {
+  "id": "die-uniform",
+  "title": "Die Uniform",
+  "level": "B1",
+  "paragraphs": [
+   "Wilhelm Voigt war Schuster und hatte den größten Teil seines Lebens im Gefängnis verbracht. Als er 1906 freikam, brauchte er einen Pass. Ohne Pass bekam er keine Arbeit, und ohne Arbeit durfte er nirgends wohnen. Die Behörden blieben höflich und unerbittlich. Also kaufte er sich in Trödelläden Stück für Stück eine gebrauchte Offiziersuniform.",
+   "Am 16. Oktober 1906 stellte er sich in Berlin einer Gruppe Soldaten in den Weg und befahl ihnen, ihm zu folgen. Niemand verlangte Papiere, denn er trug ja eine Uniform. Mit der Bahn fuhr die kleine Truppe nach Köpenick. Dort besetzte Voigt das Rathaus, ließ den Bürgermeister verhaften und beschlagnahmte die Stadtkasse.",
+   "Dann verlangte er, was er die ganze Zeit gewollt hatte: einen Pass. Doch ausgerechnet das Rathaus von Köpenick hatte kein Passamt. Voigt nahm das Geld und verschwand. Die Zeitungen nannten ihn bald den Hauptmann von Köpenick, und halb Europa lachte. Zehn Tage später wurde er gefasst und zu vier Jahren Haft verurteilt. 1908 begnadigte ihn der Kaiser persönlich – also genau der Mann, dessen Uniform dem Schuster alle Türen geöffnet hatte."
+  ],
+  "glossary": [
+   [
+    "der Schuster",
+    "cobbler, shoemaker"
+   ],
+   [
+    "freikommen",
+    "to be released, to get out"
+   ],
+   [
+    "unerbittlich",
+    "unrelenting, implacable"
+   ],
+   [
+    "der Trödelladen",
+    "second-hand shop, junk shop"
+   ],
+   [
+    "beschlagnahmen",
+    "to confiscate, to seize"
+   ],
+   [
+    "ausgerechnet",
+    "of all places, of all things"
+   ],
+   [
+    "das Passamt",
+    "passport office"
+   ],
+   [
+    "fassen",
+    "to catch, to apprehend"
+   ],
+   [
+    "verurteilen",
+    "to sentence, to convict"
+   ],
+   [
+    "begnadigen",
+    "to pardon"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "Why did Voigt absolutely need a passport?",
+    "a": [
+     "without a passport he got no work and was not allowed to live anywhere",
+     "he wanted to emigrate to America",
+     "the police had taken his old passport away",
+     "he needed it for military service"
+    ],
+    "t": "recall",
+    "e": "The first paragraph sets the trap: [[Ohne Pass bekam er keine Arbeit, und ohne Arbeit durfte er nirgends wohnen.]] Every door needs the paper he cannot get, which is why he buys a uniform instead."
+   },
+   {
+    "q": "Why did the soldiers in the street obey him?",
+    "a": [
+     "they saw the officer's uniform and did not ask for papers",
+     "they knew Voigt from prison",
+     "Voigt showed them a written order",
+     "the mayor had sent them"
+    ],
+    "t": "recall",
+    "e": "[[Niemand verlangte Papiere, denn er trug ja eine Uniform.]] The whole afternoon rests on that one sentence – nobody checked the man, only the cloth."
+   },
+   {
+    "q": "What is the irony at the town hall in Köpenick?",
+    "a": [
+     "that of all buildings, this was the one with no passport office",
+     "the town treasury was empty",
+     "the mayor recognised him at once",
+     "the soldiers suddenly refused to obey"
+    ],
+    "t": "recall",
+    "e": "[[Doch ausgerechnet das Rathaus von Köpenick hatte kein Passamt.]] He captured a town hall with soldiers and a straight face, and the one thing he had come for was **not in the building**."
+   },
+   {
+    "q": "What is funny about the pardon of 1908?",
+    "a": [
+     "the Kaiser pardoned a man who had succeeded only because of the imperial uniform",
+     "Voigt served only two of his four years in prison",
+     "the Kaiser had known Voigt personally",
+     "the town of Köpenick got its money back"
+    ],
+    "t": "recall",
+    "e": "The last line points at it: [[dessen Uniform dem Schuster alle Türen geöffnet hatte]]. The authority Voigt borrowed and the man who forgave him are **the same source**."
+   },
+   {
+    "q": "[[Am 16. Oktober 1906 stellte er sich in Berlin einer Gruppe Soldaten in den Weg.]] Why [[einer Gruppe]]?",
+    "a": [
+     "[[sich jemandem in den Weg stellen]] takes a dative object, and feminine dative of [[eine]] is [[einer]]",
+     "[[Gruppe]] is genitive here and shows possession",
+     "[[in]] takes the dative in every use",
+     "it is plural, and the plural dative ends in [[-er]]"
+    ],
+    "t": "rule",
+    "e": "Whoever gets blocked stands in the **dative**: [[Er stellte sich ihr in den Weg.]] [[die Gruppe]] is feminine, so the dative article is [[einer]]. Note that [[in den Weg]] in the same sentence is accusative, because there [[in]] describes **movement into a position** rather than a location."
+   },
+   {
+    "q": "[[Zehn Tage später wurde er gefasst und zu vier Jahren Haft verurteilt.]] Why [[wurde]] and not [[hatte]]?",
+    "a": [
+     "It is the passive: [[werden]] plus participle, so Voigt is the one **caught**, not the catcher",
+     "[[werden]] is the normal past auxiliary for verbs of motion",
+     "[[wurde]] marks a future seen from the past",
+     "it is Konjunktiv II and reports a rumour"
+    ],
+    "t": "rule",
+    "e": "[[werden]] plus a past participle is the passive: [[er wurde gefasst]] means he was caught. Active, it would be [[Die Polizei fasste ihn.]] The passive keeps Voigt as the subject and lets the sentence say nothing about who did it – and one [[wurde]] serves both participles, [[gefasst]] and [[verurteilt]]."
+   },
+   {
+    "q": "[[Also kaufte er sich in Trödelläden Stück für Stück eine gebrauchte Offiziersuniform.]] Why [[eine gebrauchte]] and not [[eine gebrauchtes]]?",
+    "a": [
+     "[[Uniform]] is feminine and the accusative object, and after [[eine]] the adjective takes [[-e]]",
+     "[[gebraucht]] never changes its ending",
+     "the [[-e]] is copied from the plural [[Trödelläden]]",
+     "after [[kaufen]] adjectives always end in [[-e]]"
+    ],
+    "t": "rule",
+    "e": "The noun is [[die Uniform]], the direct object of [[kaufen]], so feminine accusative – which after [[eine]] gives the adjective [[-e]]. Feminine nominative and accusative look identical here. The [[sich]] is a separate point: it is a **dative** reflexive, he bought it for himself."
+   }
+  ],
+  "part": "Geschichte"
+ },
+ {
+  "id": "die-warnung",
+  "title": "Die Warnung",
+  "level": "B2",
+  "paragraphs": [
+   "Im Jahr 9 nach Christus verwaltete Publius Quinctilius Varus die junge römische Provinz in Germanien. Sein wichtigster Verbündeter war Arminius, ein cheruskischer Fürst, der in Rom ausgebildet worden war und das römische Bürgerrecht besaß. Varus vertraute ihm vollkommen.",
+   "Bei einem Gastmahl nahm ihn ein anderer Cherusker beiseite. Segestes erklärte, Arminius plane einen Aufstand; Varus solle ihn und die übrigen Fürsten sofort festnehmen lassen – und ihn, Segestes, gleich mit, damit kein Unschuldiger falsch beurteilt werde. Varus hielt das für Neid unter Nachbarn und aß weiter.",
+   "Kurz darauf führte Arminius die Legionen in ein unwegsames Waldgebiet, aus dem es kein Entkommen gab. Drei Legionen wurden über mehrere Tage aufgerieben; Varus stürzte sich in sein Schwert. In Rom soll Augustus monatelang mit dem Kopf gegen die Türen geschlagen und dabei immer wieder gerufen haben: „Varus, gib mir meine Legionen zurück!“ Die Nummern XVII, XVIII und XIX hat Rom nie wieder vergeben."
+  ],
+  "glossary": [
+   [
+    "verwalten",
+    "to govern, to administer"
+   ],
+   [
+    "der Verbündete",
+    "ally"
+   ],
+   [
+    "der Fürst",
+    "prince, chieftain"
+   ],
+   [
+    "das Gastmahl",
+    "banquet, feast"
+   ],
+   [
+    "der Aufstand",
+    "uprising, revolt"
+   ],
+   [
+    "festnehmen",
+    "to arrest"
+   ],
+   [
+    "der Neid",
+    "envy"
+   ],
+   [
+    "unwegsam",
+    "trackless, hard to cross"
+   ],
+   [
+    "aufreiben",
+    "to wear down, to wipe out"
+   ],
+   [
+    "vergeben",
+    "to assign, to allocate"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "Why did Varus trust his ally Arminius so completely?",
+    "a": [
+     "Arminius had been trained in Rome and held Roman citizenship",
+     "Segestes had vouched for him",
+     "Arminius was married to Varus's daughter",
+     "Arminius commanded a Roman legion himself"
+    ],
+    "t": "recall",
+    "e": "The relative clause in paragraph one does all the work: [[der in Rom ausgebildet worden war und das römische Bürgerrecht besaß]]. On paper Arminius was **a Roman**, and Varus read the paper."
+   },
+   {
+    "q": "What exactly did Segestes propose to Varus?",
+    "a": [
+     "arresting Arminius, the other chieftains and Segestes himself",
+     "arresting Arminius alone",
+     "withdrawing the legions to Rome at once",
+     "paying Arminius more money"
+    ],
+    "t": "recall",
+    "e": "[[Varus solle ihn und die übrigen Fürsten sofort festnehmen lassen – und ihn, Segestes, gleich mit.]] The informer asked to be arrested **together with the men he was informing on**."
+   },
+   {
+    "q": "What reason does Segestes give for wanting to be arrested as well?",
+    "a": [
+     "so that no innocent man would be judged wrongly",
+     "because he had taken part in the uprising himself",
+     "because he feared Arminius's revenge",
+     "because he wanted to travel to Rome"
+    ],
+    "t": "recall",
+    "e": "The text gives his stated reason word for word: [[damit kein Unschuldiger falsch beurteilt werde]] – lock everyone up first, work out the guilt afterwards. The other options are plausible motives, but **not what the piece says**."
+   },
+   {
+    "q": "What does the last sentence say about the scale of the defeat?",
+    "a": [
+     "Rome never issued the three legions' numbers again",
+     "Rome merged the three legions into others",
+     "the numbers counted as unlucky in Rome afterwards",
+     "Augustus forbade anyone to speak the name Varus"
+    ],
+    "t": "recall",
+    "e": "[[Die Nummern XVII, XVIII und XIX hat Rom nie wieder vergeben.]] An army that numbers around a gap for the next four centuries is admitting **the gap stays**."
+   },
+   {
+    "q": "[[Segestes erklärte, Arminius plane einen Aufstand.]] Why [[plane]] and not [[plant]]?",
+    "a": [
+     "Konjunktiv I marks reported speech: this is Segestes's claim, not the narrator's",
+     "it is Konjunktiv II and describes something unreal",
+     "it is the imperative",
+     "it is an older spelling of [[plant]]"
+    ],
+    "t": "rule",
+    "e": "German reports what someone said with the **Konjunktiv I**, built from the infinitive stem plus [[-e]]: [[er plant]] becomes [[er plane]], [[er soll]] becomes [[er solle]], and the passive [[wird beurteilt]] becomes [[werde beurteilt]] – all three appear in this paragraph. The mood tells you the writer is passing the accusation on without endorsing it."
+   },
+   {
+    "q": "[[Arminius, ein cheruskischer Fürst, der in Rom ausgebildet worden war]] – why [[worden]] and not [[geworden]]?",
+    "a": [
+     "In the passive the participle of [[werden]] is [[worden]]; [[geworden]] belongs to [[werden]] meaning **to become**",
+     "[[geworden]] is simply the older form",
+     "[[worden]] is used after [[war]] but never after [[ist]]",
+     "the prefix drops inside a relative clause"
+    ],
+    "t": "rule",
+    "e": "One verb, two participles. As a full verb: [[Er ist Offizier geworden.]] As the passive auxiliary: [[Er war ausgebildet worden.]] Here it is the pluperfect passive, which places his Roman training **before** everything else in the story."
+   },
+   {
+    "q": "[[In Rom soll Augustus monatelang mit dem Kopf gegen die Türen geschlagen haben.]] What does [[soll ... haben]] mean here?",
+    "a": [
+     "It is reported that he did – the writer passes the story on without vouching for it",
+     "he had orders to do it",
+     "he was forced to do it",
+     "he wanted to do it but did not"
+    ],
+    "t": "rule",
+    "e": "This is the **subjective** use of a modal verb: [[sollen]] plus a perfect infinitive means *he is said to have*. Compare [[Er will das gesehen haben]] (**he claims** to have seen it) and [[Er muss das gesehen haben]] (**he must** have seen it). It is how German quietly labels a second-hand story."
+   }
+  ],
+  "part": "Geschichte"
+ },
+ {
+  "id": "was-uebrig-bleibt",
+  "title": "Was übrig bleibt",
+  "level": "B1",
+  "paragraphs": [
+   "Im Winter 1619 saß Descartes allein in einem warmen Zimmer und beschloss, alles zu bezweifeln, was er zu wissen glaubte. Seine Augen hatten ihn schon oft getäuscht, also traute er ihnen nicht mehr. Im Traum hatte er ebenso fest geglaubt, dass er wach war. Warum sollte er es jetzt besser wissen? Vielleicht, so dachte er, gab es sogar einen bösen Geist, der ihm die ganze Welt nur vorspielte.",
+   "Am Ende blieb ihm nichts. Der Himmel, sein Körper, sogar die Zahlen — alles konnte falsch sein. Doch dann fiel ihm etwas auf: Wenn ihn jemand täuscht, muss es jemanden geben, der getäuscht wird. Solange er zweifelte, war er da. „Ich denke, also bin ich“ ist deshalb kein gewöhnlicher Beweis, sondern ein Satz, der wahr wird, sobald jemand ihn denkt.",
+   "Ob damit wirklich ein „Ich“ bewiesen ist, haben spätere Philosophen bestritten; vielleicht zeigt der Gedanke nur, dass gerade gedacht wird. Versuchen Sie es trotzdem einmal ernsthaft: Denken Sie den Satz „Ich existiere nicht“. Es geht nicht — und Sie merken sofort, warum."
+  ],
+  "glossary": [
+   [
+    "bezweifeln",
+    "to doubt, to call into question"
+   ],
+   [
+    "trauen",
+    "to trust (+ dative)"
+   ],
+   [
+    "täuschen",
+    "to deceive"
+   ],
+   [
+    "jemandem etwas vorspielen",
+    "to fake something for someone"
+   ],
+   [
+    "auffallen",
+    "to strike someone, to be noticed"
+   ],
+   [
+    "der Beweis",
+    "proof"
+   ],
+   [
+    "gewöhnlich",
+    "ordinary"
+   ],
+   [
+    "bestreiten",
+    "to dispute, to deny"
+   ],
+   [
+    "ernsthaft",
+    "seriously"
+   ],
+   [
+    "sofort",
+    "immediately"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "Why did Descartes stop trusting his eyes?",
+    "a": [
+     "because they had already deceived him many times",
+     "because the room was too dark",
+     "because his sight was poor in winter",
+     "because an evil spirit had taken his eyes away"
+    ],
+    "t": "recall",
+    "e": "The second sentence gives the reason: [[Seine Augen hatten ihn schon oft getäuscht.]] It is not about poor eyesight, but about the fact that they have been wrong before — for him that is enough."
+   },
+   {
+    "q": "What strikes Descartes in the middle of his doubting?",
+    "a": [
+     "if someone is being deceived, then that someone must exist",
+     "an evil spirit cannot be stronger than a human being",
+     "numbers are the only thing that stays certain",
+     "nobody can think without a body"
+    ],
+    "t": "recall",
+    "e": "The text says: [[Wenn ihn jemand täuscht, muss es jemanden geben, der getäuscht wird.]] The doubting itself needs a doubter — and that is exactly what survives the doubt."
+   },
+   {
+    "q": "What do the later philosophers dispute in the third paragraph?",
+    "a": [
+     "that the thought really proves an [[Ich]]",
+     "that Descartes really did doubt in the winter of 1619",
+     "that one is allowed to doubt one's own eyes",
+     "that there could be an evil spirit"
+    ],
+    "t": "recall",
+    "e": "Their objection comes straight afterwards: [[vielleicht zeigt der Gedanke nur, dass gerade gedacht wird]] — thinking without a thinker, in other words. The piece leaves the quarrel open."
+   },
+   {
+    "q": "What is the reader meant to notice at the end?",
+    "a": [
+     "that somebody has to be there to think the sentence",
+     "that the sentence [[Ich existiere nicht]] is grammatically wrong",
+     "that Descartes never believed his own sentence",
+     "that one should not think about oneself"
+    ],
+    "t": "recall",
+    "e": "[[Es geht nicht]] does not mean the sentence is forbidden, but that it refutes itself in the very act of being thought: whoever thinks it is already there. The reader is made to have exactly the experience Descartes had."
+   },
+   {
+    "q": "[[Seine Augen hatten ihn schon oft getäuscht, also traute er ihnen nicht mehr.]] Why [[ihnen]] and not [[sie]]?",
+    "a": [
+     "because [[trauen]] always takes the dative",
+     "because [[Augen]] is plural",
+     "because the verb stands at the end of the sentence",
+     "because [[also]] triggers the dative"
+    ],
+    "t": "rule",
+    "e": "You trust [[jemandem]], not [[jemanden]] — [[trauen]] belongs to the verbs with a dative object, like [[helfen]], [[danken]] and [[glauben]]. The plural on its own changes nothing: in the accusative it would be [[sie]], in the dative [[ihnen]]."
+   },
+   {
+    "q": "[[Vielleicht gab es einen bösen Geist, der ihm die ganze Welt nur vorspielte.]] Why [[der]] and not [[den]]?",
+    "a": [
+     "because the relative pronoun is the subject of its own clause",
+     "because [[Geist]] is masculine and therefore always takes [[der]]",
+     "because it refers back to [[vielleicht]]",
+     "because the nominative always follows a comma"
+    ],
+    "t": "rule",
+    "e": "A relative pronoun takes gender and number from the noun it refers back to ([[der Geist]], masculine singular), but its case from its own role in the relative clause. There the spirit is the one doing the faking, so it is the subject: nominative [[der]]. Were it the object, it would be [[den]]."
+   },
+   {
+    "q": "[[Ob damit wirklich ein „Ich“ bewiesen ist, haben spätere Philosophen bestritten.]] Why does [[haben]] come before [[spätere Philosophen]]?",
+    "a": [
+     "because the whole subordinate clause fills the first position, and the verb has to stay second",
+     "because the subject moves to the back in questions",
+     "because [[ob]] forces the main clause to reorder",
+     "because the Perfekt pushes the subject behind the auxiliary"
+    ],
+    "t": "rule",
+    "e": "In a main clause the conjugated verb stands in second position — and what is counted is not words but sentence elements. The whole [[ob]]-clause is a single element in position one, so [[haben]] follows immediately and the subject comes only after it. Exactly the same happens in [[Gestern kam er]]."
+   }
+  ],
+  "part": "Philosophie"
+ },
+ {
+  "id": "ein-kleiner-kredit",
+  "title": "Ein kleiner Kredit",
+  "level": "B2",
+  "paragraphs": [
+   "Sie brauchen dringend Geld und wissen genau, dass Sie es nie zurückzahlen können. Ein Bekannter leiht es Ihnen nur, wenn Sie ihm versprechen, alles nächsten Monat zurückzugeben. Also versprechen Sie es. Kant fragt nun nicht, ob dadurch jemand geschädigt wird, und auch nicht, ob Sie ein schlechtes Gewissen haben. Er stellt eine ganz andere Frage.",
+   "Stellen Sie sich vor, Ihre Regel gelte für alle: Wer Geld braucht, verspricht, was er nicht halten kann. Wäre das der Fall, würde niemand mehr einem Versprechen glauben. Dann aber ließe sich mit einem Versprechen überhaupt kein Geld mehr beschaffen — die Handlung, die Sie planen, wäre in einer solchen Welt schlicht unmöglich. Das ist Kants Pointe: Die Lüge scheitert nicht an ihren Folgen, sondern an sich selbst. Damit Ihr Trick funktioniert, müssen Sie eine Ausnahme von genau der Regel machen, von der Sie leben.",
+   "Ob dieser Test wirklich jede moralische Frage entscheidet, wird bis heute bestritten. Der Kern bleibt aber bestehen: Manche Handlungen sind nicht deshalb falsch, weil sie schaden, sondern weil sie nur funktionieren, solange fast niemand sie begeht."
+  ],
+  "glossary": [
+   [
+    "zurückzahlen",
+    "to pay back"
+   ],
+   [
+    "das Gewissen",
+    "conscience"
+   ],
+   [
+    "schädigen",
+    "to harm, to do damage to"
+   ],
+   [
+    "gelten für",
+    "to apply to, to hold for"
+   ],
+   [
+    "beschaffen",
+    "to obtain, to procure"
+   ],
+   [
+    "die Pointe",
+    "the point, the punchline"
+   ],
+   [
+    "scheitern an",
+    "to fail because of"
+   ],
+   [
+    "die Ausnahme",
+    "exception"
+   ],
+   [
+    "bestreiten",
+    "to dispute, to contest"
+   ],
+   [
+    "begehen",
+    "to commit (an act)"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "Which question is the one Kant does **not** ask in this example?",
+    "a": [
+     "whether the promise does anyone any harm",
+     "whether the rule could hold for everyone",
+     "whether the action would still be possible in such a world",
+     "whether the trick depends on an exception"
+    ],
+    "t": "recall",
+    "e": "The first paragraph expressly rules two questions out: the harm and the bad conscience. The other three options are precisely the questions Kant **does** ask in the second paragraph — which is what makes them tempting, and wrong."
+   },
+   {
+    "q": "Why would the planned action be impossible in a world where everyone behaved that way?",
+    "a": [
+     "because nobody would believe a promise any more, so no money could be raised with one",
+     "because lending money would then be forbidden",
+     "because nobody in that world would own any money",
+     "because everyone would be forced to keep their promises"
+    ],
+    "t": "recall",
+    "e": "The chain is in the second paragraph: everyone promises falsely, so nobody believes promises, so with a promise [[ließe sich überhaupt kein Geld mehr beschaffen]]. Not a ban and not a shortage of money — the means itself becomes worthless."
+   },
+   {
+    "q": "What does the sentence mean when it says you would have to make an exception to the very rule you live off?",
+    "a": [
+     "the trick depends on everyone else going on taking promises seriously",
+     "Kant permits exceptions when the need is great enough",
+     "rules apply only to the people who set them up",
+     "one should at least keep to the rules one has chosen oneself"
+    ],
+    "t": "recall",
+    "e": "Your false promise works only because promises otherwise hold. So you live off a practice that you undermine in the same moment — that is the contradiction, not the harm done to your acquaintance."
+   },
+   {
+    "q": "What does the last paragraph concede?",
+    "a": [
+     "that it is disputed whether the test settles every moral question",
+     "that Kant did not take his own principle seriously",
+     "that promises may be broken in an emergency",
+     "that the consequences of an action are what decide after all"
+    ],
+    "t": "recall",
+    "e": "[[wird bis heute bestritten]] touches only the reach of the test, not its core. In the same paragraph the piece holds on to that core, so it gives neither Kant nor his critics the whole argument."
+   },
+   {
+    "q": "[[Wäre das der Fall, würde niemand mehr einem Versprechen glauben.]] Why does [[wäre]] stand right at the front?",
+    "a": [
+     "because it is a conditional clause with [[wenn]] left out",
+     "because it is a question",
+     "because Konjunktiv II always pulls the verb forward",
+     "because the main clause begins with [[würde]]"
+    ],
+    "t": "rule",
+    "e": "Leave [[wenn]] out and the conjugated verb moves into its place at the front: [[Wenn das der Fall wäre]] becomes [[Wäre das der Fall]]. The meaning is identical, the tone only a little more elevated. The clause that follows then likes to open with [[dann]] or [[so]]."
+   },
+   {
+    "q": "[[Dann ließe sich mit einem Versprechen kein Geld mehr beschaffen.]] What does [[ließe sich beschaffen]] mean?",
+    "a": [
+     "no money could be raised",
+     "nobody wanted to raise money any more",
+     "somebody had the money raised by others",
+     "the money was simply left lying there"
+    ],
+    "t": "rule",
+    "e": "[[sich lassen]] plus an infinitive is a substitute for the passive with the sense of **can be done**: [[Das lässt sich machen]] = [[Das kann gemacht werden]]. Here it is in Konjunktiv II, because the whole world in question is only being supposed."
+   },
+   {
+    "q": "[[eine Ausnahme von genau der Regel, von der Sie leben]] — why [[von der]]?",
+    "a": [
+     "because [[leben von]] calls for the preposition, and that preposition governs the dative",
+     "because a relative pronoun after a comma is always dative",
+     "because [[Regel]] is feminine and therefore takes [[der]]",
+     "because [[genau]] demands a preposition"
+    ],
+    "t": "rule",
+    "e": "The verb in the relative clause is [[leben von]]; [[von]] governs the dative, hence the feminine dative [[der]]. Unlike English, the preposition stays glued to the relative pronoun and travels forward with it: **the rule you live off** is [[die Regel, von der Sie leben]] — stranding the preposition at the end is impossible here."
+   }
+  ],
+  "part": "Philosophie"
+ },
+ {
+  "id": "die-uhr-aus-licht",
+  "title": "Die Uhr aus Licht",
+  "level": "B2",
+  "paragraphs": [
+   "Stell dir eine Uhr vor, die nur aus zwei Spiegeln besteht. Zwischen ihnen springt ein Lichtblitz auf und ab; jede Rückkehr ist ein Tick. Steht die Uhr still, läuft das Licht senkrecht — den kürzesten Weg.",
+   "Nun stellst du dieselbe Uhr in einen fahrenden Zug. Vom Bahnsteig aus gesehen springt der Blitz nicht mehr senkrecht, sondern schräg, denn der obere Spiegel ist inzwischen weitergefahren. Der Weg ist also länger. Und hier kommt die eine Tatsache, die gemessen und nicht erfunden wurde: Licht ist für jeden Beobachter gleich schnell. Ein längerer Weg bei gleicher Geschwindigkeit bedeutet mehr Zeit pro Tick. Die Uhr im Zug geht langsamer.",
+   "Für die Reisende im Zug ist nichts seltsam: ihr Blitz springt senkrecht, ihre Uhr geht normal, und es ist der Bahnsteig, dessen Uhren nachgehen. Beide haben recht, solange der Zug gleichmäßig fährt. Und es ist keine Eigenart der Spiegel — Herzschlag, Zerfall, Gedanke: alles verlangsamt sich mit, weil es die Zeit selbst ist, die gedehnt wird."
+  ],
+  "glossary": [
+   [
+    "der Spiegel",
+    "mirror"
+   ],
+   [
+    "der Lichtblitz",
+    "flash of light"
+   ],
+   [
+    "senkrecht",
+    "vertical, straight up"
+   ],
+   [
+    "schräg",
+    "slanted, at an angle"
+   ],
+   [
+    "der Zerfall",
+    "decay"
+   ],
+   [
+    "nachgehen",
+    "to run slow (of a clock)"
+   ],
+   [
+    "die Eigenart",
+    "quirk, peculiarity"
+   ],
+   [
+    "dehnen",
+    "to stretch"
+   ],
+   [
+    "gleichmäßig",
+    "steady, even"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "What counts as one tick of this clock?",
+    "a": [
+     "the flash going up to the far mirror and back again",
+     "one second on the platform clock",
+     "the flash leaving the lower mirror",
+     "the train passing the length of one mirror"
+    ],
+    "t": "recall",
+    "e": "[[jede Rückkehr ist ein Tick]] — a tick is the complete return trip, not the outward leg on its own."
+   },
+   {
+    "q": "Seen from the platform, why does the flash no longer travel straight up?",
+    "a": [
+     "the upper mirror has moved on while the light was in flight",
+     "the light is bent by the speed of the train",
+     "the mirrors sit further apart when the train moves",
+     "the platform observer is standing at an angle to the train"
+    ],
+    "t": "recall",
+    "e": "[[denn der obere Spiegel ist inzwischen weitergefahren]] — the target has slid sideways, so the light has to go diagonally to reach it."
+   },
+   {
+    "q": "The flash covers a longer path. What does the piece conclude from that, and why?",
+    "a": [
+     "a tick must take more time, because the speed of light is the same for everyone",
+     "the light must travel faster, because the train's speed is added to it",
+     "the tick must be shorter, because the light has further to go",
+     "nothing follows, because the two observers cannot be compared"
+    ],
+    "t": "recall",
+    "e": "[[Ein längerer Weg bei gleicher Geschwindigkeit bedeutet mehr Zeit pro Tick.]] The speed cannot give — that is [[die eine Tatsache, die gemessen und nicht erfunden wurde]] — so the time has to. Adding the train's speed to the light's is precisely what does **not** happen."
+   },
+   {
+    "q": "How does the same situation look to the traveller sitting in the train?",
+    "a": [
+     "her own clock is normal, and it is the platform clocks that run slow",
+     "she watches her own clock falling behind",
+     "her flash also travels diagonally",
+     "her clock stops until the train does"
+    ],
+    "t": "recall",
+    "e": "[[ihr Blitz springt senkrecht, ihre Uhr geht normal, und es ist der Bahnsteig, dessen Uhren nachgehen. Beide haben recht]] — neither is mistaken. Note the condition the piece attaches: [[solange der Zug gleichmäßig fährt]]."
+   },
+   {
+    "q": "[[Vom Bahnsteig aus gesehen springt der Blitz nicht mehr senkrecht, sondern schräg.]] Why [[sondern]] and not [[aber]]?",
+    "a": [
+     "[[sondern]] replaces something that has just been denied; [[aber]] only adds a contrast",
+     "[[aber]] cannot follow a comma in German",
+     "[[sondern]] is required whenever [[nicht mehr]] appears",
+     "they are interchangeable, and [[sondern]] is simply more formal"
+    ],
+    "t": "rule",
+    "e": "[[sondern]] needs a negation in front of it and supplies the correction: not vertical **but instead** slanted. [[aber]] would let the negation stand and add a separate remark — [[Er springt nicht senkrecht, aber er ist schnell.]] Both are coordinating conjunctions, so neither sends the verb to the end."
+   },
+   {
+    "q": "[[… die eine Tatsache, die gemessen und nicht erfunden wurde …]] Why [[wurde]] here rather than [[hat]]?",
+    "a": [
+     "it is a passive — the fact was measured, and by whom is left unsaid",
+     "[[Tatsache]] is feminine, and feminine nouns take [[wurde]]",
+     "[[wurde]] is the Konjunktiv of [[werden]] and marks reported speech",
+     "a relative clause always uses [[wurde]] in the past"
+    ],
+    "t": "rule",
+    "e": "German builds the passive with [[werden]] plus a past participle: [[gemessen wurde]] = **was measured**. [[hat gemessen]] would be active and would need someone doing the measuring, but the point is the fact, not the physicist. The two participles [[gemessen]] and [[erfunden]] share the single [[wurde]] at the end of the clause."
+   },
+   {
+    "q": "[[Und es ist der Bahnsteig, ___ Uhren nachgehen.]] Which relative pronoun belongs in the gap?",
+    "a": [
+     "[[dessen]]",
+     "[[der]]",
+     "[[deren]]",
+     "[[den]]"
+    ],
+    "t": "gap",
+    "e": "The clocks **belong to** the platform, so the relative pronoun is genitive. [[Bahnsteig]] is masculine, and the masculine and neuter genitive form is [[dessen]]; [[deren]] is the feminine and plural one. [[der]] and [[den]] would make the platform the subject or the object of [[nachgehen]], which is not what is meant. Note that [[Uhren]] then takes no article of its own."
+   }
+  ],
+  "part": "Wissenschaft"
+ },
+ {
+  "id": "der-zweite-pass",
+  "title": "Der zweite Pass",
+  "level": "B1",
+  "paragraphs": [
+   "Zwei Täler, dazwischen ein Gebirge. Im linken Tal stehen die Ausgangsstoffe, im rechten liegt das Produkt — tiefer, also günstiger. Trotzdem passiert nichts, denn zuerst muss jedes Molekül über den Kamm. Nur wenige haben dafür genug Schwung. Die Reaktion läuft, aber quälend langsam.",
+   "Ein Katalysator schiebt nun niemanden über den Berg. Er baut auch das rechte Tal nicht tiefer. Er öffnet einen zweiten, niedrigeren Pass. Plötzlich schaffen es viel mehr Moleküle hinüber, und was Jahre gedauert hätte, ist in Sekunden vorbei.",
+   "Zwei Dinge folgen daraus. Erstens kommt der Katalysator am Ende unverändert wieder heraus — er macht mit, aber er wird nicht verbraucht, deshalb genügen winzige Mengen. Zweitens ändert er nur das Tempo, nie das Ziel. Liegt das rechte Tal höher, bleiben die meisten Moleküle links liegen — daran ändert der schönste Pass nichts. Ein Katalysator macht das Mögliche schnell — er macht das Unmögliche nicht möglich."
+  ],
+  "glossary": [
+   [
+    "das Tal",
+    "valley"
+   ],
+   [
+    "das Gebirge",
+    "mountain range"
+   ],
+   [
+    "der Ausgangsstoff",
+    "starting material, reactant"
+   ],
+   [
+    "der Kamm",
+    "ridge, crest"
+   ],
+   [
+    "der Schwung",
+    "momentum, energy"
+   ],
+   [
+    "quälend",
+    "agonisingly"
+   ],
+   [
+    "es hinüberschaffen",
+    "to make it across"
+   ],
+   [
+    "verbrauchen",
+    "to use up"
+   ],
+   [
+    "winzig",
+    "tiny"
+   ],
+   [
+    "genügen",
+    "to be enough"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "The right-hand valley lies lower than the left. Why does almost nothing happen anyway?",
+    "a": [
+     "every molecule has to get over the ridge first, and few have the energy",
+     "the molecules are more comfortable in the left valley",
+     "there is no route at all between the two valleys",
+     "the right-hand valley is too small to hold them"
+    ],
+    "t": "recall",
+    "e": "[[Trotzdem passiert nichts, denn zuerst muss jedes Molekül über den Kamm. Nur wenige haben dafür genug Schwung.]] Being downhill overall tells you nothing about how quickly you get there."
+   },
+   {
+    "q": "According to the piece, what does a catalyst actually do?",
+    "a": [
+     "it opens a second, lower way through the mountains",
+     "it pushes the molecules over the ridge",
+     "it makes the right-hand valley deeper",
+     "it gives the molecules more energy"
+    ],
+    "t": "recall",
+    "e": "[[Ein Katalysator schiebt nun niemanden über den Berg. Er baut auch das rechte Tal nicht tiefer. Er öffnet einen zweiten, niedrigeren Pass.]] The piece names the two things it does **not** do before naming the one it does."
+   },
+   {
+    "q": "Why are tiny quantities of catalyst enough?",
+    "a": [
+     "it comes out again unchanged, so the same catalyst can work over and over",
+     "it only needs to act once, at the very start",
+     "it spreads through the whole mixture",
+     "large quantities would make the reaction too fast"
+    ],
+    "t": "recall",
+    "e": "[[er macht mit, aber er wird nicht verbraucht, deshalb genügen winzige Mengen]]. This is where the mountain-pass picture is imperfect, and the piece admits it with [[er macht mit]]: a real catalyst takes chemical part in the reaction — it is simply handed back at the end."
+   },
+   {
+    "q": "What does the piece say happens if the right-hand valley lies higher than the left?",
+    "a": [
+     "most molecules stay on the left, and the finest pass changes nothing about that",
+     "the catalyst has to open two passes instead of one",
+     "the reaction runs, but only in the other direction",
+     "the catalyst pulls the right-hand valley down until it works"
+    ],
+    "t": "recall",
+    "e": "[[Liegt das rechte Tal höher, bleiben die meisten Moleküle links liegen — daran ändert der schönste Pass nichts.]] That is what the closing line means: [[Ein Katalysator macht das Mögliche schnell — er macht das Unmögliche nicht möglich.]] A catalyst moves the speed, never the destination."
+   },
+   {
+    "q": "[[Er öffnet einen zweiten, niedrigeren Pass.]] Why do both adjectives end in [[-en]]?",
+    "a": [
+     "[[einen]] already shows masculine accusative, so the adjectives take [[-en]]",
+     "adjectives listed one after another always end in [[-en]]",
+     "[[Pass]] is a weak noun and pulls [[-en]] onto its adjectives",
+     "the phrase is plural"
+    ],
+    "t": "rule",
+    "e": "[[der Pass]] is masculine and [[öffnen]] takes an accusative object, so the article is [[einen]]. After an [[ein]]-word in the masculine accusative the adjective ending is [[-en]], and a second adjective simply takes the same ending. In the nominative it would read [[ein zweiter, niedrigerer Pass]] — that is where the difference shows."
+   },
+   {
+    "q": "[[… und was Jahre gedauert hätte, ist in Sekunden vorbei.]] What does [[gedauert hätte]] tell you?",
+    "a": [
+     "it would have taken years — but, thanks to the catalyst, it did not",
+     "it did in fact take years",
+     "it is going to take years",
+     "it is a polite way of saying it took a long time"
+    ],
+    "t": "rule",
+    "e": "[[hätte]] plus a past participle is Konjunktiv II in the past: **would have** lasted. It describes the branch that did not happen. The plain [[hat gedauert]] would claim the opposite — that it really did drag on for years."
+   },
+   {
+    "q": "[[___ das rechte Tal höher, bleiben die meisten Moleküle links liegen.]] Which word opens the sentence?",
+    "a": [
+     "[[Liegt]]",
+     "[[Wenn]]",
+     "[[Liegen]]",
+     "[[Weil]]"
+    ],
+    "t": "gap",
+    "e": "German can drop [[wenn]] and mark the condition by putting the verb first instead: [[Liegt das rechte Tal höher, …]] means the same as [[Wenn das rechte Tal höher liegt, …]]. It has to be the singular [[liegt]], because the subject is [[das rechte Tal]]. And because that whole clause fills the first slot, the main clause then starts with its own verb, [[bleiben]]."
+   }
+  ],
+  "part": "Wissenschaft"
+ }
+]
