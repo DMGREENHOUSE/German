@@ -406,6 +406,7 @@
 
   function renderOptions(q) {
     $('typedWrap').hidden = true;
+    $('typedInput').value = '';   // never leave the last typed answer lying about
     var box = $('options');
     box.hidden = false;
     box.innerHTML = '';
