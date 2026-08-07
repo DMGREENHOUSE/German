@@ -12,6 +12,7 @@
 
   var PAGEMAP = window.PAGEMAP || { parts: [] };
   var QUESTIONS = window.QUESTIONS || [];
+  var TYPED = window.TYPED;
 
   // The second axis: what a question asks you to do, independent of the topic.
   var TYPES = [
@@ -106,6 +107,7 @@
     selected: {},        // partId -> bool
     types: {},           // typeId -> bool
     count: 20,
+    typed: false,        // true = type the answer wherever the question allows
     queue: [],
     index: 0,
     round: 0,            // 0 = the first pass, 1+ = review rounds
@@ -324,10 +326,25 @@
     $('reader').hidden = true;
     $('nextBtn').hidden = true;
 
+    if (askByTyping(q)) return renderTypedInput();
+    renderOptions(q);
+  }
+
+  // Typing is asked for only when the learner wants it AND the question has a
+  // form short enough to type. "Which of these nouns is neuter?" keeps its
+  // options whatever the setting, because without them there is no question.
+  function askByTyping(q) {
+    return state.typed && !!TYPED && TYPED.isTypable(q);
+  }
+
+  function renderOptions(q) {
+    $('typedWrap').hidden = true;
+    var box = $('options');
+    box.hidden = false;
+    box.innerHTML = '';
+
     // shuffle the options, remembering which one is correct
     var order = shuffle(q.a.map(function (text, i) { return { text: text, ok: i === q.c }; }));
-    var box = $('options');
-    box.innerHTML = '';
     order.forEach(function (opt, i) {
       var btn = document.createElement('button');
       btn.type = 'button';
@@ -344,18 +361,50 @@
     });
   }
 
+  function renderTypedInput() {
+    $('options').hidden = true;
+    $('options').innerHTML = '';
+    $('typedWrap').hidden = false;
+
+    var input = $('typedInput');
+    input.value = '';
+    input.disabled = false;
+    input.className = 'typedinput';
+    $('checkBtn').disabled = false;
+    input.focus({ preventScroll: true });
+  }
+
   function answer(btn, ok, q) {
     if (state.answeredThis) return;
     state.answeredThis = true;
 
     var buttons = $('options').querySelectorAll('.opt');
     Array.prototype.forEach.call(buttons, function (b) { b.disabled = true; });
+    btn.classList.add(ok ? 'correct' : 'wrong');
+    settle(ok, q);
+  }
 
+  // Check what was typed. A blank box is not an answer — it is not worth
+  // burning a question on, so it is ignored rather than marked wrong.
+  function answerTyped(q) {
+    if (state.answeredThis) return;
+    var input = $('typedInput');
+    if (!input.value.trim()) return;
+    state.answeredThis = true;
+
+    var ok = TYPED.matches(input.value, TYPED.plain(q.a[q.c]));
+    input.disabled = true;
+    $('checkBtn').disabled = true;
+    input.classList.add(ok ? 'correct' : 'wrong');
+    settle(ok, q);
+  }
+
+  // Everything after an answer is judged, whichever way it was given.
+  function settle(ok, q) {
     var fb = $('feedback');
     var fbText = $('feedbackText');
 
     if (ok) {
-      btn.classList.add('correct');
       if (!q._missedThisRound && state.round === 0) {
         state.firstTry++;
         state.byType[q._type].right++;
@@ -369,9 +418,8 @@
       return;
     }
 
-    // Wrong. The correct option is deliberately NOT revealed — the book page
+    // Wrong. The right answer is deliberately NOT revealed — the book page
     // opens instead and the same question is asked again.
-    btn.classList.add('wrong');
     if (!q._missedThisRound) {
       q._missedThisRound = true;
       state.roundMissed.push(q);
@@ -493,6 +541,7 @@
 
     loadSelection();
     loadTypeSelection();
+    state.typed = store('dg.typed') === '1';
     renderChapters();
     renderTypes();
 
@@ -534,16 +583,24 @@
     $('againBtn').addEventListener('click', startQuiz);
     $('homeBtn').addEventListener('click', function () { show('setup'); });
 
+    $('checkBtn').addEventListener('click', function () {
+      answerTyped(state.queue[state.index]);
+    });
+
     // keyboard: 1-4 pick an answer, Enter moves on
     document.addEventListener('keydown', function (ev) {
       if ($('quiz').hidden) return;
-      if (ev.key >= '1' && ev.key <= '4') {
+      var typing = !$('typedWrap').hidden;
+
+      // 1-4 are digits someone may legitimately be typing into the box
+      if (!typing && ev.key >= '1' && ev.key <= '4') {
         var btns = $('options').querySelectorAll('.opt');
         var b = btns[parseInt(ev.key, 10) - 1];
         if (b && !b.disabled) b.click();
       } else if (ev.key === 'Enter') {
         if (!$('nextBtn').hidden) $('nextBtn').click();
         else if (!$('reader').hidden) $('retryBtn').click();
+        else if (typing) answerTyped(state.queue[state.index]);
       }
     });
 

@@ -239,6 +239,53 @@ h1 { font-size: clamp(1.5rem, 6vw, 2rem); margin: 0 0 .4rem; letter-spacing: -.0
 }
 .quizmeta .linkbtn { margin-left: auto; }
 
+/* ---------- typed answers ---------- */
+.typed {
+  display: flex;
+  gap: .6rem;
+  margin: 1rem 0 0;
+  flex-wrap: wrap;
+}
+.typedinput {
+  flex: 1 1 14rem;
+  font: inherit;
+  font-size: 1.05rem;
+  padding: .7rem .85rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.typedinput:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, .16);
+}
+.typedinput.correct {
+  border-color: var(--good);
+  background: var(--goodbg);
+  color: var(--good);
+  font-weight: 600;
+}
+.typedinput.wrong {
+  border-color: var(--bad);
+  background: var(--badbg);
+  color: var(--bad);
+  font-weight: 600;
+}
+.typed .primary { flex: 0 0 auto; }
+
+/* visible to screen readers, not on screen */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 /* the review-round banner: the quiz looks identical otherwise, so this is
    what tells the learner these questions are the ones they already missed */
 .roundbanner {

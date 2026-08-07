@@ -85,6 +85,14 @@
 
     <div id="options" class="options" role="group" aria-label="Answer options"></div>
 
+    <div id="typedWrap" class="typed" hidden>
+      <label class="visually-hidden" for="typedInput">Type your answer</label>
+      <input id="typedInput" class="typedinput" type="text" lang="de"
+             autocomplete="off" autocapitalize="off" autocorrect="off"
+             spellcheck="false" placeholder="Type your answer">
+      <button type="button" id="checkBtn" class="primary">Check</button>
+    </div>
+
     <div id="feedback" class="feedback" hidden>
       <p id="feedbackText"></p>
     </div>
@@ -124,6 +132,7 @@
   <a href="book.pdf" target="_blank" rel="noopener">Download the PDF</a>
 </footer>
 
+<script src="js/typed.js"></script>
 <script src="js/pagemap.js"></script>
 <script src="js/questions.js"></script>
 <script src="js/questions-vocab.js"></script>
