@@ -35,13 +35,14 @@ $(DOCS)/pages/page-01.png: $(PDF)
 
 # regenerate the vocabulary question bank from the book
 questions:
-	python3 $(TOOLS)/make-vocab-questions.py 9
+	python3 $(TOOLS)/make-vocab-questions.py 60
 
 # re-sort the vocabulary lists alphabetically
 sort:
 	python3 $(TOOLS)/sort-vocabulary.py
 
 check:
+	node $(TOOLS)/test-typed.js
 	python3 $(TOOLS)/check-tables.py
 	python3 $(TOOLS)/sort-vocabulary.py --check
 	python3 $(TOOLS)/check-one-page.py $(BOOK)/main.toc
