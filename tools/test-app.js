@@ -41,7 +41,8 @@ window.scrollTo = () => {};
 window.Element.prototype.scrollIntoView = function () {};
 
 // jsdom does not fetch <script src>, so inject the three files by hand
-for (const f of ['js/pagemap.js', 'js/questions.js', 'js/questions-vocab.js', 'js/app.js']) {
+for (const f of ['js/typed.js', 'js/pagemap.js', 'js/questions.js',
+                 'js/questions-vocab.js', 'js/app.js']) {
   const el = doc.createElement('script');
   el.textContent = fs.readFileSync(path.join(docs, f), 'utf8');
   doc.body.appendChild(el);
@@ -270,6 +271,75 @@ check('review links to the page image',
 // a second run should score fresh
 $('againBtn').click();
 check('second run resets the score', $('score').textContent === '0 right first time');
+
+console.log('\ntyped answers');
+$('quitBtn').click();
+$('homeBtn').click();
+check('multiple choice is on by default', $('mcBox').checked);
+check('the count says so', /four options/.test($('typedCount').textContent),
+  $('typedCount').textContent);
+
+$('mcBox').click();
+check('unticking reports how much can be typed',
+  /can be typed/.test($('typedCount').textContent), $('typedCount').textContent);
+
+doc.querySelector('.segmented button[data-count="40"]').click();
+$('startBtn').click();
+
+// walk the quiz answering correctly, whichever form each question takes
+let typedAsked = 0, optionAsked = 0, wrongDone = false, guard = 0;
+while ($('results').hidden && guard++ < 400) {
+  const q = currentQuestion();
+  if (!$('typedWrap').hidden) {
+    typedAsked++;
+    const want = window.TYPED.plain(q.a[q.c]);
+    if (!wrongDone) {
+      wrongDone = true;
+      $('typedInput').value = 'zzzznotananswer';
+      $('checkBtn').click();
+      check('a wrong typed answer opens the book page', visible('reader'));
+      check('the input is marked wrong', /wrong/.test($('typedInput').className));
+      check('the answer is not revealed', !/zzzznotananswer/.test($('feedbackText').textContent));
+      check('next is withheld until it is right', !visible('nextBtn'));
+      $('retryBtn').click();
+      check('retry clears the box', $('typedInput').value === '');
+      check('retry re-enables the box', !$('typedInput').disabled);
+      continue;
+    }
+    $('typedInput').value = want;
+    $('checkBtn').click();
+    if ($('nextBtn').hidden) {
+      check('typed answer accepted: ' + want, false, strip(q.q));
+      break;
+    }
+  } else {
+    optionAsked++;
+    optionButtons()[correctIndexOnScreen()].click();
+  }
+  $('nextBtn').click();
+}
+check('typed questions were asked', typedAsked > 0, 'typed ' + typedAsked);
+check('untypable questions fell back to options', optionAsked > 0,
+  'options ' + optionAsked);
+check('the quiz still reaches the results', visible('results'));
+
+// an empty box must not burn the question
+$('homeBtn').click();
+doc.querySelector('.segmented button[data-count="40"]').click();
+$('startBtn').click();
+while ($('typedWrap').hidden) {           // walk on to a typed one
+  optionButtons()[correctIndexOnScreen()].click();
+  $('nextBtn').click();
+}
+$('typedInput').value = '   ';
+$('checkBtn').click();
+check('a blank answer is ignored, not marked wrong', !visible('feedback'));
+check('the box stays live after a blank submit', !$('typedInput').disabled);
+
+// umlauts typed the keyboard way are accepted
+$('homeBtn').click();
+$('mcBox').click();
+check('re-ticking restores multiple choice', $('mcBox').checked);
 
 console.log('\n' + (failures === 0 ? 'all checks passed' : failures + ' CHECK(S) FAILED'));
 process.exit(failures === 0 ? 0 : 1);
