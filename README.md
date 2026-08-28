@@ -99,6 +99,39 @@ environments:
 Inline: `\en{-en}` highlights an ending, `\eng{gloss}` sets a grey italic gloss,
 `\xx` marks a form that does not exist.
 
+### Person, number and formal *Sie*
+
+Every table that lists the persons — the personal pronouns, the reflexives and
+the four case pages — is grouped **Singular, Plural, Formal**, with formal
+*Sie* / *Ihr* last and listed once. One set of forms covers both numbers, so
+putting it under 2nd person singular *and* 2nd person plural printed the same
+row twice. `casetbl` and `posstbl` hard-code the row rules for that layout, so
+adding or removing a row means editing the `hline` list in `macros.tex` too.
+
+### Tables that fold in half
+
+Long lists run down the left-hand columns and continue down the right-hand
+ones. An `S` in a `dtbl` colspec puts a vertical hairline at the fold:
+
+```latex
+\begin{dtbl}{W{0.55}W{1.45}SW{0.55}W{1.45}}
+```
+
+`S` carries no weight, so the weights still sum to the column count and
+`make check` is unaffected. The tabularray environments have no such column
+type — there, ask for the rule directly, and bold the second half's key column
+so it matches the first:
+
+```latex
+\begin{flattbl}{colspec={...}, vline{3}={1-Z}{0.5pt,solid,Line},
+                column{3}={font=\small\sffamily\bfseries, fg=Ink}}
+```
+
+On a `gtbl` the rule is restricted to `{2-Z}` so it stops below the dark
+header row rather than cutting through it. Only fold-in-half tables get this;
+a genuine four-column table (*person, Präsens, Präteritum, Perfekt*) does
+not.
+
 Vocabulary macros put the article on the noun and colour it by gender:
 `\dm{Hund}` gives *der Hund* in blue, `\df{}` *die* in red, `\dn{}` *das* in
 green, `\dpl{}` a plural-only noun in amber. Verbs use `\vr{}` for regular and

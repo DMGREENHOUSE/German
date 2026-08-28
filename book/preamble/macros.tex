@@ -64,7 +64,7 @@
   \footnotesize\color{Faint}%
   \setlength{\extrarowheight}{1.5pt}%
   \setlength{\tabcolsep}{4pt}%
-  \tabularx{\linewidth}{@{}W{0.92}W{1.08}W{0.92}W{1.08}@{}}%
+  \tabularx{\linewidth}{@{}W{0.92}W{1.08}SW{0.92}W{1.08}@{}}%
 }{%
   \endtabularx
   \par
@@ -154,17 +154,21 @@
 }
 
 % 2. posstbl — the four case pages.
-%    Fixed 14-row layout: 3 article rows, then the six singular
-%    possessives, then the four plural ones.
+%    Fixed 13-row layout: 3 article rows, then the five singular
+%    possessives, the three plural ones, and formal your on its own.
 %
-%      row  2  the                 row  9  her      (3rd sg f)
-%      row  3  a                   row 10  its      (3rd sg n)
-%      row  4  not a               row 11  our      (1st pl)
-%      == double rule in body ==   row 12  your     (2nd pl informal)
-%      row  5  my   (1st sg)       row 13  your     (2nd pl formal)
-%      row  6  your (2nd sg inf)   row 14  their    (3rd pl)
-%      row  7  your (2nd sg formal)
-%      row  8  his  (3rd sg m)
+%      row  2  the                 row  9  its    (3rd sg n)
+%      row  3  a                   row 10  our    (1st pl)
+%      row  4  not a               row 11  your   (2nd pl)
+%      == double rule in body ==   row 12  their  (3rd pl)
+%      row  5  my   (1st sg)       row 13  your   (formal)
+%      row  6  your (2nd sg)
+%      row  7  his  (3rd sg m)
+%      row  8  her  (3rd sg f)
+%
+%    Formal Ihr sits last, in a group of its own: one set of forms covers
+%    both numbers, so listing it under Singular and again under Plural
+%    printed the same row twice.
 %
 %    Rule weights: 0.7pt between blocks, 0.55pt between persons,
 %    0.25pt between variants of the same person.
@@ -189,18 +193,23 @@
   hline{1}     = {0.9pt,  solid, Ink},
   hline{2}     = {0.7pt,  solid, Ink},
   hline{3,4}   = {0.25pt, solid, Line},
-  hline{6}     = {0.55pt, solid, Ink},
-  hline{7}     = {0.25pt, solid, Line},
-  hline{8}     = {0.55pt, solid, Ink},
-  hline{9,10}  = {0.25pt, solid, Line},
-  hline{11}    = {0.7pt,  solid, Ink},
-  hline{12}    = {0.55pt, solid, Ink},
-  hline{13}    = {0.25pt, solid, Line},
-  hline{14}    = {0.55pt, solid, Ink},
-  hline{15}    = {0.9pt,  solid, Ink},
+  hline{6,7}   = {0.55pt, solid, Ink},
+  hline{8,9}   = {0.25pt, solid, Line},
+  hline{10}    = {0.7pt,  solid, Ink},
+  hline{11,12} = {0.55pt, solid, Ink},
+  hline{13}    = {0.7pt,  solid, Ink},
+  hline{14}    = {0.9pt,  solid, Ink},
 }
 
-% 3. casetbl — the personal-pronoun grid: labels + the four cases
+% 3. casetbl — the personal-pronoun grid: labels + the four cases.
+%    Fixed 10-row layout: five singular persons, three plural ones, then
+%    formal Sie last and once, in a group of its own.
+%
+%      row  2  ich  (1st sg)       row  7  wir  (1st pl)
+%      row  3  du   (2nd sg)       row  8  ihr  (2nd pl)
+%      row  4  er   (3rd sg m)     row  9  sie  (3rd pl)
+%      row  5  sie  (3rd sg f)     row 10  Sie  (formal)
+%      row  6  es   (3rd sg n)
 \NewTblrEnviron{casetbl}
 \SetTblrInner[casetbl]{
   width      = \linewidth,
@@ -222,15 +231,12 @@
   cell{1}{6} = {bg=DatC}, cell{1}{7} = {bg=GenC},
   hline{1}     = {0.9pt,  solid, Ink},
   hline{2}     = {0.7pt,  solid, Ink},
-  hline{3}     = {0.55pt, solid, Ink},
-  hline{4}     = {0.25pt, solid, Line},
-  hline{5}     = {0.55pt, solid, Ink},
-  hline{6,7}   = {0.25pt, solid, Line},
-  hline{8}     = {0.7pt,  solid, Ink},
-  hline{9}     = {0.55pt, solid, Ink},
-  hline{10}    = {0.25pt, solid, Line},
-  hline{11}    = {0.55pt, solid, Ink},
-  hline{12}    = {0.9pt,  solid, Ink},
+  hline{3,4}   = {0.55pt, solid, Ink},
+  hline{5,6}   = {0.25pt, solid, Line},
+  hline{7}     = {0.7pt,  solid, Ink},
+  hline{8,9}   = {0.55pt, solid, Ink},
+  hline{10}    = {0.7pt,  solid, Ink},
+  hline{11}    = {0.9pt,  solid, Ink},
 }
 
 % 4. gtbl — the general workhorse: dark header row, zebra body
@@ -310,8 +316,13 @@
 %
 %    Column types: W{w} left-aligned, C{w} centred, weights must sum to the
 %    number of columns. Header cells are wrapped in \hd.
+%
+%    S is a zero-width separator: a vertical rule marking where a table wraps
+%    round onto a second set of columns, as the word lists and the alphabet do.
+%    It carries no weight, so it does not affect the sum the checker enforces.
 \newcolumntype{W}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
 \newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}
+\newcolumntype{S}{!{\color{Line}\vrule width 0.5pt}}
 
 \newcommand{\hd}[1]{{\sffamily\bfseries\footnotesize\color{white}#1}}
 
