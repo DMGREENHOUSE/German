@@ -104,7 +104,10 @@
 
 % ---------- inline helpers -----------------------------------
 \newcommand{\en}[1]{\textcolor{Accent}{\bfseries #1}}      % highlighted ending
-\newcommand{\eng}[1]{{\color{Faint}\itshape #1}}            % English gloss / hint
+% \leavevmode because \color alone is a whatsit: starting a cell or a
+% paragraph with \eng would otherwise emit it in vertical mode and leave a
+% blank first line above the text.
+\newcommand{\eng}[1]{\leavevmode{\color{Faint}\itshape #1}}  % English gloss / hint
 \newcommand{\xx}{{\color{Faint}\textendash}}                % no such form
 \newcommand{\gterm}[1]{{\sffamily\bfseries\small #1}}
 
