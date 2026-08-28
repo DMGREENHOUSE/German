@@ -6,6 +6,9 @@ W{w} or C{w} and w scales that column's share of the width. The weights must
 sum to the NUMBER OF COLUMNS; if they do not, tabularx silently produces a
 squashed table rather than an error, which is easy to miss.
 
+An S in front of a column is the zero-width wrap separator and carries no
+weight, so it is matched but not counted.
+
 This also checks that every row of a dtbl has the right number of cells.
 
 Usage:  python3 tools/check-tables.py
@@ -18,7 +21,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parent.parent
 book = root / "book"
 
-SPEC = re.compile(r"\\begin\{dtbl\}(?:\[[^\]]*\])?\{((?:[WC]\{[0-9.]+\})+)\}")
+SPEC = re.compile(r"\\begin\{dtbl\}(?:\[[^\]]*\])?\{((?:S?[WC]\{[0-9.]+\})+)\}")
 COL = re.compile(r"([WC])\{([0-9.]+)\}")
 
 problems = []
